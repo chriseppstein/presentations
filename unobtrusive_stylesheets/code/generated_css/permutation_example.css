@@ -1,0 +1,18 @@
+body.posts h1,
+body#posts_show h1 {
+  text-decoration: underline; }
+body.posts #posts .post h2,
+body.posts #post h2,
+body#posts_show #posts .post h2,
+body#posts_show #post h2 {
+  font-weight: bold; }
+body.posts #posts .post .date,
+body.posts #post .date,
+body#posts_show #posts .post .date,
+body#posts_show #post .date {
+  float: right; }
+body.posts #posts .post .byline,
+body.posts #post .byline,
+body#posts_show #posts .post .byline,
+body#posts_show #post .byline {
+  font-color: #666; }

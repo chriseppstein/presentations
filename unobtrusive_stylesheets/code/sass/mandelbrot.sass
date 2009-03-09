@@ -1,0 +1,28 @@
+// This sass script takes a while to compile (> 20min)
+  =mandelbrot(!img_width, !img_height, !iterations=100, !center_x=-0.7, !center_y=0.0, !width=3)
+    :background-color black
+    !height = !width * !img_height / !img_width
+    !x_start = !center_x - !width / 2
+    !y_start = !center_y - !height / 2
+    !x_scale = !width / !img_width
+    !y_scale = !height / !img_height
+    @for !xpx from 0 to !img_width
+      @for !ypx from 0 to !img_height
+        !x = !x_start + !xpx * !x_scale
+        !y = !y_start + !ypx * !y_scale
+        !x0 = !x
+        !y0 = !y
+        !i = 0
+        @while !x*!x + !y*!y < 2*2 and !i < !iterations
+          !xtemp = !x*!x - !y*!y + !x0
+          !y = 2*!x*!y + !y0
+          !x = !xtemp
+          !i = !i + 1
+        end
+ 
+        @if !i != !iterations
+          .x-#{!xpx}.y-#{!ypx}
+            background-color= hsl(360 * !i / !iterations, 100, 50)
+ 
+  .pixelated
+    +mandelbrot(100, 100)

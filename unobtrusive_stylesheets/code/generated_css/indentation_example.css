@@ -1,0 +1,6 @@
+body.posts h1 {
+  text-decoration: underline; }
+body.posts #posts .post h2 {
+  font-weight: bold; }
+body.posts #posts .post .byline {
+  font-color: #666; }

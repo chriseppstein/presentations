@@ -1,0 +1,20 @@
+ul#top-nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  display: inline-block; }
+  ul#top-nav {
+    display: block; }
+  ul#top-nav li {
+    list-style-type: none;
+    margin-left: 0px;
+    white-space: nowrap;
+    float: left;
+    padding-left: 4px;
+    padding-right: 4px; }
+    ul#top-nav li.first {
+      padding-left: 0px; }
+    ul#top-nav li.last {
+      padding-right: 0px; }

@@ -1,0 +1,12 @@
+=two-column-layout(!left_column, !right_column, !left_column_width = 300px)
+  :position relative
+  #{!left_column}
+    :position absolute
+    :top 0px
+    :left 0px
+    :width = !left_column_width
+  #{!right_column}
+    :margin-left = !left_column_width + 20px
+
+#wrap
+  +two-column-layout("#nav", "#main")

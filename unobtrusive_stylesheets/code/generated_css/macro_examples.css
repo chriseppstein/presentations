@@ -1,0 +1,9 @@
+#wrap {
+  position: relative; }
+  #wrap #nav {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 300px; }
+  #wrap #main {
+    margin-left: 320px; }
