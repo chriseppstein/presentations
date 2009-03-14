@@ -1,0 +1,28 @@
+#clearfixed-1 {
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  display: inline-block; }
+  #clearfixed-1 {
+    display: block; }
+
+#clearfixed-2 {
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  display: inline-block; }
+  #clearfixed-2 {
+    display: block; }
+
+#column-1 {
+  float: left;
+  width: 310px;
+  margin-right: 10px; }
+
+#column-2 {
+  float: left;
+  width: 470px;
+  margin-right: 10px; }
+
+#column-3 {
+  float: left;
+  width: 630px;
+  margin-right: 10px; }
