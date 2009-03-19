@@ -1,0 +1,7 @@
+div {
+  font-weight: bold;
+  font-size: 20px;
+  width: 36px;
+  background-color: white; }
+  div:hover {
+    background-color: #dddddd; }

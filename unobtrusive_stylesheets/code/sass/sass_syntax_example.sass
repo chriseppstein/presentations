@@ -1,0 +1,14 @@
+!color = #fff
+!em_ratio = 12px / 1em
+
+=dark-hover(!bgcolor)
+  &:hover
+    :background-color = !bgcolor - #222
+    
+div
+  :font
+    :weight bold
+    :size 20px
+  :width = 3em * !em_ratio
+  :background-color = !color
+  +dark-hover(!color)
