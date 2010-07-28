@@ -1,0 +1,72 @@
+@import "partials/base";
+@import "compass";
+@import "blueprint";
+
+@import "blueprint/reset";
+
+@include blueprint-typography;
+@include blueprint-debug;
+
+#page {
+  @include container;
+}
+
+.column {
+  @include column-base;
+}
+
+.last-column {
+  @include last;
+}
+
+#sidebar {
+  @extend .column;
+  @include span(3);
+  ul {
+    @include no-bullets;
+    @include reset-box-model;
+    @include border-bottom-right-radius(0.5em);
+    @include box-shadow(transparentize(#333, 0.5), 4px, 4px, 3px);
+    border: 2px solid #333;
+    border: {
+      left: 0;
+      top: 0;
+    }
+    padding: 0.333em 0.5em;
+  }
+}
+
+#main-content {
+  @extend .column;
+  @extend .last-column;
+  @include span(5);
+}
+
+#header {
+  @extend .column;
+  @extend .last-column;
+  @include span(8);
+
+  .nav {
+    @include horizontal-list;
+    float: right;
+  }
+}
+
+#logo {
+  @include replace-text-with-dimensions("css_summit.png");
+  clear: right;
+}
+
+.nav a {
+  @include hover-link;
+}
+
+body {
+  @include linear-gradient(color-stops(lighten(#2C7D7C, 50%), #2C7D7C));
+}
+html {
+  background-color: #2C7D7C;
+}
+
+
