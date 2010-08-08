@@ -1,0 +1,75 @@
+#logo {
+  text-indent: -9999em;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/css_summit.png?1280195285');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 568px;
+  height: 140px;
+}
+
+#page {
+  width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: inline-block;
+}
+#page {
+  display: block;
+}
+
+#sidebar {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 230px;
+}
+* html #sidebar {
+  overflow-x: hidden;
+}
+
+#main-content {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 710px;
+}
+* html #main-content {
+  overflow-x: hidden;
+}
+
+ul.nav {
+  float: right;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+ul.nav {
+  display: block;
+}
+ul.nav li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+ul.nav li:first-child, ul.nav li.first {
+  padding-left: 0px;
+}
+ul.nav li:last-child, ul.nav li.last {
+  padding-right: 0px;
+}
+ul.nav a {
+  text-decoration: none;
+}
+ul.nav a:hover {
+  text-decoration: underline;
+}

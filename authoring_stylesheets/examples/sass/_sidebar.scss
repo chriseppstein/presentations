@@ -1,0 +1,8 @@
+.this-class-is-in-a-partial {
+  color: red;
+}
+
+@mixin this-mixin-is-in-a-partial {
+  @extend .this-class-is-in-a-partial;
+  border: 1px solid blue;
+}

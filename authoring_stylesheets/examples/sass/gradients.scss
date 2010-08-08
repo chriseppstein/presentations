@@ -1,0 +1,9 @@
+@import "compass/css3/gradient";
+
+.linear {
+  @include linear-gradient(color-stops(white, #c39 30%, #b7f 70%, #aaa));
+}
+
+.radial {
+  @include radial-gradient(color-stops(aqua 10px, #1e90ff 30px), 45 45);
+}

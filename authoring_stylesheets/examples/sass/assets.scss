@@ -1,0 +1,8 @@
+@import "compass";
+
+.embedded { background-image: inline-image("icon.png"); }
+.icon   { background-image: image-url("an_image.jpg"); }
+.icon-2 { background-image: image-url("another_image.jpg"); }
+
+@include font-face("A Font", font-files("a_font.ttf", truetype));
+.widget h3 { font-face: "A Font"; }

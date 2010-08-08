@@ -1,0 +1,17 @@
+@mixin foreground-color($bg-color) {
+  @if lightness($bg-color) < 30% {
+    color: #eee;
+  } @else {
+    color: #333;
+  }
+}
+
+.dark-red-widget {
+  background-color: #860704;
+  @include foreground-color(#860704);
+}
+
+.light-blue-widget {
+  background-color: #94D7DC;
+  @include foreground-color(#94D7DC);
+}

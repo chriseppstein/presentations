@@ -1,0 +1,9 @@
+$px-to-em: 1em / 12px;
+
+.widget {
+  height: 240px * $px-to-em;
+  width: 5cm + 20mm;
+  left: 2in + 4pc;
+  invalid: 1foo + 2foo;
+}
+

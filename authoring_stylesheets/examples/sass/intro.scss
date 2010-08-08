@@ -1,0 +1,10 @@
+@import "compass/css3";
+
+.rounded {
+  @include border-radius(5px);
+}
+
+.shadowed {
+  @include box-shadow(rgba(#000, 0.5),
+                      2px, 2px, 5px);
+}

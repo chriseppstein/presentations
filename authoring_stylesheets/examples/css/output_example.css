@@ -1,0 +1,8 @@
+.wrap {
+  /* CSS Comment */
+  margin: 0 auto;
+}
+.wrap .inside {
+  width: 500px;
+  float: left;
+}

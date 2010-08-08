@@ -1,0 +1,12 @@
+$use-mozilla-ellipsis-binding: true;
+
+@import "compass/utilities/text/ellipsis";
+
+.foo {
+  @include ellipsis(true);
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}

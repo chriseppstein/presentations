@@ -1,0 +1,9 @@
+.before {
+  color: yellow;
+}
+
+@import "sidebar";
+
+.after {
+  @include this-mixin-is-in-a-partial;
+}

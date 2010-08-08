@@ -1,0 +1,13 @@
+.foo {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -moz-binding: url('/css/xml/ellipsis.xml#ellipsis');
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}

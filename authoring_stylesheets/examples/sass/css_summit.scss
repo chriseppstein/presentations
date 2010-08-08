@@ -1,0 +1,26 @@
+@import "compass";
+
+@import "blueprint";
+
+#logo {
+  @include replace-text-with-dimensions("css_summit.png");
+}
+
+#page {
+  @include container;
+}
+
+#sidebar {
+  @include column(6);
+}
+
+#main-content {
+  @include column(24 - 6, last);
+}
+
+ul.nav {
+  float: right;
+  @include horizontal-list;
+  a { @include hover-link; }
+}
+

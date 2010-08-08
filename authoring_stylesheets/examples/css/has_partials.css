@@ -1,0 +1,11 @@
+.before {
+  color: yellow;
+}
+
+.this-class-is-in-a-partial, .after {
+  color: red;
+}
+
+.after {
+  border: 1px solid blue;
+}

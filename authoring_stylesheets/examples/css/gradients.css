@@ -1,0 +1,11 @@
+.linear {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffffff), color-stop(30%, #cc3399), color-stop(70%, #bb77ff), color-stop(100%, #aaaaaa));
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #cc3399 30%, #bb77ff 70%, #aaaaaa 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #cc3399 30%, #bb77ff 70%, #aaaaaa 100%);
+}
+
+.radial {
+  background-image: -webkit-gradient(radial, 45 45, 0, 45 45, 30, color-stop(33.333%, #00ffff), color-stop(100%, #1e90ff));
+  background-image: -moz-radial-gradient(45 45, circle, #00ffff 10px, #1e90ff 30px);
+  background-image: radial-gradient(45 45, circle, #00ffff 10px, #1e90ff 30px);
+}

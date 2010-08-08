@@ -1,0 +1,11 @@
+.clearfixed {
+  zoom: 1;
+}
+.clearfixed:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
