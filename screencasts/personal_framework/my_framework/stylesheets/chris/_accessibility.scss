@@ -1,0 +1,12 @@
+@mixin fg-color($bg-color) {
+  @if lightness($bg-color) < 30% {
+    color: #eee;
+  } @else {
+    color: #113;
+  }
+}
+
+@mixin readable($bg-color) {
+  background-color: $bg-color;
+  @include fg-color($bg-color);
+}

@@ -1,0 +1,5 @@
+@import "shared";
+
+.dark-red-widget { @include readable(#860704); }
+
+.light-blue-widget { @include readable(#94D7DC); }
