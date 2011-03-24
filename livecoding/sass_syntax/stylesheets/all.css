@@ -22,6 +22,9 @@ body {
 .hover:hover {
   text-decoration: underline;
 }
+body.border-radius .hover {
+  foo: bar;
+}
 
 #sidebar h3 {
   font-size: 2.5em;
@@ -122,12 +125,12 @@ div {
   width: 590px;
 }
 
-.feedback, .error {
+.feedback, .warning, .error {
   font-weight: bold;
   font-size: 16px;
   border: 3px solid black;
 }
-.feedback .icon, .error .icon {
+.feedback .icon, .warning .icon, .error .icon {
   float: left;
   background-image: url(/images/feedback.png);
   width: 32px;

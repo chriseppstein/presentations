@@ -1,7 +1,11 @@
 Intro
 =====
-* Me
+* Me http://chriseppstein.github.com/
 * What is Sass & Compass 
+  http://www.sass-lang.com/
+  http://compass-style.org/
+* What do people say about Sass & Compass?
+  https://twitter.com/#!/chriseppstein/favorites
 
 Setup
 =====
@@ -61,16 +65,18 @@ Tips & Best Practices
   * Line numbers
   * @debug
   * @warn
+  * unpack
 * FireSass
 * Version Control
 * Production Considerations
   * Compression
-* Personal Framework
+  * Asset paths
   
 
 Additional Resources
 ====================
-
+* Personal Framework:
+  http://chriseppstein.github.com/blog/2010/08/01/building-a-personal-framework/
 * Make Extensions:
   http://chriseppstein.github.com/blog/2010/10/21/compass-extensions-are-easy/
   http://beta.compass-style.org/help/tutorials/extensions/

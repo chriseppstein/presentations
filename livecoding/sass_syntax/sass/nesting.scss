@@ -3,6 +3,9 @@
   &:hover {
     text-decoration: underline;
   }
+  body.border-radius & {
+    foo: bar;
+  }
 }
 
 #sidebar {

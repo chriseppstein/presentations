@@ -1,9 +1,9 @@
-.feedback, .error {
+.feedback, .warning, .error {
   font-weight: bold;
   font-size: 16px;
   border: 3px solid black;
 }
-.feedback .icon, .error .icon {
+.feedback .icon, .warning .icon, .error .icon {
   float: left;
   background-image: url(/images/feedback.png);
   width: 32px;
@@ -24,4 +24,8 @@
 }
 .error .icon {
   background-image: url(/images/error.png);
+}
+
+#sidebar .feedback, #sidebar .warning, #sidebar .error {
+  font-style: normal;
 }
