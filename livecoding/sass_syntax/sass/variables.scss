@@ -1,0 +1,7 @@
+$sidebar-width: 200px;
+$background: blue !default;
+
+body     { background-color: $background;      }
+#sidebar { float: left; width: $sidebar-width; }
+#content { margin-left: $sidebar_width;        } /* Note: underscores and dashes are equivalent */
+

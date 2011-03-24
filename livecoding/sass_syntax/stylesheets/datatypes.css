@@ -1,0 +1,7 @@
+div {
+  content: "this is a string";
+  something: some-identifier;
+  border-width: 1px;
+  border-style: solid;
+  border-color: blue;
+}

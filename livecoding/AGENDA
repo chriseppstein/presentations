@@ -1,0 +1,79 @@
+Intro
+=====
+* Me
+* What is Sass & Compass 
+
+Setup
+=====
+
+* create project
+* compilation
+
+Sass
+====
+
+* Local Imports
+* Variables
+* Nesting
+* Calculations
+* Datatypes: string, boolean, list, number, color
+* Unit handling
+* Colors
+* Mixins
+* Functions
+* Selector Inheritance
+* Loops & Conditionals
+* Whitespace syntax
+
+Compass
+=======
+
+* Concepts:
+  * Project-based
+  * Design Libraries
+  * Community
+
+* Configuration file
+* Reset
+* CSS3
+* Layout
+  * grids (Blueprint)
+  * sticky footer
+  * stretching
+* Utilities
+* Vertical Rhythm
+* Sprites
+* Helpers
+  * Asset Paths
+  * Inline data
+* Plugins
+  * Fancy Buttons (http://brandonmathis.com/projects/fancy-buttons/)
+  * Susy  (http://susy.oddbird.net/)
+  * rgbapng (https://rubygems.org/gems/compass-rgbapng)
+  * 960.gs (https://github.com/chriseppstein/compass-960-plugin)
+  * Compass Magick (http://stanangeloff.github.com/compass-magick/)
+
+Tips & Best Practices
+=====================
+
+* Import concatenation
+* Debugging
+  * Line numbers
+  * @debug
+  * @warn
+* FireSass
+* Version Control
+* Production Considerations
+  * Compression
+* Personal Framework
+  
+
+Additional Resources
+====================
+
+* Make Extensions:
+  http://chriseppstein.github.com/blog/2010/10/21/compass-extensions-are-easy/
+  http://beta.compass-style.org/help/tutorials/extensions/
+* Charityware: UMDF
+  http://umdf.org/compass
+

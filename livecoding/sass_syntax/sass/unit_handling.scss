@@ -1,0 +1,15 @@
+$em-ratio: 14px / 1em;
+
+div {
+  height: 50px / $em-ratio;
+  width: 20em * $em-ratio;
+  combined: 1in + 2.2cm + 100mm + 3pc;
+  /* ERROR: 
+   * bad-units: 1em + 10px; // PROTIP: CSS3 calc()
+   */
+}
+
+/* You can make up your own units */
+
+$unit-ratio: 40px / 1u;
+.unit { width: 3u * $unit-ratio; }

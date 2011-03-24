@@ -1,0 +1,31 @@
+.darkened {
+  color: #256217;
+}
+
+.saturated {
+  color: #2fd609;
+}
+
+.hue {
+  color: #9b2ab5;
+}
+
+.alpha {
+  color: rgba(68, 181, 42, 0.7);
+}
+
+.set-rgb {
+  color: #7fb52a;
+}
+
+.set-hsl {
+  color: #98e7e0;
+}
+
+.scale-hsl {
+  color: #37ca15;
+}
+
+.adjust-hsl {
+  color: #2adf00;
+}

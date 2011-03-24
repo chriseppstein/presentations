@@ -1,0 +1,26 @@
+.feedback {
+  font-weight: bold;
+  font-size: 16px;
+  border: 3px solid black;
+  .icon {
+    float: left;
+    background-image: url(/images/feedback.png);
+    width: 32px;
+    height: 32px;
+  }
+}
+.warning {
+  border-color: red;
+  background-color: lighten(red, 30%);
+  .icon {
+    background-image: url(/images/warning.png);
+  }
+}
+.error {
+  @extend .feedback;
+  border-color: red;
+  background-color: lighten(red, 30%);
+  .icon {
+    background-image: url(/images/error.png);
+  }
+}

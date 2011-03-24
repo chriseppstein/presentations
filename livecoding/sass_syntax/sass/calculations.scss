@@ -1,0 +1,7 @@
+$grid-unit: 40px;
+$grid-gutter: 10px;
+$num-columns: 24;
+
+.container {
+  width: $num-columns * $grid-unit + ($num-columns - 1) * $grid-gutter
+}

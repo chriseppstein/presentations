@@ -1,0 +1,19 @@
+.hover {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#sidebar {
+  h3 {
+    font: {
+      size: 2.5em;
+      color: #333;
+    }
+  }
+}
+
+.nested {
+  @import "partial";
+}

@@ -1,0 +1,369 @@
+.partial {
+  color: red;
+}
+
+body {
+  background-color: red;
+}
+
+#sidebar {
+  float: left;
+  width: 200px;
+}
+
+#content {
+  margin-left: 200px;
+}
+
+/* Note: underscores and dashes are equivalent */
+.hover {
+  text-decoration: none;
+}
+.hover:hover {
+  text-decoration: underline;
+}
+
+#sidebar h3 {
+  font-size: 2.5em;
+  font-color: #333;
+}
+
+.nested .partial {
+  color: red;
+}
+
+.container {
+  width: 1190px;
+}
+
+div {
+  content: "this is a string";
+  something: some-identifier;
+  border-width: 1px;
+  border-style: solid;
+  border-color: blue;
+}
+
+div {
+  height: 3.571em;
+  width: 280px;
+  combined: 6.303in;
+  /* ERROR: 
+   * bad-units: 1em + 10px; // PROTIP: CSS3 calc()
+   */
+}
+
+/* You can make up your own units */
+.unit {
+  width: 120px;
+}
+
+.darkened {
+  color: #256217;
+}
+
+.saturated {
+  color: #2fd609;
+}
+
+.hue {
+  color: #9b2ab5;
+}
+
+.alpha {
+  color: rgba(68, 181, 42, 0.7);
+}
+
+.set-rgb {
+  color: #7fb52a;
+}
+
+.set-hsl {
+  color: #98e7e0;
+}
+
+.scale-hsl {
+  color: #37ca15;
+}
+
+.adjust-hsl {
+  color: #2adf00;
+}
+
+/* Mixins are a design vocabulary independent from your markup's domain. */
+.simple {
+  color: red;
+}
+
+.with-nested {
+  color: red;
+}
+.with-nested .nested {
+  font-size: larger;
+}
+
+.with-arguments {
+  color: #ffcc77;
+}
+
+.with-arguments-specified {
+  border: 10px solid #ffcc77;
+}
+
+.with-arguments-defaulted {
+  border: 1px solid #ffcc77;
+}
+
+.container {
+  width: 1190px;
+}
+
+.span-12 {
+  width: 590px;
+}
+
+.feedback, .error {
+  font-weight: bold;
+  font-size: 16px;
+  border: 3px solid black;
+}
+.feedback .icon, .error .icon {
+  float: left;
+  background-image: url(/images/feedback.png);
+  width: 32px;
+  height: 32px;
+}
+
+.warning {
+  border-color: red;
+  background-color: #ff9999;
+}
+.warning .icon {
+  background-image: url(/images/warning.png);
+}
+
+.error {
+  border-color: red;
+  background-color: #ff9999;
+}
+.error .icon {
+  background-image: url(/images/error.png);
+}
+
+.container {
+  width: 1190px;
+}
+
+.column, .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12, .span-13, .span-14, .span-15, .span-16, .span-17, .span-18, .span-19, .span-20, .span-21, .span-22, .span-23, .span-24 {
+  float: left;
+  margin-right: 10px;
+}
+
+.last, .span-24 {
+  margin-right: 0;
+}
+
+.span-1 {
+  width: 40px;
+}
+
+.span-2 {
+  width: 90px;
+}
+
+.span-3 {
+  width: 140px;
+}
+
+.span-4 {
+  width: 190px;
+}
+
+.span-5 {
+  width: 240px;
+}
+
+.span-6 {
+  width: 290px;
+}
+
+.span-7 {
+  width: 340px;
+}
+
+.span-8 {
+  width: 390px;
+}
+
+.span-9 {
+  width: 440px;
+}
+
+.span-10 {
+  width: 490px;
+}
+
+.span-11 {
+  width: 540px;
+}
+
+.span-12 {
+  width: 590px;
+}
+
+.span-13 {
+  width: 640px;
+}
+
+.span-14 {
+  width: 690px;
+}
+
+.span-15 {
+  width: 740px;
+}
+
+.span-16 {
+  width: 790px;
+}
+
+.span-17 {
+  width: 840px;
+}
+
+.span-18 {
+  width: 890px;
+}
+
+.span-19 {
+  width: 940px;
+}
+
+.span-20 {
+  width: 990px;
+}
+
+.span-21 {
+  width: 1040px;
+}
+
+.span-22 {
+  width: 1090px;
+}
+
+.span-23 {
+  width: 1140px;
+}
+
+.span-24 {
+  width: 1190px;
+}
+
+.container {
+  width: 1190px;
+}
+
+.column, .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12, .span-13, .span-14, .span-15, .span-16, .span-17, .span-18, .span-19, .span-20, .span-21, .span-22, .span-23, .span-24 {
+  float: left;
+  margin-right: 10px;
+}
+
+.last, .span-24 {
+  margin-right: 0;
+}
+
+.span-1 {
+  width: 40px;
+}
+
+.span-2 {
+  width: 90px;
+}
+
+.span-3 {
+  width: 140px;
+}
+
+.span-4 {
+  width: 190px;
+}
+
+.span-5 {
+  width: 240px;
+}
+
+.span-6 {
+  width: 290px;
+}
+
+.span-7 {
+  width: 340px;
+}
+
+.span-8 {
+  width: 390px;
+}
+
+.span-9 {
+  width: 440px;
+}
+
+.span-10 {
+  width: 490px;
+}
+
+.span-11 {
+  width: 540px;
+}
+
+.span-12 {
+  width: 590px;
+}
+
+.span-13 {
+  width: 640px;
+}
+
+.span-14 {
+  width: 690px;
+}
+
+.span-15 {
+  width: 740px;
+}
+
+.span-16 {
+  width: 790px;
+}
+
+.span-17 {
+  width: 840px;
+}
+
+.span-18 {
+  width: 890px;
+}
+
+.span-19 {
+  width: 940px;
+}
+
+.span-20 {
+  width: 990px;
+}
+
+.span-21 {
+  width: 1040px;
+}
+
+.span-22 {
+  width: 1090px;
+}
+
+.span-23 {
+  width: 1140px;
+}
+
+.span-24 {
+  width: 1190px;
+}

@@ -1,0 +1,15 @@
+.hover {
+  text-decoration: none;
+}
+.hover:hover {
+  text-decoration: underline;
+}
+
+#sidebar h3 {
+  font-size: 2.5em;
+  font-color: #333;
+}
+
+.nested .partial {
+  color: red;
+}

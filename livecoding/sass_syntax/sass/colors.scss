@@ -1,0 +1,16 @@
+$base-color: #44B52A;
+$rgb: rgb(68, 181, 42);
+$rgba: rgba(68, 181, 42, 1);
+$hsl: hsl(108.777deg, 62.332%, 43.725%);
+$hsla: hsla(108.777deg, 62.332%, 43.725%, 1);
+$named: blue;
+
+
+.darkened   { color: darken($base-color, 20%);                                 }
+.saturated  { color: saturate($base-color, 30%);                               }
+.hue        { color: adjust-hue($base-color, 180deg);                          }
+.alpha      { color: transparentize($base-color, 0.3);                         }
+.set-rgb    { color: change-color($base-color, $red: 127);                     }
+.set-hsl    { color: change-color($base-color, $hue: 175deg, $lightness: 75%); }
+.scale-hsl  { color: scale-color($base-color, $saturation: 50%);               }
+.adjust-hsl { color: adjust-color($base-color, $saturation: 50%);              }

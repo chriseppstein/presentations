@@ -1,0 +1,19 @@
+$string          : "this is a string";
+$unquoted-string : some-identifier;
+$boolean         : true;
+$unitless-number : 1;
+$length          : 1px;
+$space-list      : 1px solid blue;
+$comma-list      : 1px, solid, blue;
+$nested-list     : 1px 1px 1px 1px, 2px 2px 2px 2px, 3px 3px 3px 3px;
+$color           : #333;
+
+div {
+  content: $string;
+  something: $unquoted-string;
+  border: {
+    width: nth($space-list, 1);
+    style: nth($space-list, 2);
+    color: nth($space-list, 3);
+  }
+}

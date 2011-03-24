@@ -1,0 +1,27 @@
+.feedback, .error {
+  font-weight: bold;
+  font-size: 16px;
+  border: 3px solid black;
+}
+.feedback .icon, .error .icon {
+  float: left;
+  background-image: url(/images/feedback.png);
+  width: 32px;
+  height: 32px;
+}
+
+.warning {
+  border-color: red;
+  background-color: #ff9999;
+}
+.warning .icon {
+  background-image: url(/images/warning.png);
+}
+
+.error {
+  border-color: red;
+  background-color: #ff9999;
+}
+.error .icon {
+  background-image: url(/images/error.png);
+}

@@ -1,0 +1,31 @@
+$grid-unit: 40px;
+$grid-gutter: 10px;
+$num-columns: 24;
+
+@function column-width($n) {
+  @return $n * $grid-unit + ($n - 1) * $grid-gutter;
+}
+
+.container {
+  width: column-width($num-columns)
+}
+
+.column {
+  float: left;
+  margin-right: $grid-gutter;
+}
+
+.last {
+  margin-right: 0;
+}
+
+@for $n from 1 through $num-columns {
+  .span-#{$n} {
+    @extend .column;
+    width: column-width($n);
+    @if $n == $num-columns {
+      @extend .last;
+    }
+  }
+}
+

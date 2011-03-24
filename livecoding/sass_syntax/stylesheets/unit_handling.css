@@ -1,0 +1,13 @@
+div {
+  height: 3.571em;
+  width: 280px;
+  combined: 6.303in;
+  /* ERROR: 
+   * bad-units: 1em + 10px; // PROTIP: CSS3 calc()
+   */
+}
+
+/* You can make up your own units */
+.unit {
+  width: 120px;
+}

@@ -1,0 +1,14 @@
+$grid-unit: 40px;
+$grid-gutter: 10px;
+$num-columns: 24;
+
+@function column-width($n) {
+  @return $n * $grid-unit + ($n - 1) * $grid-gutter;
+}
+.container {
+  width: column-width($num-columns)
+}
+
+.span-12 {
+  width: column-width(12);
+}

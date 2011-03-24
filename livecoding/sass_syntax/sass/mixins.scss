@@ -1,0 +1,27 @@
+/* Mixins are a design vocabulary independent from your markup's domain. */
+@mixin simple {
+  color: red;
+}
+
+@mixin with-nested-selectors {
+  color: red;
+  .nested {
+    font-size: larger;
+  }
+}
+
+@mixin with-arguments($color) {
+  color: $color;
+}
+
+@mixin with-default-args($color, $width: 1px) {
+  border: $width solid $color;
+}
+
+.simple         { @include simple; }
+.with-nested    { @include with-nested-selectors; }
+.with-arguments { @include with-arguments(#fc7); }
+.with-arguments-specified { @include with-default-args(#fc7, 10px); }
+.with-arguments-defaulted { @include with-default-args(#fc7); }
+
+
