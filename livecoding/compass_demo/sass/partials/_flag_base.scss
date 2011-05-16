@@ -1,0 +1,12 @@
+@import "blueprint";
+@import "compass/utilities";
+
+#flags {
+  @include clearfix;
+  @include column(24);
+  a {
+    float: left;
+    @include hide-text;
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,14 @@
+@import "partials/grid";
+@import "partials/tuned_flags";
+
+
+#sidebar {
+  @media screen {
+    @media landscape{
+      width: 500px;
+    }
+    @media portrait {
+      width: 300px;
+    }
+  }
+}

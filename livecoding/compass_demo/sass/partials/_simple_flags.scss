@@ -1,0 +1,9 @@
+// compass sprite "images/flag/*.png" -f sass/partials/_flag_generated.scss
+// compass sprite "images/flag/*.png" --skip-overrides -f sass/partials/_flag_generated_simple.scss
+@import "flag/*.png";
+
+$flag-sprite-dimensions: true;
+
+@import "flag_base";
+
+@include all-flag-sprites;

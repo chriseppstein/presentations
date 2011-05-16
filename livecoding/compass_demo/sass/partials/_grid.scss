@@ -1,0 +1,13 @@
+@import "blueprint";
+@import "blueprint/reset/utilities";
+@import "blueprint/scaffolding";
+
+body.grid {
+  @include blueprint-nested-reset;
+  @include blueprint-typography(nested);
+  @include blueprint-scaffolding;
+  @include blueprint-debug;
+  #container { @include container;  }
+  #sidebar   { @include column(8);  }
+  #main      { @include column(16, last); }
+}
