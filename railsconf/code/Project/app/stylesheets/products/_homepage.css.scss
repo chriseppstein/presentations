@@ -1,0 +1,9 @@
+#homepage {
+  h1 {
+    color: $get-your-attention-red;
+  }
+  button {
+    background: linear-gradient($interactive-orange,
+                                $get-your-attention-red);
+  }
+}

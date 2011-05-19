@@ -1,0 +1,27 @@
+$cols:         24;
+$col-width:    40px;
+$gutter-width: 10px;
+
+@mixin column($n, $padding-width, $border-width, $last: $n < $cols) {
+  float:         left;
+  @if not $last {
+    margin-right:  $gutter-width;    
+  }
+  width:         $n * $col-width
+                 + ($n - 1) * $gutter-width
+                 - $padding-width * 2
+                 - $border-width * 2;
+  border-width:  $border-width;
+  padding-left:  $padding-width;
+  padding-right: $padding-width;
+}
+
+#sidebar { @include column(8, 10px, 2px); }
+
+#sidebar {
+  float:        left;
+  width:        366px;
+  border-width:  2px;
+  padding-left:  10px;
+  padding-right: 10px;
+}
