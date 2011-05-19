@@ -1,0 +1,16 @@
+$main-color: #3352A1;
+$bold-color: saturate($main-color, 25%);
+$accent-color: adjust-hue($bold-color, 60deg);
+$main-gray-color: grayscale($main-color);
+$highlight-color: lighten($main-color, 20%);
+$shadow-color: transparentize(darken($main-color, 20%), 0.2);
+$selected-color: complement($main-color);
+
+.main      { color: $main-color;      }
+.bold      { color: $bold-color;      }
+.accent    { color: $accent-color;    }
+.gray      { color: $main-gray-color; }
+.highlight { color: $highlight-color; }
+.shadow    { color: $shadow-color;    }
+.selected  { color: $selected-color;  }
+

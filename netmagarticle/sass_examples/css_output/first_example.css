@@ -1,0 +1,18 @@
+/* line 8, ../sass/first_example.scss */
+#container {
+  background-color: #446688;
+}
+/* line 10, ../sass/first_example.scss */
+#container .widget, #container .bordered-widget {
+  -moz-box-shadow: #223344;
+  -webkit-box-shadow: #223344;
+  -o-box-shadow: #223344;
+  box-shadow: #223344;
+  background-color: #bb9977;
+  width: 250px;
+}
+/* line 15, ../sass/first_example.scss */
+#container .bordered-widget {
+  width: 248px;
+  border: 2px solid #7799bb;
+}

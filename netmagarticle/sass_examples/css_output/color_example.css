@@ -1,0 +1,34 @@
+/* line 9, ../sass/color_example.scss */
+.main {
+  color: #3352a1;
+}
+
+/* line 10, ../sass/color_example.scss */
+.bold {
+  color: #1946bb;
+}
+
+/* line 11, ../sass/color_example.scss */
+.accent {
+  color: #8e19bb;
+}
+
+/* line 12, ../sass/color_example.scss */
+.gray {
+  color: #6a6a6a;
+}
+
+/* line 13, ../sass/color_example.scss */
+.highlight {
+  color: #6a87d0;
+}
+
+/* line 14, ../sass/color_example.scss */
+.shadow {
+  color: rgba(26, 43, 84, 0.8);
+}
+
+/* line 15, ../sass/color_example.scss */
+.selected {
+  color: #a18233;
+}

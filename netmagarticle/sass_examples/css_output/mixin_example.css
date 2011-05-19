@@ -1,0 +1,13 @@
+/* line 13, ../sass/mixin_example.scss */
+.widget {
+  *zoom: 1;
+}
+/* line 2, ../sass/mixin_example.scss */
+.widget:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}

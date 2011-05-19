@@ -1,0 +1,22 @@
+@import "compass/css3";
+
+$background-color: #446688;
+$foreground-color: lighten(complement($background-color), 20%);
+
+$widget-width: 250px;
+
+#container {
+  background-color: $background-color;
+  .widget {
+    @include box-shadow(darken($background-color, 20%));
+    background-color: $foreground-color;
+    width: $widget-width;
+  }
+  .bordered-widget {
+    $border-width: 2px;
+    @extend .widget;
+    // Fix for the broken box model
+    width: $widget-width - $border-width;
+    border: $border-width solid lighten($background-color, 20%);
+  }
+}

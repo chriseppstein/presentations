@@ -1,0 +1,12 @@
+.rounded {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.widget {
+  @extend .rounded;
+  border-color: blue;
+}
+.bright-widget {
+  @extend .widget;
+  border-color: #9999ff;
+}

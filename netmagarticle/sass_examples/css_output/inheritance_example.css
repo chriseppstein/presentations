@@ -1,0 +1,15 @@
+/* line 1, ../sass/inheritance_example.scss */
+.rounded, .widget, .bright-widget {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* line 5, ../sass/inheritance_example.scss */
+.widget, .bright-widget {
+  border-color: blue;
+}
+
+/* line 9, ../sass/inheritance_example.scss */
+.bright-widget {
+  border-color: #9999ff;
+}
