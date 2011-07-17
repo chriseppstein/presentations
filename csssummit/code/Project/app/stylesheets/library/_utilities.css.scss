@@ -1,0 +1,16 @@
+$prefixes: -moz, -ms, -webkit, -o, -khtml;
+@mixin prefixed-property($property-name, $value) {
+  @each $prefix in $prefixes {
+    #{$prefix}-#{$property-name}: $value;
+  }
+  #{$property-name}: $value;
+}
+
+@mixin border-radius($radius) {
+  @include prefixed-property(border-radius, $radius);
+}
+
+
+#sidebar {
+  @include border-radius(4px)
+}
