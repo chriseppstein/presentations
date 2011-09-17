@@ -6,16 +6,12 @@
   font-family: Arial, "MS Trebuchet", sans-serif;
   h1 { margin-bottom: 2em; }
 }
+
+@include all-icon-sprites;
+
 #toolbar {
   overflow: none;
   display: inline-block;
   margin: 0; padding: 0;
-  > {
-    command { float: left; width: 48px; height: 48px;         }
-    .back   { @include icon-sprite(back);   }
-    .next   { @include icon-sprite(next);   }
-    .save   { @include icon-sprite(save);   }
-    .print  { @include icon-sprite(print);  }
-    .delete { @include icon-sprite(delete); }
-  }
+  > command { float: left; width: 48px; height: 48px; }
 }
