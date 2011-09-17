@@ -1,3 +1,5 @@
+@import "icon/*.png";
+
 #container {
   text-align: center;
   margin: 4em 0;
@@ -9,11 +11,11 @@
   display: inline-block;
   margin: 0; padding: 0;
   > {
-    command { float: left; width: 48px; height: 48px;          }
-    .back   { background-image: image-url("icon/back.png");   }
-    .next   { background-image: image-url("icon/next.png");   }
-    .save   { background-image: image-url("icon/save.png");   }
-    .print  { background-image: image-url("icon/print.png");  }
-    .delete { background-image: image-url("icon/delete.png"); }
+    command { float: left; width: 48px; height: 48px;         }
+    .back   { @include icon-sprite(back);   }
+    .next   { @include icon-sprite(next);   }
+    .save   { @include icon-sprite(save);   }
+    .print  { @include icon-sprite(print);  }
+    .delete { @include icon-sprite(delete); }
   }
 }
