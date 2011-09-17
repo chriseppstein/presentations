@@ -1,0 +1,19 @@
+#container {
+  text-align: center;
+  margin: 4em 0;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+  h1 { margin-bottom: 2em; }
+}
+#toolbar {
+  overflow: none;
+  display: inline-block;
+  margin: 0; padding: 0;
+  > {
+    command { float: left; width: 48px; height: 48px;          }
+    .back   { background-image: image-url("icon/back.png");   }
+    .next   { background-image: image-url("icon/next.png");   }
+    .save   { background-image: image-url("icon/save.png");   }
+    .print  { background-image: image-url("icon/print.png");  }
+    .delete { background-image: image-url("icon/delete.png"); }
+  }
+}
