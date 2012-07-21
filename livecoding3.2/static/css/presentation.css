@@ -3,7 +3,7 @@
   width: auto;
   max-width: 864px;
   margin: 16px auto 24px auto;
-  min-height: 800px;
+  min-height: 720px;
   font-size: 16px;
 }
 
@@ -37,21 +37,21 @@
 /* line 28, ../../sass/presentation.scss */
 .live-code section.html, .pretend-code section.html {
   bottom: 35px;
-  top: 448.0px;
+  top: 403.2px;
   left: 10px;
   right: 483.84px;
 }
 /* line 34, ../../sass/presentation.scss */
 .live-code section.result, .pretend-code section.result {
   bottom: 35px;
-  top: 448.0px;
+  top: 403.2px;
   right: 10px;
   left: 483.84px;
 }
 /* line 40, ../../sass/presentation.scss */
 .live-code section.sass, .pretend-code section.sass {
   top: 70px;
-  bottom: 448.0px;
+  bottom: 403.2px;
   left: 10px;
   right: 483.84px;
 }
@@ -62,13 +62,13 @@
 /* line 49, ../../sass/presentation.scss */
 .live-code section.css, .pretend-code section.css {
   top: 70px;
-  bottom: 448.0px;
+  bottom: 403.2px;
   right: 10px;
   left: 483.84px;
 }
 /* line 54, ../../sass/presentation.scss */
 .live-code section.css.only, .pretend-code section.css.only {
-  top: 448.0px;
+  top: 403.2px;
   bottom: 35px;
   left: 10px;
 }
