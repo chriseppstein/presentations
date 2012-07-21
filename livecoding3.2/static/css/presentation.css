@@ -36,14 +36,14 @@
 }
 /* line 28, ../../sass/presentation.scss */
 .live-code section.html {
-  bottom: 10px;
+  bottom: 35px;
   top: 448.0px;
   left: 10px;
   right: 483.84px;
 }
 /* line 34, ../../sass/presentation.scss */
 .live-code section.result {
-  bottom: 10px;
+  bottom: 35px;
   top: 448.0px;
   right: 10px;
   left: 483.84px;
@@ -65,7 +65,7 @@
 /* line 52, ../../sass/presentation.scss */
 .live-code section.fullsize {
   top: 70px;
-  bottom: 5px;
+  bottom: 35px;
   right: 5px;
   left: 5px;
   z-index: 10;
@@ -77,42 +77,55 @@
   box-shadow: 3px 3px #cccccc;
 }
 /* line 63, ../../sass/presentation.scss */
+.live-code .source-changer {
+  float: right;
+  margin: 2px 4px;
+}
+/* line 67, ../../sass/presentation.scss */
+.live-code .alternate-source {
+  display: none;
+}
+/* line 70, ../../sass/presentation.scss */
+.live-code .source {
+  display: block;
+}
+/* line 73, ../../sass/presentation.scss */
 .live-code .output {
   padding: 5px;
 }
-/* line 66, ../../sass/presentation.scss */
+/* line 76, ../../sass/presentation.scss */
 .live-code .resizer {
   float: right;
   margin: 0 0 0 4px;
   font: auto;
 }
-/* line 71, ../../sass/presentation.scss */
+/* line 81, ../../sass/presentation.scss */
 .live-code h3 {
   height: auto;
   font-size: 28px;
   text-shadow: 2px 2px 2px #cccccc;
 }
-/* line 76, ../../sass/presentation.scss */
+/* line 86, ../../sass/presentation.scss */
 .live-code textarea, .live-code .output {
   width: 98%;
   height: 85%;
   border: 1px solid #ccc;
 }
-/* line 81, ../../sass/presentation.scss */
+/* line 91, ../../sass/presentation.scss */
 .live-code textarea {
   height: 87%;
 }
-/* line 84, ../../sass/presentation.scss */
+/* line 94, ../../sass/presentation.scss */
 .live-code button.compile, .live-code select.format {
   float: right;
 }
-/* line 88, ../../sass/presentation.scss */
+/* line 98, ../../sass/presentation.scss */
 .live-code .css .output {
   white-space: pre;
   font-family: "Courier New";
   overflow: auto;
 }
-/* line 93, ../../sass/presentation.scss */
+/* line 103, ../../sass/presentation.scss */
 .live-code .css .error {
   color: #c00;
   overflow: auto;
@@ -120,12 +133,12 @@
 }
 
 @media print {
-  /* line 102, ../../sass/presentation.scss */
+  /* line 112, ../../sass/presentation.scss */
   header {
     display: none !important;
   }
 
-  /* line 106, ../../sass/presentation.scss */
+  /* line 116, ../../sass/presentation.scss */
   .introduction .deck-container {
     font-size: 1.25em;
   }

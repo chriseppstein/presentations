@@ -85,7 +85,7 @@
           <section class="sass">
             <button class="compile">Update</button>
             <h3>Sass</h3>
-            <textarea class="source">
+<textarea class="source" title="Using Classes">
 @import "compass/css3";
 #placeholders {
   .button {
@@ -94,6 +94,26 @@
     text-decoration: none;
     @include border-radius(4px);
     @include background(linear-gradient(red orange));
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="With Placeholders">
+@import "compass/css3";
+#placeholders {
+  %button {
+    padding: 3px 5px;
+    text-decoration: none;
+    @include border-radius(4px);
+    background-color: gray;
+  }
+  .button-primary {
+    @extend %button;
+    @include background(linear-gradient(red orange));
+    color: white;
+  }
+  .button-lg {
+    @extend %button;
+    font-size: 24px;
   }
 }
 </textarea>
@@ -106,10 +126,17 @@
           </section>
           <section class="html">
             <h3>HTML</h3>
-          <textarea class="source">
+          <textarea class="source" title="Buttons">
 <div id="placeholders">
   <a class="button button-primary">Button</a>
   <a class="button button-lg">Button</a>
+</div>
+</textarea>
+          <textarea class="alternate-source" title="More Buttons">
+<div id="placeholders">
+  <a class="button button-primary">Primary Button</a>
+  <a class="button button-lg">Large Button</a>
+  <a class="button button-sm">Small Button</a>
 </div>
 </textarea>
         </section>

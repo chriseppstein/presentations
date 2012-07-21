@@ -26,13 +26,13 @@ $width: 864px;
   }
   $section-ratio: 0.56;
   section.html {
-    bottom: 10px;
+    bottom: 35px;
     top: $section-ratio * $height;
     left: 10px;
     right: $section-ratio * $width;
   }
   section.result {
-    bottom: 10px;
+    bottom: 35px;
     top: $section-ratio * $height;
     right: 10px;
     left: $section-ratio * $width;
@@ -51,7 +51,7 @@ $width: 864px;
   }
   section.fullsize {
     top: 70px;
-    bottom: 5px;
+    bottom: 35px;
     right: 5px;
     left: 5px;
     z-index: 10;
@@ -59,6 +59,16 @@ $width: 864px;
     border: 2px groove #777;
     font-size: 24px;
     @include box-shadow(3px 3px #ccc);
+  }
+  .source-changer {
+    float: right;
+    margin: 2px 4px;
+  }
+  .alternate-source {
+    display: none;
+  }
+  .source {
+    display: block;
   }
   .output {
     padding: 5px;
