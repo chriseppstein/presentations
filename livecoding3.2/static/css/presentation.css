@@ -22,39 +22,57 @@
 /* line 18, ../../sass/presentation.scss */
 .live-code {
   display: table;
-  width: 100%;
   height: 450px;
 }
-/* line 22, ../../sass/presentation.scss */
+/* line 21, ../../sass/presentation.scss */
 .live-code .styles, .live-code .markup, .live-code .headers {
   display: table-row;
 }
-/* line 25, ../../sass/presentation.scss */
+/* line 24, ../../sass/presentation.scss */
 .live-code .sass, .live-code .css, .live-code .html, .live-code .display, .live-code .header {
   display: table-cell;
   vertical-align: top;
-  width: 50%;
-  height: 45%;
+  width: 430px;
+  height: 200px;
 }
-/* line 31, ../../sass/presentation.scss */
+/* line 30, ../../sass/presentation.scss */
 .live-code .header {
   height: auto;
   font-size: 28px;
   text-shadow: 2px 2px 2px #cccccc;
 }
-/* line 36, ../../sass/presentation.scss */
+/* line 35, ../../sass/presentation.scss */
 .live-code textarea {
   width: 90%;
   height: 90%;
 }
+/* line 39, ../../sass/presentation.scss */
+.live-code button.compile {
+  font-size: 12px;
+  float: right;
+  margin-right: 9%;
+  margin-top: 5px;
+}
+/* line 45, ../../sass/presentation.scss */
+.live-code .css {
+  white-space: pre;
+  font-family: "Courier New";
+  overflow: auto;
+}
+/* line 49, ../../sass/presentation.scss */
+.live-code .css .error {
+  color: #c00;
+  overflow: auto;
+  white-space: normal;
+}
 
 @media print {
-  /* line 43, ../../sass/presentation.scss */
+  /* line 58, ../../sass/presentation.scss */
   header {
     display: none !important;
   }
 
-  /* line 47, ../../sass/presentation.scss */
+  /* line 62, ../../sass/presentation.scss */
   .introduction .deck-container {
     font-size: 1.25em;
   }
