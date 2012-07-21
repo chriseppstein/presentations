@@ -85,36 +85,90 @@
           <section class="sass">
             <button class="compile">Update</button>
             <h3>Sass</h3>
-<textarea class="source" title="Using Classes">
+<textarea class="source" title="Using Markup">
 @import "compass/css3";
-#placeholders {
-  .button {
-    padding: 3px 5px;
-    color: white;
-    text-decoration: none;
-    @include border-radius(4px);
-    @include background(linear-gradient(red orange));
+.button {
+  padding: 3px 5px;
+  @include border-radius(8px);
+}
+.button-gray {
+  background-color: gray;
+  &:hover {
+    background-color: darken(gray, 20%);
   }
+}
+.button-primary {
+  @include background(linear-gradient(red orange));
+  color: white;
+  &:hover {
+    @include background(linear-gradient(darken(red, 20%) darken(orange, 20%)));
+  }
+}
+.button-lg {
+  font-size: 24px !important;
+}
+.button-sm {
+  font-size: 12px !important;
+}
+</textarea>
+<textarea class="alternate-source" title="Using Classes">
+@import "compass/css3";
+.button {
+  padding: 3px 5px;
+  @include border-radius(8px);
+}
+.button-gray {
+  @extend .button;
+  background-color: gray;
+  &:hover {
+    background-color: darken(gray, 20%);
+  }
+}
+.button-primary {
+  @extend .button;
+  @include background(linear-gradient(red orange));
+  color: white;
+  &:hover {
+    @include background(linear-gradient(darken(red, 20%) darken(orange, 20%)));
+  }
+}
+.button-lg {
+  @extend .button-gray;
+  font-size: 24px !important;
+}
+.button-sm {
+  @extend .button-gray;
+  font-size: 12px !important;
 }
 </textarea>
 <textarea class="alternate-source" title="With Placeholders">
 @import "compass/css3";
-#placeholders {
-  %button {
-    padding: 3px 5px;
-    text-decoration: none;
-    @include border-radius(4px);
-    background-color: gray;
+%button {
+  padding: 3px 5px;
+  @include border-radius(8px);
+}
+%button-gray {
+  @extend %button;
+  background-color: gray;
+  &:hover {
+    background-color: darken(gray, 20%);
   }
-  .button-primary {
-    @extend %button;
-    @include background(linear-gradient(red orange));
-    color: white;
+}
+.button-primary {
+  @extend %button;
+  @include background(linear-gradient(red orange));
+  color: white;
+  &:hover {
+    @include background(linear-gradient(darken(red, 20%) darken(orange, 20%)));
   }
-  .button-lg {
-    @extend %button;
-    font-size: 24px;
-  }
+}
+.button-lg {
+  @extend %button-gray;
+  font-size: 24px !important;
+}
+.button-sm {
+  @extend %button-gray;
+  font-size: 12px !important;
 }
 </textarea>
           </section>
@@ -126,17 +180,18 @@
           </section>
           <section class="html">
             <h3>HTML</h3>
-          <textarea class="source" title="Buttons">
+          <textarea class="source" title="Multiple Classes">
 <div id="placeholders">
-  <a class="button button-primary">Button</a>
-  <a class="button button-lg">Button</a>
+  <button class="button button-primary">Primary Button</button>
+  <button class="button button-gray button-lg">Large Button</button>
+  <button class="button button-gray button-sm">Small Button</button>
 </div>
 </textarea>
-          <textarea class="alternate-source" title="More Buttons">
+          <textarea class="alternate-source" title="Single Class">
 <div id="placeholders">
-  <a class="button button-primary">Primary Button</a>
-  <a class="button button-lg">Large Button</a>
-  <a class="button button-sm">Small Button</a>
+  <button class="button-primary">Primary Button</button>
+  <button class="button-lg">Large Button</button>
+  <button class="button-sm">Small Button</button>
 </div>
 </textarea>
         </section>
