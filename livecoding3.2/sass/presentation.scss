@@ -1,0 +1,51 @@
+@import "compass/css3";
+.deck-container {
+  width: auto;
+  max-width: 864px;
+  margin: 16px auto 24px auto;
+  min-height: 560px;
+  font-size: 16px;
+}
+.no-boxshadow .deck-container {
+  border: 1px solid #e4e4e4;
+}
+.boxshadow .deck-container {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.live-code {
+  display: table;
+  width: 100%;
+  height: 450px;
+  .styles, .markup, .headers {
+    display: table-row;
+  }
+  .sass, .css, .html, .display, .header {
+    display: table-cell;
+    vertical-align: top;
+    width: 50%;
+    height: 45%;
+  }
+  .header {
+    height: auto;
+    font-size: 28px;
+    @include text-shadow(2px 2px 2px #ccc);
+  }
+  textarea {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@media print {
+  header {
+    display: none !important;
+  }
+
+  .introduction .deck-container {
+    font-size: 1.25em;
+  }
+}
+

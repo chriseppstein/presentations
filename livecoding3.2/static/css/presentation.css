@@ -1,0 +1,61 @@
+/* line 2, ../../sass/presentation.scss */
+.deck-container {
+  width: auto;
+  max-width: 864px;
+  margin: 16px auto 24px auto;
+  min-height: 560px;
+  font-size: 16px;
+}
+
+/* line 9, ../../sass/presentation.scss */
+.no-boxshadow .deck-container {
+  border: 1px solid #e4e4e4;
+}
+
+/* line 12, ../../sass/presentation.scss */
+.boxshadow .deck-container {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* line 18, ../../sass/presentation.scss */
+.live-code {
+  display: table;
+  width: 100%;
+  height: 450px;
+}
+/* line 22, ../../sass/presentation.scss */
+.live-code .styles, .live-code .markup, .live-code .headers {
+  display: table-row;
+}
+/* line 25, ../../sass/presentation.scss */
+.live-code .sass, .live-code .css, .live-code .html, .live-code .display, .live-code .header {
+  display: table-cell;
+  vertical-align: top;
+  width: 50%;
+  height: 45%;
+}
+/* line 31, ../../sass/presentation.scss */
+.live-code .header {
+  height: auto;
+  font-size: 28px;
+  text-shadow: 2px 2px 2px #cccccc;
+}
+/* line 36, ../../sass/presentation.scss */
+.live-code textarea {
+  width: 90%;
+  height: 90%;
+}
+
+@media print {
+  /* line 43, ../../sass/presentation.scss */
+  header {
+    display: none !important;
+  }
+
+  /* line 47, ../../sass/presentation.scss */
+  .introduction .deck-container {
+    font-size: 1.25em;
+  }
+}
