@@ -223,6 +223,22 @@
         </section>
       </section>
       <section class="slide">
+        <h2>@extend Warnings (will become errors after 3.2)</h2>
+<div class="vcenter">
+<pre style="text-align: left; padding-left: 25%">
+a > %placeholder { color: red; }
+.base-class { color: red; }
+
+.foo {
+  @extend %placeholder;       // No warning
+  @extend .base-class;        // No warning
+  @extend .missing;           // Warning
+  @extend .missing !optional; // No warning
+}
+</pre>
+</div>
+      </section>
+      <section class="slide">
         <h2>Epic @media Support</h2>
         <div class="live-code">
           <section class="sass only">
@@ -555,6 +571,91 @@ $responsive: false;
             </style>
 <div class="shadowed-1"></div>
 <div class="shadowed-2"></div>
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h1>Compass 0.13</h1>
+      </section>
+      <section class="slide">
+        <h1>Goodbye Blueprint</h1>
+      </section>
+      <section class="slide">
+        <h2>Goodbye Blueprint</h2>
+        <h1>Thank you for inspiring a movement!</h1>
+      </section>
+      <section class="slide">
+        <h2>Goodbye Blueprint</h2>
+        <h1>But we have to move on.</h1>
+      </section>
+      <section class="slide">
+        <h2>Goodbye Blueprint</h2>
+        <h1>You're just too rigid and confining.</h1>
+      </section>
+      <section class="slide">
+        <h2>Goodbye Blueprint</h2>
+        <h1>We need to respond to our multi-device world.</h1>
+      </section>
+      <section class="slide">
+        <h2>Goodbye Blueprint</h2>
+        <h1>It's a plugin now.<br><a href="http://compass-style.org/blog/2012/05/20/removing-blueprint/">Blog Post</a></h1>
+      </section>
+      <section class="slide">
+        <h2>Goodbye Blueprint</h2>
+        <h1>What do we recommend?</h1>
+      </section>
+      <section class="slide">
+        <h2>Keyframe Animation</h2>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Animation">
+@import "compass/css3";
+
+@include keyframes(appear-and-roundify) {
+  0%   { opacity: 0; @include border-radius(2px);  @include box-shadow(3px 3px rgba(#000,0));}
+  100% { opacity: 1; @include border-radius(50px); @include box-shadow(3px 3px #000);}
+}
+
+.animated{
+  background-color: #ccc;
+  padding: 30px !important;
+  text-align: center;
+
+  > * {
+    opacity: 0;
+    padding: 5px !important;
+    border: 2px solid black !important;
+    margin: 20px !important;
+    height: 30px;
+  }
+
+  &:hover > * {
+    @include animation(appear-and-roundify 2s linear alternate infinite);
+  }
+}
+</textarea>
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Animated">
+<h3>Hover Below</h3>
+<div class="animated">
+  <div>I'm Animated</div>
+  <a href="#">Me too!</a>
+</div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
           </div>
         </section>
       </section>
