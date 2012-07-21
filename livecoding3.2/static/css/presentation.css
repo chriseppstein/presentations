@@ -20,7 +20,7 @@
 }
 
 /* line 21, ../../sass/presentation.scss */
-.live-code section {
+.live-code section, .pretend-code section {
   position: absolute;
   padding: 3px;
   -webkit-transition-duration: 1s;
@@ -35,110 +35,126 @@
   transition-property: top, bottom, left, right, z-index, font-size;
 }
 /* line 28, ../../sass/presentation.scss */
-.live-code section.html {
+.live-code section.html, .pretend-code section.html {
   bottom: 35px;
   top: 448.0px;
   left: 10px;
   right: 483.84px;
 }
 /* line 34, ../../sass/presentation.scss */
-.live-code section.result {
+.live-code section.result, .pretend-code section.result {
   bottom: 35px;
   top: 448.0px;
   right: 10px;
   left: 483.84px;
 }
 /* line 40, ../../sass/presentation.scss */
-.live-code section.sass {
+.live-code section.sass, .pretend-code section.sass {
   top: 70px;
   bottom: 448.0px;
   left: 10px;
   right: 483.84px;
 }
-/* line 46, ../../sass/presentation.scss */
-.live-code section.css {
+/* line 45, ../../sass/presentation.scss */
+.live-code section.sass.only, .pretend-code section.sass.only {
+  right: 10px;
+}
+/* line 49, ../../sass/presentation.scss */
+.live-code section.css, .pretend-code section.css {
   top: 70px;
   bottom: 448.0px;
   right: 10px;
   left: 483.84px;
 }
-/* line 52, ../../sass/presentation.scss */
-.live-code section.fullsize {
-  top: 70px;
+/* line 54, ../../sass/presentation.scss */
+.live-code section.css.only, .pretend-code section.css.only {
+  top: 448.0px;
   bottom: 35px;
-  right: 5px;
-  left: 5px;
+  left: 10px;
+}
+/* line 60, ../../sass/presentation.scss */
+.live-code .unnecessary, .pretend-code .unnecessary {
+  display: none;
+}
+/* line 63, ../../sass/presentation.scss */
+.live-code section.fullsize, .pretend-code section.fullsize {
+  top: 70px !important;
+  bottom: 35px !important;
+  right: 5px !important;
+  left: 5px !important;
   z-index: 10;
   background: #EBF7FB;
   border: 2px groove #777;
-  font-size: 24px;
+  font-size: 22px;
   -webkit-box-shadow: 3px 3px #cccccc;
   -moz-box-shadow: 3px 3px #cccccc;
   box-shadow: 3px 3px #cccccc;
 }
-/* line 63, ../../sass/presentation.scss */
-.live-code .source-changer {
+/* line 74, ../../sass/presentation.scss */
+.live-code .source-changer, .pretend-code .source-changer {
   float: right;
   margin: 2px 4px;
 }
-/* line 67, ../../sass/presentation.scss */
-.live-code .alternate-source {
+/* line 78, ../../sass/presentation.scss */
+.live-code .alternate-source, .pretend-code .alternate-source {
   display: none;
 }
-/* line 70, ../../sass/presentation.scss */
-.live-code .source {
+/* line 81, ../../sass/presentation.scss */
+.live-code .source, .pretend-code .source {
   display: block;
+  font-family: "Courier New";
 }
-/* line 73, ../../sass/presentation.scss */
-.live-code .output {
+/* line 85, ../../sass/presentation.scss */
+.live-code .output, .pretend-code .output {
   padding: 5px;
+  background-color: white;
 }
-/* line 76, ../../sass/presentation.scss */
-.live-code .resizer {
+/* line 89, ../../sass/presentation.scss */
+.live-code .resizer, .pretend-code .resizer {
   float: right;
   margin: 0 0 0 4px;
   font: auto;
 }
-/* line 81, ../../sass/presentation.scss */
-.live-code h3 {
+/* line 94, ../../sass/presentation.scss */
+.live-code h3, .pretend-code h3 {
   height: auto;
   font-size: 28px;
   text-shadow: 2px 2px 2px #cccccc;
 }
-/* line 86, ../../sass/presentation.scss */
-.live-code textarea, .live-code .output {
+/* line 99, ../../sass/presentation.scss */
+.live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
   width: 98%;
   height: 85%;
   border: 1px solid #ccc;
 }
-/* line 91, ../../sass/presentation.scss */
-.live-code textarea {
+/* line 104, ../../sass/presentation.scss */
+.live-code textarea, .pretend-code textarea {
   height: 87%;
 }
-/* line 94, ../../sass/presentation.scss */
-.live-code button.compile, .live-code select.format {
+/* line 107, ../../sass/presentation.scss */
+.live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format {
   float: right;
 }
-/* line 98, ../../sass/presentation.scss */
-.live-code .css .output {
+/* line 111, ../../sass/presentation.scss */
+.live-code .css .output, .pretend-code .css .output {
   white-space: pre;
   font-family: "Courier New";
   overflow: auto;
 }
-/* line 103, ../../sass/presentation.scss */
-.live-code .css .error {
+/* line 116, ../../sass/presentation.scss */
+.live-code .css .error, .pretend-code .css .error {
   color: #c00;
   overflow: auto;
   white-space: normal;
 }
 
 @media print {
-  /* line 112, ../../sass/presentation.scss */
+  /* line 128, ../../sass/presentation.scss */
   header {
     display: none !important;
   }
 
-  /* line 116, ../../sass/presentation.scss */
+  /* line 132, ../../sass/presentation.scss */
   .introduction .deck-container {
     font-size: 1.25em;
   }

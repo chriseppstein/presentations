@@ -42,22 +42,33 @@ $width: 864px;
     bottom: $section-ratio * $height;
     left: 10px;
     right: $section-ratio * $width;
+    &.only {
+      right: 10px;
+    }
   }
   section.css {
     top: 70px;
     bottom: $section-ratio * $height;
     right: 10px;
     left: $section-ratio * $width;
+    &.only {
+      top: $section-ratio * $height;
+      bottom: 35px;
+      left: 10px;
+    }
+  }
+  .unnecessary {
+    display: none;
   }
   section.fullsize {
-    top: 70px;
-    bottom: 35px;
-    right: 5px;
-    left: 5px;
+    top: 70px !important;
+    bottom: 35px !important;
+    right: 5px !important;
+    left: 5px !important;
     z-index: 10;
     background: #EBF7FB;
     border: 2px groove #777;
-    font-size: 24px;
+    font-size: 22px;
     @include box-shadow(3px 3px #ccc);
   }
   .source-changer {
@@ -69,9 +80,11 @@ $width: 864px;
   }
   .source {
     display: block;
+    font-family: "Courier New";
   }
   .output {
     padding: 5px;
+    background-color: white;
   }
   .resizer {
     float: right;
@@ -107,6 +120,9 @@ $width: 864px;
     }
   }
 }
+
+// Pretend code gets all the styles without the js behavior.
+.pretend-code { @extend .live-code; }
 
 @media print {
   header {

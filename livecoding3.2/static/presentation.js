@@ -4,15 +4,16 @@ $(function() {
     $(textarea).attr("id","source-"+i);
   });
   $('select.format').html("<option selected>expanded</option><option>compact</option><option>compressed</option><option>nested</option>");
-  $('.live-code section :first-child').before("<button class='resizer'>⇿</button>");
+  $('.live-code section:not(.only) > :first-child').before("<button class='resizer'>⇿</button>");
+  $('.live-code section.only > :first-child').before("<button class='resizer'>⇳</button>");
+  // Create the full-size togglers
+  $('.live-code, .pretend-code').find('.resizer').click(function(e) {
+    $(e.target).parent("section").toggleClass("fullsize");
+  });
+
   $('.live-code').each(function(i, el) {
     var button = $(el).find('button.compile').first();
     var cssEl = $(el).find('.css .output').first();
-
-    // Create the full-size togglers
-    $(el).find('.resizer').click(function(e) {
-      $(e.target).parent("section").toggleClass("fullsize");
-    });
 
     // Create the source changers
     $(el).find(".source").parent("section").each(function(i,section) {
@@ -48,7 +49,7 @@ $(function() {
       var request = $.ajax({
         url: "/compile",
         type: "POST",
-        data: {sass: source, style: $("select.format").val()},
+        data: {sass: source, style: $(el).find("select.format").val()},
         dataType: "text"
       });
       request.done(function(result) {
@@ -63,7 +64,8 @@ $(function() {
     };
     // Update sass when the button is clicked, when the format changes, and at the start.
     button.click(updater);
-    $("select.format").change(updater);
+    $(el).live('.sass .source').keyup(updater);
+    $(el).find("select.format").change(updater);
     updater();
   });
 });

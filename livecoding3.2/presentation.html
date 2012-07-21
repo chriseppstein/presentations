@@ -44,6 +44,16 @@
         </hgroup>
       </section>
       <section class="slide">
+        <h2>Who am I?</h2>
+        <div class="vcenter">
+          <h3 class="slide">Creator &amp; Maintainer of <a href="http://compass-style.org/">Compass</a></h3>
+          <h3 class="slide"><a href="http://sass-lang.com">Sass</a> Core Developer</h3>
+          <h3 class="slide">Architect <a href="http://www.caring.com">Caring.com</a></h3>
+          <h3 class="slide">Husband &amp; Father</h3>
+          <h3 class="slide">Community Organizer &amp; Sass Evangelist</h3>
+        </div>
+      </section>
+      <section class="slide">
         <h2>My Fourth Major Sass Release</h2>
         <section class="slide">
           <h3>Sass 2.2 (July 2009): Sass gets brains.</h3>
@@ -58,7 +68,7 @@
           <p>@function, Keyword Arguments, Basic @media support, Proper lists &amp; @each, Application integration.</p>
         </section>
         <section class="slide">
-          <h3>Sass 3.2 (Soon): CSS3 gets smarter, Sass makes it work</h3>
+          <h3>Sass 3.2 (Soon): CSS3 gets smarter, Sass makes it work like it should.</h3>
           <ul>
             <li>First class @media support</li>
             <li>Context abstractions with @content blocks</li>
@@ -79,6 +89,17 @@
           </ul-->
         </section>
       </section>
+      <section class="slide">
+        <h1>Ask Questions!</h1>
+        <h2>This is an interactive slide deck.</h2>
+      </section>
+      <!--section class="slide">
+        <h2>Make things bigger</h2>
+        <div class="vcenter">
+          <button style="font-size: 48px">⇿</button>
+          <button style="font-size: 48px">⇳</button>
+        </div>
+      </section-->
       <section class="slide">
         <h2>Placeholder Selectors</h2>
         <div class="live-code">
@@ -200,6 +221,352 @@
           <div class="output">
           </div>
         </section>
+      </section>
+      <section class="slide">
+        <h2>Epic @media Support</h2>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass<span id="media-additional-heading"></span></h3>
+<textarea class="source" title="Bubbling">
+#login {
+  float: right;
+  @media screen and (max-device-width: 480px){
+    float: left;
+  }
+}
+#media-additional-heading:before {
+  content: ": This was in 3.1. You can use it now."
+}
+</textarea>
+<textarea class="alternate-source" title="Nested Media Queries">
+@media screen {
+  #login {
+    float: right;
+    @media (max-device-width: 480px){
+      float: left;
+      @media (orientation: landscape) {
+        float: none;
+      }
+    }
+  }
+  #media-additional-heading:before {
+    content: ": @media queries can be nested too! (Sass 3.1)"
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Variables in Media Queries">
+$bp-handheld: 480px;
+$bp-handheld-prop: max-device-width;
+
+#login {
+  float: right;
+  @media screen and (max-device-width: $bp-handheld) {
+    float: left;
+  }
+}
+#media-additional-heading:before {
+  content: ": Magic Numbers Suck. Let's Abstract them."
+}
+</textarea>
+<textarea class="alternate-source" title="Interpolation in Media Queries">
+$bp-handheld-width: 480px;
+$bp-handheld: "screen and (max-device-width: #{$bp-handheld-width})";
+
+#login {
+  float: right;
+
+  // Note: all @-rules support interpolation now.
+  @media #{$bp-handheld} {
+    float: left;
+  }
+}
+
+#media-additional-heading:before {
+  content: ": Typing MQs gets redundant.";
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html unnecessary">
+            <h3>HTML</h3>
+<textarea class="source" title="">
+</textarea>
+        </section>
+        <section class="result unnecessary">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Mixin Content</h2>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</span></h3>
+<textarea class="source" title="IE Hacks">
+@mixin ie6 {
+  * html & {
+    @content;
+  }
+}
+
+#login {
+  float: right;
+  @include ie6 {
+    display: none;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Media Queries">
+@mixin handhelds {
+   @media screen and (max-device-width: 480px) {
+      @content;
+   }
+}
+#login {
+  float: right;
+  @include handhelds {
+    float: left;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="More Media Queries">
+@mixin respond-to($media) {
+   @if $media == handhelds {
+     @media screen and (min-device-width: 480px) {
+        @content;
+     }
+   }
+   @else if $media == tablets {
+     @media screen and (min-device-width: 768px) {
+        @content;
+     }
+   }
+   @else {
+     /* WARNING: No media defined for #{$media} */
+   }
+}
+#login {
+  float: right;
+  @include respond-to(handhelds) {
+    float: left;
+  }
+  @include respond-to(tablets) {
+    float: none;
+    text-align: center;
+  }
+  @include respond-to(nonsense) {
+    color: red;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Disabling Media Queries">
+$responsive: true;
+@mixin respond-to($media) {
+   @if $responsive {
+     @if $media == handhelds {
+       @media screen and (min-device-width: 480px) {
+          @content;
+       }
+     }
+     @else if $media == tablets {
+       @media screen and (min-device-width: 768px) {
+          @content;
+       }
+     }
+   }
+}
+#login {
+  float: right;
+  @include respond-to(handhelds) {
+    float: left;
+  }
+  @include respond-to(tablets) {
+    float: none;
+    text-align: center;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Temporary Variables">
+$responsive: false;
+@mixin respond-to($media) {
+   @if $responsive {
+     @if $media == handhelds {
+       @media screen and (min-device-width: 480px) {
+          @content;
+       }
+     }
+     @else if $media == tablets {
+       @media screen and (min-device-width: 768px) {
+          @content;
+       }
+     }
+   }
+}
+@mixin force-responsiveness {
+  $old-responsive: $responsive;
+  $responsive: true;
+  @content;
+  $responsive: $old-responsive;
+}
+#login {
+  float: right;
+  @include respond-to(handhelds) {
+    float: left;
+  }
+  @include force-responsiveness {
+    @include respond-to(tablets) {
+      float: none;
+      text-align: center;
+    }
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Repeated Content">
+@mixin repeated-within($classes) {
+  @each $class in $classes {
+    .#{$class} { @content; }
+  }
+}
+
+@include repeated-within(icon widget thing) {
+  color: red;
+  a { color: blue; }
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html unnecessary">
+            <h3>HTML</h3>
+<textarea class="source" title="">
+</textarea>
+        </section>
+        <section class="result unnecessary">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Variable Arguments (Under Development)</h2>
+        <div class="pretend-code">
+          <section class="sass">
+<button class='resizer'>⇿</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Multiple Box Shadows">
+// Receive arguments as a list
+@mixin box-shadow($shadows...) {
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+.shadowed-1, .shadowed-2 {
+  width: 50px;
+  height: 50px;
+  background: white;
+  margin: 50px auto;
+}
+.shadowed-1 {
+  @include box-shadow(
+    0 0 20px black,
+    20px 15px 30px yellow,
+    -20px 15px 30px lime,
+    -20px -15px 30px blue,
+    20px -15px 30px red
+  );
+}
+// Pass a list as arguments
+.shadowed-2 {
+  $rainbow-shadows: 0 0 20px black,
+                    20px 15px 30px purple,
+                    -20px 15px 30px teal,
+                    -20px -15px 30px orange,
+                    20px -15px 30px brown;
+  @include box-shadow($rainbow-shadows...);
+  margin-top: 150px;
+}
+</textarea>
+          </section>
+          <section class="css">
+<button class='resizer'>⇿</button>
+            <h3>CSS</h3>
+            <div class="output">shadowed-1, .shadowed-2 {
+  width: 50px;
+  height: 50px;
+  background: white;
+  margin: 50px auto;
+}
+
+.shadowed-1 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+}
+.shadowed-2 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  margin-top: 150px;
+}
+</div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Multiple Classes">
+<div class="shadowed-1"></div>
+<div class="shadowed-2"></div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+            <style>
+.shadowed-1, .shadowed-2 {
+  width: 50px;
+  height: 50px;
+  background: white;
+  margin: 50px auto !important;
+}
+
+.shadowed-1 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+}
+.shadowed-2 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  margin-top: 150px;
+}
+
+            </style>
+<div class="shadowed-1"></div>
+<div class="shadowed-2"></div>
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h1>It takes a community!</h1>
+      </section>
+      <section class="slide">
+        <h1>United Mitochondrial Disease Foundation</h1>
+        <h2>Please Donate!</h2>
+        <div class="vcenter" style="margin-top: 6em;">
+          <a href="http://umdf.org/compass">http://umdf.org/compass</a>
+        </div>
       </section>
     </article>
   </body>
