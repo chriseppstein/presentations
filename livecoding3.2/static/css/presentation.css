@@ -1,65 +1,118 @@
-/* line 2, ../../sass/presentation.scss */
+/* line 4, ../../sass/presentation.scss */
 .deck-container {
   width: auto;
   max-width: 864px;
   margin: 16px auto 24px auto;
-  min-height: 560px;
+  min-height: 800px;
   font-size: 16px;
 }
 
-/* line 9, ../../sass/presentation.scss */
+/* line 11, ../../sass/presentation.scss */
 .no-boxshadow .deck-container {
   border: 1px solid #e4e4e4;
 }
 
-/* line 12, ../../sass/presentation.scss */
+/* line 14, ../../sass/presentation.scss */
 .boxshadow .deck-container {
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* line 18, ../../sass/presentation.scss */
-.live-code {
-  display: table;
-  height: 450px;
-}
 /* line 21, ../../sass/presentation.scss */
-.live-code .styles, .live-code .markup, .live-code .headers {
-  display: table-row;
+.live-code section {
+  position: absolute;
+  padding: 3px;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: top, bottom, left, right, z-index, font-size;
+  -moz-transition-property: top, bottom, left, right, z-index, font-size;
+  -ms-transition-property: top, bottom, left, right, z-index, font-size;
+  -o-transition-property: top, bottom, left, right, z-index, font-size;
+  transition-property: top, bottom, left, right, z-index, font-size;
 }
-/* line 24, ../../sass/presentation.scss */
-.live-code .sass, .live-code .css, .live-code .html, .live-code .display, .live-code .header {
-  display: table-cell;
-  vertical-align: top;
-  width: 430px;
-  height: 200px;
+/* line 28, ../../sass/presentation.scss */
+.live-code section.html {
+  bottom: 10px;
+  top: 448.0px;
+  left: 10px;
+  right: 483.84px;
 }
-/* line 30, ../../sass/presentation.scss */
-.live-code .header {
+/* line 34, ../../sass/presentation.scss */
+.live-code section.result {
+  bottom: 10px;
+  top: 448.0px;
+  right: 10px;
+  left: 483.84px;
+}
+/* line 40, ../../sass/presentation.scss */
+.live-code section.sass {
+  top: 70px;
+  bottom: 448.0px;
+  left: 10px;
+  right: 483.84px;
+}
+/* line 46, ../../sass/presentation.scss */
+.live-code section.css {
+  top: 70px;
+  bottom: 448.0px;
+  right: 10px;
+  left: 483.84px;
+}
+/* line 52, ../../sass/presentation.scss */
+.live-code section.fullsize {
+  top: 70px;
+  bottom: 5px;
+  right: 5px;
+  left: 5px;
+  z-index: 10;
+  background: #EBF7FB;
+  border: 2px groove #777;
+  font-size: 24px;
+  -webkit-box-shadow: 3px 3px #cccccc;
+  -moz-box-shadow: 3px 3px #cccccc;
+  box-shadow: 3px 3px #cccccc;
+}
+/* line 63, ../../sass/presentation.scss */
+.live-code .output {
+  padding: 5px;
+}
+/* line 66, ../../sass/presentation.scss */
+.live-code .resizer {
+  float: right;
+  margin: 0 0 0 4px;
+  font: auto;
+}
+/* line 71, ../../sass/presentation.scss */
+.live-code h3 {
   height: auto;
   font-size: 28px;
   text-shadow: 2px 2px 2px #cccccc;
 }
-/* line 35, ../../sass/presentation.scss */
+/* line 76, ../../sass/presentation.scss */
+.live-code textarea, .live-code .output {
+  width: 98%;
+  height: 85%;
+  border: 1px solid #ccc;
+}
+/* line 81, ../../sass/presentation.scss */
 .live-code textarea {
-  width: 90%;
-  height: 90%;
+  height: 87%;
 }
-/* line 39, ../../sass/presentation.scss */
-.live-code button.compile {
-  font-size: 12px;
+/* line 84, ../../sass/presentation.scss */
+.live-code button.compile, .live-code select.format {
   float: right;
-  margin-right: 9%;
-  margin-top: 5px;
 }
-/* line 45, ../../sass/presentation.scss */
-.live-code .css {
+/* line 88, ../../sass/presentation.scss */
+.live-code .css .output {
   white-space: pre;
   font-family: "Courier New";
   overflow: auto;
 }
-/* line 49, ../../sass/presentation.scss */
+/* line 93, ../../sass/presentation.scss */
 .live-code .css .error {
   color: #c00;
   overflow: auto;
@@ -67,12 +120,12 @@
 }
 
 @media print {
-  /* line 58, ../../sass/presentation.scss */
+  /* line 102, ../../sass/presentation.scss */
   header {
     display: none !important;
   }
 
-  /* line 62, ../../sass/presentation.scss */
+  /* line 106, ../../sass/presentation.scss */
   .introduction .deck-container {
     font-size: 1.25em;
   }

@@ -82,45 +82,42 @@
       <section class="slide">
         <h2>Placeholder Selectors</h2>
         <div class="live-code">
-        <div class="headers">
-          <div class="header">
-            Sass
+          <section class="sass">
             <button class="compile">Update</button>
-          </div>
-          <div class="header">
-            CSS
-          </div>
-        </div>
-        <div class="styles">
-          <div class="sass">
+            <h3>Sass</h3>
             <textarea class="source">
-#placeholders  .button { color: red; }
+@import "compass/css3";
+#placeholders {
+  .button {
+    padding: 3px 5px;
+    color: white;
+    text-decoration: none;
+    @include border-radius(4px);
+    @include background(linear-gradient(red orange));
+  }
+}
 </textarea>
-          </div>
-          <div class="css">
-          </div>
-        </div>
-        <div class="headers">
-          <div class="header">
-            HTML
-          </div>
-          <div class="header">
-            Display
-          </div>
-        </div>
-        <div class="markup">
-          <div class="html">
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
           <textarea class="source">
 <div id="placeholders">
-  <a class="button">Button</a>
-  <a class="button-lg">Button</a>
+  <a class="button button-primary">Button</a>
+  <a class="button button-lg">Button</a>
 </div>
 </textarea>
-        </div>
-        <div class="display">
-        </div>
-      </div>
-      </div>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
       </section>
     </article>
   </body>

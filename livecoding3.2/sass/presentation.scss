@@ -1,9 +1,11 @@
 @import "compass/css3";
+$height: 800px;
+$width: 864px;
 .deck-container {
   width: auto;
   max-width: 864px;
   margin: 16px auto 24px auto;
-  min-height: 560px;
+  min-height: $height;
   font-size: 16px;
 }
 .no-boxshadow .deck-container {
@@ -16,36 +18,78 @@
 }
 
 .live-code {
-  display: table;
-  height: 450px;
-  .styles, .markup, .headers {
-    display: table-row;
+  section {
+    position: absolute;
+    padding: 3px;
+    @include transition-duration(1s);
+    @include transition-property((top, bottom, left, right, z-index, font-size));
   }
-  .sass, .css, .html, .display, .header {
-    display: table-cell;
-    vertical-align: top;
-    width: 430px;
-    height: 200px;
+  $section-ratio: 0.56;
+  section.html {
+    bottom: 10px;
+    top: $section-ratio * $height;
+    left: 10px;
+    right: $section-ratio * $width;
   }
-  .header {
+  section.result {
+    bottom: 10px;
+    top: $section-ratio * $height;
+    right: 10px;
+    left: $section-ratio * $width;
+  }
+  section.sass {
+    top: 70px;
+    bottom: $section-ratio * $height;
+    left: 10px;
+    right: $section-ratio * $width;
+  }
+  section.css {
+    top: 70px;
+    bottom: $section-ratio * $height;
+    right: 10px;
+    left: $section-ratio * $width;
+  }
+  section.fullsize {
+    top: 70px;
+    bottom: 5px;
+    right: 5px;
+    left: 5px;
+    z-index: 10;
+    background: #EBF7FB;
+    border: 2px groove #777;
+    font-size: 24px;
+    @include box-shadow(3px 3px #ccc);
+  }
+  .output {
+    padding: 5px;
+  }
+  .resizer {
+    float: right;
+    margin: 0 0 0 4px;
+    font: auto;
+  }
+  h3 {
     height: auto;
     font-size: 28px;
     @include text-shadow(2px 2px 2px #ccc);
   }
-  textarea {
-    width: 90%;
-    height: 90%;
+  textarea, .output {
+    width: 98%;
+    height: 85%;
+    border: 1px solid #ccc;
   }
-  button.compile {
-    font-size: 12px;
+  textarea {
+    height: 87%;
+  }
+  button.compile, select.format {
     float: right;
-    margin-right: 9%;
-    margin-top: 5px;
   }
   .css {
-    white-space: pre;
-    font-family: "Courier New";
-    overflow: auto;
+    .output {
+      white-space: pre;
+      font-family: "Courier New";
+      overflow: auto;
+    }
     .error {
       color: #c00;
       overflow: auto;
