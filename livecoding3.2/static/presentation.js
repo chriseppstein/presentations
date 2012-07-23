@@ -23,10 +23,10 @@ $(function() {
           ta = $(ta);
           return "<option value='"+ta.attr("id")+"'>"+ta.attr("title")+"</option>";
         }).toArray().join();
-        $(section).find("textarea").last().after("<select class='source-changer'>"+options+"</select>");
+        $(section).find("textarea").last().after("<label class='source-changer'>Change code to: </label>").after("<select class='source-changer'>"+options+"</select>");
       }
     });
-    $(".source-changer").change(function(e) {
+    $("select.source-changer").change(function(e) {
       $(e.target).parent("section").find("textarea").removeClass("source").addClass("alternate-source");
       $("#"+$(e.target).val()).addClass("source");
       updater();

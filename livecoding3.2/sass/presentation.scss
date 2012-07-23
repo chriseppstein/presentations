@@ -1,6 +1,16 @@
 @import "compass/css3";
 $height: 720px;
 $width: 864px;
+
+@include keyframes(pulsing-border) {
+  0% {
+    @include box-shadow(0 0 0 green)
+  }
+  100% {
+    @include box-shadow(0 0 5px green)
+  }
+}
+
 .deck-container {
   width: auto;
   max-width: 864px;
@@ -78,9 +88,17 @@ $width: 864px;
   .alternate-source {
     display: none;
   }
+  .editable-source {
+  }
   .source {
     display: block;
     font-family: "Courier New";
+  }
+  textarea.source {
+    @include animation(pulsing-border 2s linear alternate infinite);
+    &:focus {
+      @include animation(none);
+    }
   }
   .output {
     padding: 5px;
@@ -107,6 +125,10 @@ $width: 864px;
   button.compile, select.format {
     float: right;
   }
+  button.compile {
+    display: none;
+  }
+
   .css {
     .output {
       white-space: pre;
@@ -122,7 +144,12 @@ $width: 864px;
 }
 
 // Pretend code gets all the styles without the js behavior.
-.pretend-code { @extend .live-code; }
+.pretend-code {
+  @extend .live-code;
+  .source {
+    @include animation(none);
+  }
+}
 
 @media print {
   header {
