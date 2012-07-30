@@ -1,0 +1,287 @@
+@-moz-keyframes pulsing-border {
+  /* line 6, ../../sass/presentation.scss */
+  0% {
+    -moz-box-shadow: 0 0 0 green;
+    box-shadow: 0 0 0 green;
+  }
+
+  /* line 9, ../../sass/presentation.scss */
+  100% {
+    -moz-box-shadow: 0 0 5px green;
+    box-shadow: 0 0 5px green;
+  }
+}
+
+@-webkit-keyframes pulsing-border {
+  /* line 6, ../../sass/presentation.scss */
+  0% {
+    -webkit-box-shadow: 0 0 0 green;
+    box-shadow: 0 0 0 green;
+  }
+
+  /* line 9, ../../sass/presentation.scss */
+  100% {
+    -webkit-box-shadow: 0 0 5px green;
+    box-shadow: 0 0 5px green;
+  }
+}
+
+@-o-keyframes pulsing-border {
+  /* line 6, ../../sass/presentation.scss */
+  0% {
+    box-shadow: 0 0 0 green;
+  }
+
+  /* line 9, ../../sass/presentation.scss */
+  100% {
+    box-shadow: 0 0 5px green;
+  }
+}
+
+@-ms-keyframes pulsing-border {
+  /* line 6, ../../sass/presentation.scss */
+  0% {
+    box-shadow: 0 0 0 green;
+  }
+
+  /* line 9, ../../sass/presentation.scss */
+  100% {
+    box-shadow: 0 0 5px green;
+  }
+}
+
+@keyframes pulsing-border {
+  /* line 6, ../../sass/presentation.scss */
+  0% {
+    box-shadow: 0 0 0 green;
+  }
+
+  /* line 9, ../../sass/presentation.scss */
+  100% {
+    box-shadow: 0 0 5px green;
+  }
+}
+
+/* line 14, ../../sass/presentation.scss */
+.deck-container {
+  width: auto;
+  max-width: 864px;
+  margin: 16px auto 24px auto;
+  min-height: 720px;
+  font-size: 16px;
+}
+
+/* line 21, ../../sass/presentation.scss */
+.no-boxshadow .deck-container {
+  border: 1px solid #e4e4e4;
+}
+
+/* line 24, ../../sass/presentation.scss */
+.boxshadow .deck-container {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* line 31, ../../sass/presentation.scss */
+.live-code section, .pretend-code section {
+  position: absolute;
+  padding: 3px;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: top, bottom, left, right, z-index, font-size;
+  -moz-transition-property: top, bottom, left, right, z-index, font-size;
+  -ms-transition-property: top, bottom, left, right, z-index, font-size;
+  -o-transition-property: top, bottom, left, right, z-index, font-size;
+  transition-property: top, bottom, left, right, z-index, font-size;
+}
+/* line 39, ../../sass/presentation.scss */
+.live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
+  background: #2F2F2F;
+}
+@media print {
+  /* line 39, ../../sass/presentation.scss */
+  .live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
+    position: static !important;
+  }
+}
+/* line 46, ../../sass/presentation.scss */
+.live-code section.html, .pretend-code section.html {
+  bottom: 35px;
+  top: 403.2px;
+  left: 10px;
+  right: 483.84px;
+}
+/* line 52, ../../sass/presentation.scss */
+.live-code section.result, .pretend-code section.result {
+  bottom: 35px;
+  top: 403.2px;
+  right: 10px;
+  left: 483.84px;
+}
+/* line 58, ../../sass/presentation.scss */
+.live-code section.sass, .pretend-code section.sass {
+  top: 70px;
+  bottom: 403.2px;
+  left: 10px;
+  right: 483.84px;
+}
+/* line 63, ../../sass/presentation.scss */
+.live-code section.sass.only, .pretend-code section.sass.only {
+  right: 10px;
+}
+/* line 67, ../../sass/presentation.scss */
+.live-code section.css, .pretend-code section.css {
+  top: 70px;
+  bottom: 403.2px;
+  right: 10px;
+  left: 483.84px;
+}
+/* line 72, ../../sass/presentation.scss */
+.live-code section.css.only, .pretend-code section.css.only {
+  top: 403.2px;
+  bottom: 35px;
+  left: 10px;
+}
+/* line 78, ../../sass/presentation.scss */
+.live-code .unnecessary, .pretend-code .unnecessary {
+  display: none;
+}
+/* line 81, ../../sass/presentation.scss */
+.live-code section.fullsize, .pretend-code section.fullsize {
+  top: 70px !important;
+  bottom: 0px !important;
+  right: 0px !important;
+  left: 10px !important;
+  z-index: 10;
+  font-size: 22px;
+  -webkit-box-shadow: 3px 3px #cccccc;
+  -moz-box-shadow: 3px 3px #cccccc;
+  box-shadow: 3px 3px #cccccc;
+}
+/* line 90, ../../sass/presentation.scss */
+.live-code .source-changer, .pretend-code .source-changer {
+  float: right;
+  margin: 2px 4px;
+}
+@media print {
+  /* line 90, ../../sass/presentation.scss */
+  .live-code .source-changer, .pretend-code .source-changer {
+    display: none;
+  }
+}
+/* line 97, ../../sass/presentation.scss */
+.live-code .alternate-source, .pretend-code .alternate-source {
+  display: none;
+}
+/* line 102, ../../sass/presentation.scss */
+.live-code .source, .pretend-code .source {
+  display: block;
+  font-family: "Courier New";
+}
+/* line 106, ../../sass/presentation.scss */
+.live-code textarea.source, .pretend-code textarea.source {
+  -webkit-animation: pulsing-border 2s linear alternate infinite;
+  -moz-animation: pulsing-border 2s linear alternate infinite;
+  -ms-animation: pulsing-border 2s linear alternate infinite;
+  -o-animation: pulsing-border 2s linear alternate infinite;
+  animation: pulsing-border 2s linear alternate infinite;
+}
+/* line 108, ../../sass/presentation.scss */
+.live-code textarea.source:focus, .pretend-code textarea.source:focus {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  -o-animation: none;
+  animation: none;
+}
+/* line 112, ../../sass/presentation.scss */
+.live-code .output, .pretend-code .output {
+  padding: 5px;
+  background-color: white;
+}
+/* line 116, ../../sass/presentation.scss */
+.live-code .resizer, .pretend-code .resizer {
+  float: right;
+  margin: 0 0 0 4px;
+  font: auto;
+}
+@media print {
+  /* line 116, ../../sass/presentation.scss */
+  .live-code .resizer, .pretend-code .resizer {
+    display: none;
+  }
+}
+/* line 124, ../../sass/presentation.scss */
+.live-code h3, .pretend-code h3 {
+  height: auto;
+  font-size: 28px;
+  text-shadow: 2px 2px 2px #cccccc;
+}
+/* line 129, ../../sass/presentation.scss */
+.live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
+  width: 98%;
+  height: 85%;
+  border: 1px solid #ccc;
+}
+@media print {
+  /* line 129, ../../sass/presentation.scss */
+  .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
+    width: auto;
+    height: auto;
+  }
+}
+/* line 138, ../../sass/presentation.scss */
+.live-code textarea, .pretend-code textarea {
+  height: 87%;
+}
+/* line 141, ../../sass/presentation.scss */
+.live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format {
+  float: right;
+}
+@media print {
+  /* line 141, ../../sass/presentation.scss */
+  .live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format {
+    display: none;
+  }
+}
+/* line 147, ../../sass/presentation.scss */
+.live-code button.compile, .pretend-code button.compile {
+  display: none;
+}
+/* line 152, ../../sass/presentation.scss */
+.live-code .css .output, .pretend-code .css .output {
+  white-space: pre;
+  font-family: "Courier New";
+  overflow: auto;
+}
+/* line 157, ../../sass/presentation.scss */
+.live-code .css .error, .pretend-code .css .error {
+  color: #c00;
+  overflow: auto;
+  white-space: normal;
+}
+
+/* line 168, ../../sass/presentation.scss */
+.pretend-code .source {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  -o-animation: none;
+  animation: none;
+}
+
+@media print {
+  /* line 174, ../../sass/presentation.scss */
+  header {
+    display: none !important;
+  }
+
+  /* line 178, ../../sass/presentation.scss */
+  .introduction .deck-container {
+    font-size: 1.25em;
+  }
+}

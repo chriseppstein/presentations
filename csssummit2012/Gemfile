@@ -1,0 +1,8 @@
+source :rubygems
+gem 'sass', "3.2.0.alpha.274"
+gem 'compass', "0.13.alpha.0"
+gem 'sinatra'
+gem 'heroku'
+gem 'guard'
+gem 'guard-compass'
+gem 'guard-livereload'

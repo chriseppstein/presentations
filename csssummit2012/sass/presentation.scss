@@ -1,0 +1,182 @@
+@import "compass/css3";
+$height: 720px;
+$width: 864px;
+
+@include keyframes(pulsing-border) {
+  0% {
+    @include box-shadow(0 0 0 green)
+  }
+  100% {
+    @include box-shadow(0 0 5px green)
+  }
+}
+
+.deck-container {
+  width: auto;
+  max-width: 864px;
+  margin: 16px auto 24px auto;
+  min-height: $height;
+  font-size: 16px;
+}
+.no-boxshadow .deck-container {
+  border: 1px solid #e4e4e4;
+}
+.boxshadow .deck-container {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.live-code {
+  section {
+    position: absolute;
+    padding: 3px;
+    @include transition-duration(1s);
+    @include transition-property((top, bottom, left, right, z-index, font-size));
+  }
+  $section-ratio: 0.56;
+  section {
+    &.html, &.result, &.sass, &.css {
+      background: #2F2F2F;
+      @media print {
+        position: static !important;
+      }
+    }
+  }
+  section.html {
+    bottom: 35px;
+    top: $section-ratio * $height;
+    left: 10px;
+    right: $section-ratio * $width;
+  }
+  section.result {
+    bottom: 35px;
+    top: $section-ratio * $height;
+    right: 10px;
+    left: $section-ratio * $width;
+  }
+  section.sass {
+    top: 70px;
+    bottom: $section-ratio * $height;
+    left: 10px;
+    right: $section-ratio * $width;
+    &.only {
+      right: 10px;
+    }
+  }
+  section.css {
+    top: 70px;
+    bottom: $section-ratio * $height;
+    right: 10px;
+    left: $section-ratio * $width;
+    &.only {
+      top: $section-ratio * $height;
+      bottom: 35px;
+      left: 10px;
+    }
+  }
+  .unnecessary {
+    display: none;
+  }
+  section.fullsize {
+    top: 70px !important;
+    bottom: 0px !important;
+    right: 0px !important;
+    left: 10px !important;
+    z-index: 10;
+    font-size: 22px;
+    @include box-shadow(3px 3px #ccc);
+  }
+  .source-changer {
+    float: right;
+    margin: 2px 4px;
+    @media print {
+      display: none;
+    }
+  }
+  .alternate-source {
+    display: none;
+  }
+  .editable-source {
+  }
+  .source {
+    display: block;
+    font-family: "Courier New";
+  }
+  textarea.source {
+    @include animation(pulsing-border 2s linear alternate infinite);
+    &:focus {
+      @include animation(none);
+    }
+  }
+  .output {
+    padding: 5px;
+    background-color: white;
+  }
+  .resizer {
+    float: right;
+    margin: 0 0 0 4px;
+    font: auto;
+    @media print {
+      display: none;
+    }
+  }
+  h3 {
+    height: auto;
+    font-size: 28px;
+    @include text-shadow(2px 2px 2px #ccc);
+  }
+  textarea, .output {
+    width: 98%;
+    height: 85%;
+    border: 1px solid #ccc;
+    @media print {
+      width: auto;
+      height: auto;
+    }
+  }
+  textarea {
+    height: 87%;
+  }
+  button.compile, select.format {
+    float: right;
+    @media print {
+      display: none;
+    }
+  }
+  button.compile {
+    display: none;
+  }
+
+  .css {
+    .output {
+      white-space: pre;
+      font-family: "Courier New";
+      overflow: auto;
+    }
+    .error {
+      color: #c00;
+      overflow: auto;
+      white-space: normal;
+    }
+  }
+}
+
+// Pretend code gets all the styles without the js behavior.
+.pretend-code {
+  @extend .live-code;
+  .source {
+    @include animation(none);
+  }
+}
+
+@media print {
+  header {
+    display: none !important;
+  }
+
+  .introduction .deck-container {
+    font-size: 1.25em;
+  }
+}
+
