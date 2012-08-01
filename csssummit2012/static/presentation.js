@@ -22,6 +22,8 @@ $(function() {
 
   $('.live-code').each(function(i, el) {
     var button = $(el).find('button.compile').first();
+    var format = $(el).find('.css').first().attr("data-output-format");
+    if (format) { $(el).find("select.format").val(format); }
     var cssEl = $(el).find('.css .output').first();
 
     // Create the source changers
@@ -63,6 +65,7 @@ $(function() {
       });
       request.done(function(result) {
         cssEl.text(result);
+        cssEl.parent("section").find(".filesize").html(result.length + " bytes");
         displayEl.html("<style>"+result+"</style>"+$(htmlEl()).val());
       });
       // It happens, ok?

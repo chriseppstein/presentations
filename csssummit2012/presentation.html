@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>What's New in Sass 3.2 & Compass 0.13</title>
+    <title>"#{$N} Things You Didn't Know Sass &amp; Compass Could Do"</title>
     <meta name="description" content="What's New in Sass 3.2 & Compass 0.13">
     <meta name="author" content="Chris Eppstein">
     <meta name="viewport" content="width=1024, user-scalable=no">
@@ -73,6 +73,7 @@
             <li>Braces/Indentation
             <li>Imports
           </ul>
+          <p>In Sass script, interpolation returns a STRING.</p>
         </section>
         <div class="live-code">
           <section class="sass only">
@@ -125,7 +126,6 @@ $theme: blue;
 $properties: "{ color: red; };
 .box #{$properties}
 </textarea>
-            <li>Braces/Indentation
           </section>
           <section class="css only">
             <select class="format"></select>
@@ -136,11 +136,47 @@ $properties: "{ color: red; };
       </section>
       <section class="slide">
         <h2>Placeholder Selectors</h2>
+        <section class="notes">
+          <p>Placeholder selectors are like an "invisible" class.
+             They exist so that they can be extended -- They "hold the place"
+             of the selectors that will extend them.
+          </p>
+        </section>
         <div class="live-code">
           <section class="sass">
             <button class="compile">Update</button>
             <h3>Sass</h3>
-<textarea class="source" title="Using Markup">
+<textarea class="source" title="Simple Example">
+.notice-text { font-size: 32px;
+  h1         { font-size: 48px;         }}
+.error-text  { @extend .notice-text;
+               color: red;               }
+.notice-box  { border: 3px groove black; }
+.error-box   { @extend .notice-box;
+               border-color: red;        }
+
+form.is-error { @extend .error-text      }
+#flash.notice { @extend .notice-text;
+                @extend .notice-box;     }
+#flash.error  { @extend .error-text;
+                @extend .error-box;      }
+</textarea>
+<textarea class="alternate-source" title="Simple Example w/ Placeholders">
+%notice-text { font-size: 32px;
+  h1         { font-size: 48px;         }}
+%error-text  { @extend %notice-text;
+               color: red;               }
+%notice-box  { border: 3px groove black; }
+%error-box   { @extend %notice-box;
+               border-color: red;        }
+
+form.is-error { @extend %error-text      }
+#flash.notice { @extend %notice-text;
+                @extend %notice-box;     }
+#flash.error  { @extend %error-text;
+                @extend %error-box;      }
+</textarea>
+<textarea class="alternate-source" title="Buttons Using Markup">
 @import "compass/css3";
 .button {
   padding: 3px 5px;
@@ -166,7 +202,7 @@ $properties: "{ color: red; };
   font-size: 12px !important;
 }
 </textarea>
-<textarea class="alternate-source" title="Using Classes">
+<textarea class="alternate-source" title="Buttons Using Classes">
 @import "compass/css3";
 .button {
   padding: 3px 5px;
@@ -196,7 +232,7 @@ $properties: "{ color: red; };
   font-size: 12px !important;
 }
 </textarea>
-<textarea class="alternate-source" title="With Placeholders">
+<textarea class="alternate-source" title="Buttons With Placeholders">
 @import "compass/css3";
 %button {
   padding: 3px 5px;
@@ -227,15 +263,19 @@ $properties: "{ color: red; };
 }
 </textarea>
           </section>
-          <section class="css">
+          <section class="css" data-output-format="compact">
             <select class="format"></select>
             <h3>CSS</h3>
             <div class="output">
             </div>
+            <div class="filesize">
+            </div>
           </section>
           <section class="html">
             <h3>HTML</h3>
-          <textarea class="source" title="Multiple Classes">
+          <textarea class="source" title="Blank">
+          </textarea>
+          <textarea class="alternate-source" title="Multiple Classes">
 <div id="placeholders">
   <button class="button button-primary">Primary Button</button>
   <button class="button button-gray button-lg">Large Button</button>
@@ -255,6 +295,92 @@ $properties: "{ color: red; };
           <div class="output">
           </div>
         </section>
+      </section>
+      <section class="slide">
+        <h2>Write your own Functions</h2>
+        <section class="notes">
+          <p>@function allows you to re-use common calculations.</p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Basic Function">
+$grid-columns: 24;
+$grid-width: 960px;
+$grid-gutter: 10px;
+@function column-width($cols) {
+  @return ($grid-width
+           - $grid-gutter * ($grid-columns - 1))
+          / $grid-columns * $cols
+          + $grid-gutter * ($cols - 1);
+}
+
+.col-12 { width: column-width(12); }
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
+      <section class="slide">
+        <h2>Numeric Units</h2>
+        <section class="notes">
+          <ul>
+            <li>Numbers in CSS have a physical unit.
+            <li>
+             If you have a room that is 10 feet long
+             and 15 feet wide. What is the area of the
+             room? 150 WHAT?
+            <li>Numerical units work like algabraic variables.
+            <li>3x * 4y / 6x => 2y (the x's cancel)
+            <li>2x + 4y (can't simplify)
+            <li>2x + 8x => 10x
+            <li>Sass numbers can have complex units, but they can't be output to CSS.
+            <li>Sass will convert between units if it knows a ratio.
+            <li>Sass doesn't care if your unit isn't defined in CSS (future-proof)
+            <li>Percents are not mathmatical percents. They are a unit.
+          </ul>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Complex Units">
+$area: 2in * 3in;
+.output { content: unit($area); }
+</textarea>
+<textarea class="alternate-source" title="Canceling Units">
+$em-ratio: 16px / 1em;
+.in-px { width: $em-ratio * 2em; }
+.in-em { width: 32px / $em-ratio; }
+</textarea>
+<textarea class="alternate-source" title="Conversions">
+.inches      { width: 1in + 2.54cm; }
+.centimeters { width: 3cm - 1in; }
+.result  {
+  @if 1in > 2cm {
+    content: "bigger";
+  }
+  @else {
+    content: "smaller";
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Fake Units">
+$col-ratio: 40px / 1cols;
+#sidebar { width: 3cols * $col-ratio; }
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
       </section>
       <section class="slide">
         <h2>@extend Warnings (will become errors after 3.2)</h2>
@@ -607,36 +733,6 @@ $responsive: false;
 <div class="shadowed-2"></div>
           </div>
         </section>
-      </section>
-      <section class="slide">
-        <h1>Compass 0.13</h1>
-      </section>
-      <section class="slide">
-        <h1>Goodbye Blueprint</h1>
-      </section>
-      <section class="slide">
-        <h2>Goodbye Blueprint</h2>
-        <h1>Thank you for inspiring a movement!</h1>
-      </section>
-      <section class="slide">
-        <h2>Goodbye Blueprint</h2>
-        <h1>But we have to move on.</h1>
-      </section>
-      <section class="slide">
-        <h2>Goodbye Blueprint</h2>
-        <h1>You're just too rigid and confining.</h1>
-      </section>
-      <section class="slide">
-        <h2>Goodbye Blueprint</h2>
-        <h1>We need to respond to our multi-device world.</h1>
-      </section>
-      <section class="slide">
-        <h2>Goodbye Blueprint</h2>
-        <h1>It's a plugin now.<br><a href="http://compass-style.org/blog/2012/05/20/removing-blueprint/">Blog Post</a></h1>
-      </section>
-      <section class="slide">
-        <h2>Goodbye Blueprint</h2>
-        <h1>What do we recommend?</h1>
       </section>
       <section class="slide">
         <h2>Keyframe Animation</h2>
