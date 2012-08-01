@@ -11,6 +11,15 @@ $(function() {
     $(e.target).parent("section").toggleClass("fullsize");
   });
 
+  $('.notes').each(function(i, el) {
+    var showctrl = $('<a data-note-control>&laquo; Notes</a>');
+    showctrl.click(function() { $(el).addClass("visible"); });
+    $(el).parent(".slide").append(showctrl);
+    var hidectrl = $('<a data-note-control>Hide &raquo;</a>');
+    hidectrl.click(function() { $(el).removeClass("visible"); });
+    $(el).append(hidectrl);
+  });
+
   $('.live-code').each(function(i, el) {
     var button = $(el).find('button.compile').first();
     var cssEl = $(el).find('.css .output').first();

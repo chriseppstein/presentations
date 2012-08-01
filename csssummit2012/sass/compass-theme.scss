@@ -3,7 +3,7 @@
 html {
   background: 
     image-url("compass-logo.png") 0% 100% no-repeat,
-    url(http://sass-lang.com/images/sass.gif) 100% 100% no-repeat;
+    image-url("sass.gif") 100% 100% no-repeat;
   @include background-size(image-width("compass-logo.png"), image-width("compass-logo.png"));
 }
 
@@ -37,6 +37,9 @@ html {
 		h1, h2, h3, h4, h5, h6 {
 			font-family: 'Museo Sans', "museosans-web", 'serif';
 		}
+    .code {
+      font-family: "Monaco";
+    }
 
 		h1, h2 {
 			color:#FB292D;

@@ -27,6 +27,40 @@ $width: 864px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
+.notes {
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0;
+  left: 100%;
+  z-index: 20;
+  padding: 1em !important;
+  *:not(a[data-note-control]) { min-width: 295px; }
+  &.visible {
+    overflow: auto;
+    left: 66%;
+    @include box-shadow(-2px 0px 1px rgba(#777, 0.30));
+  }
+  @include transition-property((top, bottom, left, right, z-index, font-size));
+  @include transition-duration(1s);
+  @include box-sizing(border-box);
+  border: 2px solid white;
+  background: image-url("light_noise_diagonal.png");
+  p {
+    color: black !important;
+  }
+}
+
+a[data-note-control] {
+  cursor: pointer;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 60px;
+  text-align: right;
+}
+
 .live-code {
   section {
     position: absolute;

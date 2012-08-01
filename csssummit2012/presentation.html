@@ -39,7 +39,7 @@
     <article class="deck-container">
       <section class="slide">
         <hgroup>
-          <h1>What's New in<br>Sass &amp; Compass</h1>
+          <h1 class="code">"#{$N} Things You Didn't Know Sass &amp; Compass Could Do"</h1>
           <h2>Chris Eppstein</h2>
         </hgroup>
       </section>
@@ -50,47 +50,90 @@
           <h3 class="slide"><a href="http://sass-lang.com">Sass</a> Core Developer</h3>
           <h3 class="slide">Architect <a href="http://www.caring.com">Caring.com</a></h3>
           <h3 class="slide">Husband &amp; Father</h3>
-          <h3 class="slide">Sass Community Organizer &amp; Evangelist</h3>
         </div>
       </section>
       <section class="slide">
-        <h2>My Fourth Major Sass Release</h2>
-        <section class="slide">
-          <h3>Sass 2.2 (July 2009): Sass gets brains.</h3>
-          <p>Mixins with Arguments, Loops &amp; Conditionals, Interpolation, Scoped Variables, Booleans, REPL, &amp; more.</p>
-        </section>
-        <section class="slide">
-          <h3>Sass 3.0 (May 2010): Sass comes back to its CSS roots</h3>
-          <p>SCSS, @extend, color functions, <code>$</code> variables and <code>:</code> for assignment, CSS3 superset.</p>
-        </section>
-        <section class="slide">
-          <h3>Sass 3.1 (April 2011): Smarter and more polished</h3>
-          <p>@function, Keyword Arguments, Basic @media support, Proper lists &amp; @each, Application integration.</p>
-        </section>
-        <section class="slide">
-          <h3>Sass 3.2 (Soon): CSS3 gets smarter, Sass makes it work like it should.</h3>
-          <ul>
-            <li>First class @media support</li>
-            <li>Context abstractions with @content blocks</li>
-            <li>Inheritance (@extend) improvements</li>
-            <li>Variable length argument lists</li>
-          </ul>
-        </section>
-        <section class="slide">
-          <h3>Sass 4.0 &amp; Beyond (2013): A peek at the future</h3>
-        </section>
-      </section>
-      <section class="slide">
-        <h1>Play with the code!</h1>
+        <h1>Ask Questions!</h1>
         <h2>This is an interactive slide deck.</h2>
       </section>
-      <!--section class="slide">
-        <h2>Make things bigger</h2>
-        <div class="vcenter">
-          <button style="font-size: 48px">⇿</button>
-          <button style="font-size: 48px">⇳</button>
-        </div>
-      </section-->
+      <section class="slide">
+        <h2>Interpolation</h2>
+        <section class="notes">
+          <p>Interpolation allows scripting in many non-value contexts.</p>
+          <ul>
+            <li>Selectors
+            <li>CSS directives
+            <li>@extend arguments
+            <li>Property Names
+          </ul>
+          <p>Interpolation can't be used to change the parse structure of a sass file.</p>
+          <ul>
+            <li>Variables
+            <li>Mixins
+            <li>Braces/Indentation
+            <li>Imports
+          </ul>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="In Selectors & Strings">
+$button-type: glossy;
+.button-#{$button-type} {
+  background-image: image-url("buttons/#{$button-type}.png");
+}
+</textarea>
+<textarea class="alternate-source" title="CSS Directives">
+$desktops: "screen and (min-device-width: 800px)";
+@media #{$desktops} {
+  .column1 {width: 500px;}
+  .column2 {width: 300px;}
+}
+</textarea>
+<textarea class="alternate-source" title="@extend Arguments">
+$link-type: button;
+.button { border: 3px outset #777; }
+.link   { text-decoration: underline }
+a       { @extend .#{$link-type};}
+</textarea>
+<textarea class="alternate-source" title="Property Names">
+$spacing-property: margin;
+.box {
+  #{$spacing-property}: 4px;
+  #{$spacing-property}-bottom: 8px;
+}
+</textarea>
+<textarea class="alternate-source" title="Nope: Variables">
+$nav-color: red;
+$box-type: nav;
+.box {
+  color: $#{$box-type}-color;
+}
+</textarea>
+<textarea class="alternate-source" title="Nope: Mixins">
+$box-type: nav;
+.box {
+  @include #{$box-type}(200px);
+}
+</textarea>
+<textarea class="alternate-source" title="Nope: Imports">
+$theme: blue;
+@import "#{$theme}-theme";
+</textarea>
+<textarea class="alternate-source" title="Nope: Braces">
+$properties: "{ color: red; };
+.box #{$properties}
+</textarea>
+            <li>Braces/Indentation
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
       <section class="slide">
         <h2>Placeholder Selectors</h2>
         <div class="live-code">
