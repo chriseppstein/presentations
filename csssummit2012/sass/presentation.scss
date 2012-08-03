@@ -1,4 +1,5 @@
 @import "compass/css3";
+@import "compass/css3/user-interface";
 $height: 720px;
 $width: 864px;
 
@@ -28,7 +29,6 @@ $width: 864px;
 }
 
 .notes {
-  overflow: hidden;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -36,10 +36,10 @@ $width: 864px;
   left: 100%;
   z-index: 20;
   padding: 1em !important;
+  padding-top: image-height("tabby.png") + 10px !important;
   *:not(a[data-note-control]) { min-width: 295px; }
   &.visible {
-    overflow: auto;
-    left: 66%;
+    left: 75%;
     @include box-shadow(-2px 0px 1px rgba(#777, 0.30));
   }
   @include transition-property((top, bottom, left, right, z-index, font-size));
@@ -55,10 +55,34 @@ $width: 864px;
 a[data-note-control] {
   cursor: pointer;
   position: absolute;
-  bottom: 3px;
-  right: 3px;
-  width: 60px;
-  text-align: right;
+  top: 3px;
+  left: -70px;
+  text-align: left;
+  width: image-width("tabby-open.png");
+  line-height: image-height("tabby.png");
+  background: image-url("tabby-open.png");
+  text-decoration: none !important;
+  color: white !important;
+  font-size: 18px;
+  padding-left: 10px;
+  @include box-sizing(border-box);
+  @include transition-duration(1s);
+  @include transition-property((top, bottom, left, right, z-index));
+  [data-hide] {
+    display: none;
+  }
+  [data-show] {
+    display: inline;
+  }
+  .visible &{
+    // left: -30px;
+    [data-hide] {
+      display: inline;
+    }
+    [data-show] {
+      display: none;
+    }
+  }
 }
 
 .live-code {
@@ -123,7 +147,7 @@ a[data-note-control] {
   }
   .source-changer {
     float: right;
-    margin: 2px 4px;
+    margin: 3px -2px 3px 4px;
     @media print {
       display: none;
     }
@@ -154,7 +178,15 @@ a[data-note-control] {
   .resizer {
     float: right;
     margin: 0 0 0 4px;
-    font: auto;
+    display: block;
+    width: image-width("button.png");
+    height: image-height("button.png");
+    background: image-url("button.png");
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    @include box-sizing(border-box);
     @media print {
       display: none;
     }
@@ -165,7 +197,7 @@ a[data-note-control] {
     @include text-shadow(2px 2px 2px #ccc);
   }
   textarea, .output {
-    width: 98%;
+    width: 99.5%;
     height: 85%;
     border: 1px solid #ccc;
     @media print {
@@ -177,6 +209,7 @@ a[data-note-control] {
     height: 87%;
   }
   button.compile, select.format {
+    margin-top: 3px;
     float: right;
     @media print {
       display: none;

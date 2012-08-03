@@ -4,20 +4,17 @@ $(function() {
     $(textarea).attr("id","source-"+i);
   });
   $('select.format').html("<option selected>expanded</option><option>compact</option><option>compressed</option><option>nested</option>");
-  $('.live-code section:not(.only) > :first-child').before("<button class='resizer'>⇿</button>");
-  $('.live-code section.only > :first-child').before("<button class='resizer'>⇳</button>");
+  $('.live-code section:not(.only) > :first-child').before("<div class='resizer'>⇿</div>");
+  $('.live-code section.only > :first-child').before("<div class='resizer'>⇳</div>");
   // Create the full-size togglers
   $('.live-code, .pretend-code').find('.resizer').click(function(e) {
     $(e.target).parent("section").toggleClass("fullsize");
   });
 
   $('.notes').each(function(i, el) {
-    var showctrl = $('<a data-note-control>&laquo; Notes</a>');
-    showctrl.click(function() { $(el).addClass("visible"); });
-    $(el).parent(".slide").append(showctrl);
-    var hidectrl = $('<a data-note-control>Hide &raquo;</a>');
-    hidectrl.click(function() { $(el).removeClass("visible"); });
-    $(el).append(hidectrl);
+    var notectrl = $('<a data-note-control>&nbsp;&nbsp;<span data-show>Notes</span><span data-hide>Hide</span></a>');
+    notectrl.click(function() { $(el).toggleClass("visible"); });
+    $(el).append(notectrl);
   });
 
   $('.live-code').each(function(i, el) {

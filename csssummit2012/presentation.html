@@ -43,7 +43,7 @@
           <h2>Chris Eppstein</h2>
         </hgroup>
       </section>
-      <section class="slide">
+      <!--section class="slide">
         <h2>Who am I?</h2>
         <div class="vcenter">
           <h3 class="slide">Creator &amp; Maintainer of <a href="http://compass-style.org/">Compass</a></h3>
@@ -51,7 +51,7 @@
           <h3 class="slide">Architect <a href="http://www.caring.com">Caring.com</a></h3>
           <h3 class="slide">Husband &amp; Father</h3>
         </div>
-      </section>
+      </section-->
       <section class="slide">
         <h1>Ask Questions!</h1>
         <h2>This is an interactive slide deck.</h2>
@@ -125,6 +125,35 @@ $theme: blue;
 <textarea class="alternate-source" title="Nope: Braces">
 $properties: "{ color: red; };
 .box #{$properties}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
+      <section class="slide">
+        <h2>Comments</h2>
+        <section class="notes">
+          <p>Did you know you could put code in your comments?</p>
+          <p>Did you know you could make sure comments appear in your compressed output?</p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Comment Scripting">
+$copyright-year: 2012;
+/* This stylesheet is Copyright #{$copyright-year}.
+   All rights reserved.
+*/
+#logo { border: 1px solid black; }
+</textarea>
+<textarea class="alternate-source" title="Loud Comments">
+/*! This comment will always be in your output. */
+#logo { border: 1px solid black; }
 </textarea>
           </section>
           <section class="css only">
@@ -790,35 +819,85 @@ $responsive: false;
         </section>
       </section>
       <section class="slide">
-        <h1>Sass 4.0 &amp; Beyond</h1>
+        <h2>Sprites</h2>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Animation">
+$icon-layout: smart;
+
+@import "icon/*.png";
+
+#container {
+  text-align: center;
+  margin: 4em 0;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+  h1 { margin-bottom: 2em; }
+}
+
+@include all-icon-sprites;
+
+#toolbar {
+  overflow: none;
+  display: inline-block;
+  margin: 0; padding: 0;
+  > command { float: left; width: 48px; height: 48px; }
+}
+</textarea>
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Icons">
+<div id='container'>
+  <menu id='toolbar'>
+    <command class='icon-back'></command>
+    <command class='icon-next'></command>
+    <command class='icon-save'></command>
+    <command class='icon-print'></command>
+    <command class='icon-delete'></command>
+  </menu>
+</div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
       </section>
       <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>Accommodate CSS improvements</h1>
-      </section>
-      <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>Output Optimization</h1>
-      </section>
-      <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>Modules/<wbr>Namespacing</h1>
-      </section>
-      <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>Scripting with <code>&amp;</code></h1>
-      </section>
-      <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>Maps</h1>
-      </section>
-      <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>Improved List &amp; String APIs</h1>
-      </section>
-      <section class="slide">
-        <h2>Sass 4.0 &amp; Beyond</h2>
-        <h1>New Website!</h1>
+        <h2>Questions?</h2>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Animation">
+// Ask a question!
+</textarea>
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+          <h3>HTML</h3>
+          <textarea class="source">
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
       </section>
       <section class="slide">
         <h1>It takes a community!</h1>

@@ -6,6 +6,7 @@ class Presentation < Sinatra::Application
   configure do
     set(:root) {File.dirname(__FILE__)}
     set(:public_folder) { "#{root}/static" }
+    Compass.add_project_configuration("#{File.dirname(__FILE__)}/config.rb")
   end
 
 
@@ -19,7 +20,7 @@ class Presentation < Sinatra::Application
       options = Compass.configuration.to_sass_engine_options
       options.update(:syntax => :scss, :style => (params[:style] || :expanded).to_sym, :line_comments => false)
       engine = Sass::Engine.new(params[:sass], options)
-      Timeout.timeout(1.5) do
+      Timeout.timeout(3) do
         engine.render
       end
     rescue Sass::SyntaxError => e

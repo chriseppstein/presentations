@@ -1,11 +1,11 @@
 @-moz-keyframes pulsing-border {
-  /* line 6, ../../sass/presentation.scss */
+  /* line 7, ../../sass/presentation.scss */
   0% {
     -moz-box-shadow: 0 0 0 green;
     box-shadow: 0 0 0 green;
   }
 
-  /* line 9, ../../sass/presentation.scss */
+  /* line 10, ../../sass/presentation.scss */
   100% {
     -moz-box-shadow: 0 0 5px green;
     box-shadow: 0 0 5px green;
@@ -13,13 +13,13 @@
 }
 
 @-webkit-keyframes pulsing-border {
-  /* line 6, ../../sass/presentation.scss */
+  /* line 7, ../../sass/presentation.scss */
   0% {
     -webkit-box-shadow: 0 0 0 green;
     box-shadow: 0 0 0 green;
   }
 
-  /* line 9, ../../sass/presentation.scss */
+  /* line 10, ../../sass/presentation.scss */
   100% {
     -webkit-box-shadow: 0 0 5px green;
     box-shadow: 0 0 5px green;
@@ -27,42 +27,42 @@
 }
 
 @-o-keyframes pulsing-border {
-  /* line 6, ../../sass/presentation.scss */
+  /* line 7, ../../sass/presentation.scss */
   0% {
     box-shadow: 0 0 0 green;
   }
 
-  /* line 9, ../../sass/presentation.scss */
+  /* line 10, ../../sass/presentation.scss */
   100% {
     box-shadow: 0 0 5px green;
   }
 }
 
 @-ms-keyframes pulsing-border {
-  /* line 6, ../../sass/presentation.scss */
+  /* line 7, ../../sass/presentation.scss */
   0% {
     box-shadow: 0 0 0 green;
   }
 
-  /* line 9, ../../sass/presentation.scss */
+  /* line 10, ../../sass/presentation.scss */
   100% {
     box-shadow: 0 0 5px green;
   }
 }
 
 @keyframes pulsing-border {
-  /* line 6, ../../sass/presentation.scss */
+  /* line 7, ../../sass/presentation.scss */
   0% {
     box-shadow: 0 0 0 green;
   }
 
-  /* line 9, ../../sass/presentation.scss */
+  /* line 10, ../../sass/presentation.scss */
   100% {
     box-shadow: 0 0 5px green;
   }
 }
 
-/* line 14, ../../sass/presentation.scss */
+/* line 15, ../../sass/presentation.scss */
 .deck-container {
   width: auto;
   max-width: 864px;
@@ -71,21 +71,20 @@
   font-size: 16px;
 }
 
-/* line 21, ../../sass/presentation.scss */
+/* line 22, ../../sass/presentation.scss */
 .no-boxshadow .deck-container {
   border: 1px solid #e4e4e4;
 }
 
-/* line 24, ../../sass/presentation.scss */
+/* line 25, ../../sass/presentation.scss */
 .boxshadow .deck-container {
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* line 30, ../../sass/presentation.scss */
+/* line 31, ../../sass/presentation.scss */
 .notes {
-  overflow: hidden;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -93,6 +92,7 @@
   left: 100%;
   z-index: 20;
   padding: 1em !important;
+  padding-top: 53px !important;
   -webkit-transition-property: top, bottom, left, right, z-index, font-size;
   -moz-transition-property: top, bottom, left, right, z-index, font-size;
   -ms-transition-property: top, bottom, left, right, z-index, font-size;
@@ -107,16 +107,15 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 2px solid white;
-  background: url('/images/light_noise_diagonal.png?1342598889');
+  background: url('/images/light_noise_diagonal.png?1343806747');
 }
-/* line 39, ../../sass/presentation.scss */
+/* line 40, ../../sass/presentation.scss */
 .notes *:not(a[data-note-control]) {
   min-width: 295px;
 }
-/* line 40, ../../sass/presentation.scss */
+/* line 41, ../../sass/presentation.scss */
 .notes.visible {
-  overflow: auto;
-  left: 66%;
+  left: 75%;
   -webkit-box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
   -moz-box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
   box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
@@ -130,13 +129,48 @@
 a[data-note-control] {
   cursor: pointer;
   position: absolute;
-  bottom: 3px;
-  right: 3px;
-  width: 60px;
-  text-align: right;
+  top: 3px;
+  left: -70px;
+  text-align: left;
+  width: 342px;
+  line-height: 43px;
+  background: url('/images/tabby-open.png?1343866627');
+  text-decoration: none !important;
+  color: white !important;
+  font-size: 18px;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: top, bottom, left, right, z-index;
+  -moz-transition-property: top, bottom, left, right, z-index;
+  -ms-transition-property: top, bottom, left, right, z-index;
+  -o-transition-property: top, bottom, left, right, z-index;
+  transition-property: top, bottom, left, right, z-index;
+}
+/* line 71, ../../sass/presentation.scss */
+a[data-note-control] [data-hide] {
+  display: none;
+}
+/* line 74, ../../sass/presentation.scss */
+a[data-note-control] [data-show] {
+  display: inline;
+}
+/* line 79, ../../sass/presentation.scss */
+.visible a[data-note-control] [data-hide] {
+  display: inline;
+}
+/* line 82, ../../sass/presentation.scss */
+.visible a[data-note-control] [data-show] {
+  display: none;
 }
 
-/* line 65, ../../sass/presentation.scss */
+/* line 89, ../../sass/presentation.scss */
 .live-code section, .pretend-code section {
   position: absolute;
   padding: 3px;
@@ -151,59 +185,59 @@ a[data-note-control] {
   -o-transition-property: top, bottom, left, right, z-index, font-size;
   transition-property: top, bottom, left, right, z-index, font-size;
 }
-/* line 73, ../../sass/presentation.scss */
+/* line 97, ../../sass/presentation.scss */
 .live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
   background: #2F2F2F;
 }
 @media print {
-  /* line 73, ../../sass/presentation.scss */
+  /* line 97, ../../sass/presentation.scss */
   .live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
     position: static !important;
   }
 }
-/* line 80, ../../sass/presentation.scss */
+/* line 104, ../../sass/presentation.scss */
 .live-code section.html, .pretend-code section.html {
   bottom: 35px;
   top: 403.2px;
   left: 10px;
   right: 483.84px;
 }
-/* line 86, ../../sass/presentation.scss */
+/* line 110, ../../sass/presentation.scss */
 .live-code section.result, .pretend-code section.result {
   bottom: 35px;
   top: 403.2px;
   right: 10px;
   left: 483.84px;
 }
-/* line 92, ../../sass/presentation.scss */
+/* line 116, ../../sass/presentation.scss */
 .live-code section.sass, .pretend-code section.sass {
   top: 70px;
   bottom: 403.2px;
   left: 10px;
   right: 483.84px;
 }
-/* line 97, ../../sass/presentation.scss */
+/* line 121, ../../sass/presentation.scss */
 .live-code section.sass.only, .pretend-code section.sass.only {
   right: 10px;
 }
-/* line 101, ../../sass/presentation.scss */
+/* line 125, ../../sass/presentation.scss */
 .live-code section.css, .pretend-code section.css {
   top: 70px;
   bottom: 403.2px;
   right: 10px;
   left: 483.84px;
 }
-/* line 106, ../../sass/presentation.scss */
+/* line 130, ../../sass/presentation.scss */
 .live-code section.css.only, .pretend-code section.css.only {
   top: 403.2px;
   bottom: 35px;
   left: 10px;
 }
-/* line 112, ../../sass/presentation.scss */
+/* line 136, ../../sass/presentation.scss */
 .live-code .unnecessary, .pretend-code .unnecessary {
   display: none;
 }
-/* line 115, ../../sass/presentation.scss */
+/* line 139, ../../sass/presentation.scss */
 .live-code section.fullsize, .pretend-code section.fullsize {
   top: 70px !important;
   bottom: 0px !important;
@@ -215,27 +249,27 @@ a[data-note-control] {
   -moz-box-shadow: 3px 3px #cccccc;
   box-shadow: 3px 3px #cccccc;
 }
-/* line 124, ../../sass/presentation.scss */
+/* line 148, ../../sass/presentation.scss */
 .live-code .source-changer, .pretend-code .source-changer {
   float: right;
-  margin: 2px 4px;
+  margin: 3px -2px 3px 4px;
 }
 @media print {
-  /* line 124, ../../sass/presentation.scss */
+  /* line 148, ../../sass/presentation.scss */
   .live-code .source-changer, .pretend-code .source-changer {
     display: none;
   }
 }
-/* line 131, ../../sass/presentation.scss */
+/* line 155, ../../sass/presentation.scss */
 .live-code .alternate-source, .pretend-code .alternate-source {
   display: none;
 }
-/* line 136, ../../sass/presentation.scss */
+/* line 160, ../../sass/presentation.scss */
 .live-code .source, .pretend-code .source {
   display: block;
   font-family: "Courier New";
 }
-/* line 140, ../../sass/presentation.scss */
+/* line 164, ../../sass/presentation.scss */
 .live-code textarea.source, .pretend-code textarea.source {
   -webkit-animation: pulsing-border 2s linear alternate infinite;
   -moz-animation: pulsing-border 2s linear alternate infinite;
@@ -243,7 +277,7 @@ a[data-note-control] {
   -o-animation: pulsing-border 2s linear alternate infinite;
   animation: pulsing-border 2s linear alternate infinite;
 }
-/* line 142, ../../sass/presentation.scss */
+/* line 166, ../../sass/presentation.scss */
 .live-code textarea.source:focus, .pretend-code textarea.source:focus {
   -webkit-animation: none;
   -moz-animation: none;
@@ -251,79 +285,90 @@ a[data-note-control] {
   -o-animation: none;
   animation: none;
 }
-/* line 146, ../../sass/presentation.scss */
+/* line 170, ../../sass/presentation.scss */
 .live-code .output, .pretend-code .output {
   padding: 5px;
   background-color: white;
 }
-/* line 150, ../../sass/presentation.scss */
+/* line 174, ../../sass/presentation.scss */
 .live-code .filesize, .pretend-code .filesize {
   text-align: right;
   color: #ccc;
 }
-/* line 154, ../../sass/presentation.scss */
+/* line 178, ../../sass/presentation.scss */
 .live-code .resizer, .pretend-code .resizer {
   float: right;
   margin: 0 0 0 4px;
-  font: auto;
+  display: block;
+  width: 25px;
+  height: 25px;
+  background: url('/images/button.png?1343891489');
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 @media print {
-  /* line 154, ../../sass/presentation.scss */
+  /* line 178, ../../sass/presentation.scss */
   .live-code .resizer, .pretend-code .resizer {
     display: none;
   }
 }
-/* line 162, ../../sass/presentation.scss */
+/* line 194, ../../sass/presentation.scss */
 .live-code h3, .pretend-code h3 {
   height: auto;
   font-size: 28px;
   text-shadow: 2px 2px 2px #cccccc;
 }
-/* line 167, ../../sass/presentation.scss */
+/* line 199, ../../sass/presentation.scss */
 .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
-  width: 98%;
+  width: 99.5%;
   height: 85%;
   border: 1px solid #ccc;
 }
 @media print {
-  /* line 167, ../../sass/presentation.scss */
+  /* line 199, ../../sass/presentation.scss */
   .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
     width: auto;
     height: auto;
   }
 }
-/* line 176, ../../sass/presentation.scss */
+/* line 208, ../../sass/presentation.scss */
 .live-code textarea, .pretend-code textarea {
   height: 87%;
 }
-/* line 179, ../../sass/presentation.scss */
+/* line 211, ../../sass/presentation.scss */
 .live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format {
+  margin-top: 3px;
   float: right;
 }
 @media print {
-  /* line 179, ../../sass/presentation.scss */
+  /* line 211, ../../sass/presentation.scss */
   .live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format {
     display: none;
   }
 }
-/* line 185, ../../sass/presentation.scss */
+/* line 218, ../../sass/presentation.scss */
 .live-code button.compile, .pretend-code button.compile {
   display: none;
 }
-/* line 190, ../../sass/presentation.scss */
+/* line 223, ../../sass/presentation.scss */
 .live-code .css .output, .pretend-code .css .output {
   white-space: pre;
   font-family: "Courier New";
   overflow: auto;
 }
-/* line 195, ../../sass/presentation.scss */
+/* line 228, ../../sass/presentation.scss */
 .live-code .css .error, .pretend-code .css .error {
   color: #c00;
   overflow: auto;
   white-space: normal;
 }
 
-/* line 206, ../../sass/presentation.scss */
+/* line 239, ../../sass/presentation.scss */
 .pretend-code .source {
   -webkit-animation: none;
   -moz-animation: none;
@@ -333,12 +378,12 @@ a[data-note-control] {
 }
 
 @media print {
-  /* line 212, ../../sass/presentation.scss */
+  /* line 245, ../../sass/presentation.scss */
   header {
     display: none !important;
   }
 
-  /* line 216, ../../sass/presentation.scss */
+  /* line 249, ../../sass/presentation.scss */
   .introduction .deck-container {
     font-size: 1.25em;
   }
