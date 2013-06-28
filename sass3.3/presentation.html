@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>"The new hotness in Sass 3.3"</title>
+    <meta name="description" content="What's New in Sass 3.3">
+    <meta name="author" content="Chris Eppstein">
+    <meta name="viewport" content="width=1024, user-scalable=no">
+
+    <link rel="stylesheet" href="/deck/core/deck.core.css">
+    <link rel="stylesheet" href="/deck/extensions/goto/deck.goto.css">
+    <link rel="stylesheet" href="/deck/extensions/menu/deck.menu.css">
+    <link rel="stylesheet" href="/deck/extensions/navigation/deck.navigation.css">
+    <link rel="stylesheet" href="/deck/extensions/status/deck.status.css">
+    <link rel="stylesheet" href="/deck/extensions/hash/deck.hash.css">
+
+    <!-- Theme CSS files (menu swaps these out) -->
+    <link rel="stylesheet" id="style-theme-link" href="/css/compass-theme.css">
+    <link rel="stylesheet" id="transition-theme-link" href="/deck/themes/transition/fade.css">
+
+    <!-- Custom CSS just for this page -->
+    <link rel="stylesheet" href="/css/presentation.css">
+
+    <script src="/deck/jquery-1.7.min.js"></script>
+    <script src="/deck/modernizr.custom.js"></script>
+
+    <!-- Deck Core and extensions -->
+    <script src="/deck/core/deck.core.js"></script>
+    <script src="/deck/extensions/hash/deck.hash.js"></script>
+    <script src="/deck/extensions/menu/deck.menu.js"></script>
+    <script src="/deck/extensions/goto/deck.goto.js"></script>
+    <script src="/deck/extensions/status/deck.status.js"></script>
+    <script src="/deck/extensions/navigation/deck.navigation.js"></script>
+
+    <script src="presentation.js"></script>
+  </head>
+  <body>
+    <article class="deck-container">
+      <section class="slide">
+        <hgroup>
+          <h1>New hotness in Sass 3.3</h1>
+          <h2>Chris Eppstein</h2>
+        </hgroup>
+      </section>
+      <section class="slide">
+        <h2>Who am I?</h2>
+        <div class="vcenter">
+          <h3 class="slide">Creator &amp; Maintainer of <a href="http://compass-style.org/">Compass</a></h3>
+          <h3 class="slide"><a href="http://sass-lang.com">Sass</a> Core Developer</h3>
+          <h3 class="slide">Engineer @ <a href="http://linkedin.com">LinkedIn</a></h3>
+          <h3 class="slide">Husband &amp; Father</h3>
+        </div>
+      </section>
+      <section class="slide">
+        <h1>Ask Questions!</h1>
+        <h2>This is an interactive slide deck.</h2>
+      </section>
+      <section class="slide">
+        <h2>Interpolation</h2>
+        <section class="notes">
+          <p>Interpolation allows scripting in many non-value contexts.</p>
+          <ul>
+            <li>Selectors
+            <li>CSS directives
+            <li>@extend arguments
+            <li>Property Names
+          </ul>
+          <p>Interpolation can't be used to change the parse structure of a sass file.</p>
+          <ul>
+            <li>Variables
+            <li>Mixins
+            <li>Braces/Indentation
+            <li>Imports
+          </ul>
+          <p>In Sass script, interpolation returns a STRING.</p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="In Selectors & Strings">
+$button-type: glossy;
+.button-#{$button-type} {
+  background-image: image-url("buttons/#{$button-type}.png");
+}
+</textarea>
+<textarea class="alternate-source" title="CSS Directives">
+$desktops: "screen and (min-device-width: 800px)";
+@media #{$desktops} {
+  .column1 {width: 500px;}
+  .column2 {width: 300px;}
+}
+</textarea>
+<textarea class="alternate-source" title="@extend Arguments">
+$link-type: button;
+.button { border: 3px outset #777; }
+.link   { text-decoration: underline }
+a       { @extend .#{$link-type};}
+</textarea>
+<textarea class="alternate-source" title="Property Names">
+$spacing-property: margin;
+.box {
+  #{$spacing-property}: 4px;
+  #{$spacing-property}-bottom: 8px;
+}
+</textarea>
+<textarea class="alternate-source" title="Nope: Variables">
+$nav-color: red;
+$box-type: nav;
+.box {
+  color: $#{$box-type}-color;
+}
+</textarea>
+<textarea class="alternate-source" title="Nope: Mixins">
+$box-type: nav;
+.box {
+  @include #{$box-type}(200px);
+}
+</textarea>
+<textarea class="alternate-source" title="Nope: Imports">
+$theme: blue;
+@import "#{$theme}-theme";
+</textarea>
+<textarea class="alternate-source" title="Nope: Braces">
+$properties: "{ color: red; };
+.box #{$properties}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
+      <section class="slide">
+        <h2>Comments</h2>
+        <section class="notes">
+          <p>Did you know you could put code in your comments?</p>
+          <p>Did you know you could make sure comments appear in your compressed output?</p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Comment Scripting">
+$copyright-year: 2012;
+/* This stylesheet is Copyright #{$copyright-year}.
+   All rights reserved.
+*/
+#logo { border: 1px solid black; }
+</textarea>
+<textarea class="alternate-source" title="Loud Comments">
+/*! This comment will always be in your output. */
+#logo { border: 1px solid black; }
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
+      <section class="slide">
+        <h2>Placeholder Selectors</h2>
+        <section class="notes">
+          <p>Placeholder selectors are like an "invisible" class.
+             They exist so that they can be extended -- They "hold the place"
+             of the selectors that will extend them.
+          </p>
+        </section>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Simple Example">
+.notice-text { font-size: 32px;
+  h1         { font-size: 48px;         }}
+.error-text  { @extend .notice-text;
+               color: red;               }
+.notice-box  { border: 3px groove black; }
+.error-box   { @extend .notice-box;
+               border-color: red;        }
+
+form.is-error { @extend .error-text      }
+#flash.notice { @extend .notice-text;
+                @extend .notice-box;     }
+#flash.error  { @extend .error-text;
+                @extend .error-box;      }
+</textarea>
+<textarea class="alternate-source" title="Simple Example w/ Placeholders">
+%notice-text { font-size: 32px;
+  h1         { font-size: 48px;         }}
+%error-text  { @extend %notice-text;
+               color: red;               }
+%notice-box  { border: 3px groove black; }
+%error-box   { @extend %notice-box;
+               border-color: red;        }
+
+form.is-error { @extend %error-text      }
+#flash.notice { @extend %notice-text;
+                @extend %notice-box;     }
+#flash.error  { @extend %error-text;
+                @extend %error-box;      }
+</textarea>
+<textarea class="alternate-source" title="Buttons Using Markup">
+@import "compass/css3";
+.button {
+  padding: 3px 5px;
+  @include border-radius(8px);
+}
+.button-gray {
+  background-color: gray;
+  &:hover {
+    background-color: darken(gray, 20%);
+  }
+}
+.button-primary {
+  @include background(linear-gradient(red orange));
+  color: white;
+  &:hover {
+    @include background(linear-gradient(darken(red, 20%) darken(orange, 20%)));
+  }
+}
+.button-lg {
+  font-size: 24px !important;
+}
+.button-sm {
+  font-size: 12px !important;
+}
+</textarea>
+<textarea class="alternate-source" title="Buttons Using Classes">
+@import "compass/css3";
+.button {
+  padding: 3px 5px;
+  @include border-radius(8px);
+}
+.button-gray {
+  @extend .button;
+  background-color: gray;
+  &:hover {
+    background-color: darken(gray, 20%);
+  }
+}
+.button-primary {
+  @extend .button;
+  @include background(linear-gradient(red orange));
+  color: white;
+  &:hover {
+    @include background(linear-gradient(darken(red, 20%) darken(orange, 20%)));
+  }
+}
+.button-lg {
+  @extend .button-gray;
+  font-size: 24px !important;
+}
+.button-sm {
+  @extend .button-gray;
+  font-size: 12px !important;
+}
+</textarea>
+<textarea class="alternate-source" title="Buttons With Placeholders">
+@import "compass/css3";
+%button {
+  padding: 3px 5px;
+  @include border-radius(8px);
+}
+%button-gray {
+  @extend %button;
+  background-color: gray;
+  &:hover {
+    background-color: darken(gray, 20%);
+  }
+}
+.button-primary {
+  @extend %button;
+  @include background(linear-gradient(red orange));
+  color: white;
+  &:hover {
+    @include background(linear-gradient(darken(red, 20%) darken(orange, 20%)));
+  }
+}
+.button-lg {
+  @extend %button-gray;
+  font-size: 24px !important;
+}
+.button-sm {
+  @extend %button-gray;
+  font-size: 12px !important;
+}
+</textarea>
+          </section>
+          <section class="css" data-output-format="compact">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+            <div class="filesize">
+            </div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Blank">
+          </textarea>
+          <textarea class="alternate-source" title="Multiple Classes">
+<div id="placeholders">
+  <button class="button button-primary">Primary Button</button>
+  <button class="button button-gray button-lg">Large Button</button>
+  <button class="button button-gray button-sm">Small Button</button>
+</div>
+</textarea>
+          <textarea class="alternate-source" title="Single Class">
+<div id="placeholders">
+  <button class="button-primary">Primary Button</button>
+  <button class="button-lg">Large Button</button>
+  <button class="button-sm">Small Button</button>
+</div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Write your own Functions</h2>
+        <section class="notes">
+          <p>@function allows you to re-use common calculations.</p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Basic Function">
+$grid-columns: 24;
+$grid-width: 960px;
+$grid-gutter: 10px;
+@function column-width($cols) {
+  @return ($grid-width
+           - $grid-gutter * ($grid-columns - 1))
+          / $grid-columns * $cols
+          + $grid-gutter * ($cols - 1);
+}
+
+.col-12 { width: column-width(12); }
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
+      <section class="slide">
+        <h2>Numeric Units</h2>
+        <section class="notes">
+          <ul>
+            <li>Numbers in CSS have a physical unit.
+            <li>
+             If you have a room that is 10 feet long
+             and 15 feet wide. What is the area of the
+             room? 150 WHAT?
+            <li>Numerical units work like algabraic variables.
+            <li>3x * 4y / 6x => 2y (the x's cancel)
+            <li>2x + 4y (can't simplify)
+            <li>2x + 8x => 10x
+            <li>Sass numbers can have complex units, but they can't be output to CSS.
+            <li>Sass will convert between units if it knows a ratio.
+            <li>Sass doesn't care if your unit isn't defined in CSS (future-proof)
+            <li>Percents are not mathmatical percents. They are a unit.
+          </ul>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Complex Units">
+$area: 2in * 3in;
+.output { content: unit($area); }
+</textarea>
+<textarea class="alternate-source" title="Canceling Units">
+$em-ratio: 16px / 1em;
+.in-px { width: $em-ratio * 2em; }
+.in-em { width: 32px / $em-ratio; }
+</textarea>
+<textarea class="alternate-source" title="Conversions">
+.inches      { width: 1in + 2.54cm; }
+.centimeters { width: 3cm - 1in; }
+.result  {
+  @if 1in > 2cm {
+    content: "bigger";
+  }
+  @else {
+    content: "smaller";
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Fake Units">
+$col-ratio: 40px / 1cols;
+#sidebar { width: 3cols * $col-ratio; }
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+      </section>
+      <section class="slide">
+        <h2>@extend Warnings (will become errors after 3.2)</h2>
+<div class="vcenter">
+<pre style="text-align: left; padding-left: 25%">
+a > %placeholder { color: red; }
+.base-class { color: red; }
+
+.foo {
+  @extend %placeholder;       // No warning
+  @extend .base-class;        // No warning
+  @extend .missing;           // Warning
+  @extend .missing !optional; // No warning
+}
+</pre>
+</div>
+      </section>
+      <section class="slide">
+        <h2>Epic @media Support</h2>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass<span id="media-additional-heading"></span></h3>
+<textarea class="source" title="Bubbling">
+#login {
+  float: right;
+  @media screen and (max-device-width: 480px){
+    float: left;
+  }
+}
+#media-additional-heading:before {
+  content: ": This was in 3.1. You can use it now."
+}
+</textarea>
+<textarea class="alternate-source" title="Nested Media Queries">
+@media screen {
+  #login {
+    float: right;
+    @media (max-device-width: 480px){
+      float: left;
+      @media (orientation: landscape) {
+        float: none;
+      }
+    }
+  }
+  #media-additional-heading:before {
+    content: ": @media queries can be nested too! (Sass 3.1)"
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Variables in Media Queries">
+$bp-handheld: 480px;
+$bp-handheld-prop: max-device-width;
+
+#login {
+  float: right;
+  @media screen and (max-device-width: $bp-handheld) {
+    float: left;
+  }
+}
+#media-additional-heading:before {
+  content: ": Magic Numbers Suck. Let's Abstract them."
+}
+</textarea>
+<textarea class="alternate-source" title="Interpolation in Media Queries">
+$bp-handheld-width: 480px;
+$bp-handheld: "screen and (max-device-width: #{$bp-handheld-width})";
+
+#login {
+  float: right;
+
+  // Note: all @-rules support interpolation now.
+  @media #{$bp-handheld} {
+    float: left;
+  }
+}
+
+#media-additional-heading:before {
+  content: ": Typing MQs gets redundant.";
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html unnecessary">
+            <h3>HTML</h3>
+<textarea class="source" title="">
+</textarea>
+        </section>
+        <section class="result unnecessary">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Mixin Content</h2>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</span></h3>
+<textarea class="source" title="IE Hacks">
+@mixin ie6 {
+  * html & {
+    @content;
+  }
+}
+
+#login {
+  float: right;
+  @include ie6 {
+    display: none;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Media Queries">
+@mixin handhelds {
+   @media screen and (max-device-width: 480px) {
+      @content;
+   }
+}
+#login {
+  float: right;
+  @include handhelds {
+    float: left;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="More Media Queries">
+@mixin respond-to($media) {
+   @if $media == handhelds {
+     @media screen and (min-device-width: 480px) {
+        @content;
+     }
+   }
+   @else if $media == tablets {
+     @media screen and (min-device-width: 768px) {
+        @content;
+     }
+   }
+   @else {
+     /* WARNING: No media defined for #{$media} */
+   }
+}
+#login {
+  float: right;
+  @include respond-to(handhelds) {
+    float: left;
+  }
+  @include respond-to(tablets) {
+    float: none;
+    text-align: center;
+  }
+  @include respond-to(nonsense) {
+    color: red;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Disabling Media Queries">
+$responsive: true;
+@mixin respond-to($media) {
+   @if $responsive {
+     @if $media == handhelds {
+       @media screen and (min-device-width: 480px) {
+          @content;
+       }
+     }
+     @else if $media == tablets {
+       @media screen and (min-device-width: 768px) {
+          @content;
+       }
+     }
+   }
+}
+#login {
+  float: right;
+  @include respond-to(handhelds) {
+    float: left;
+  }
+  @include respond-to(tablets) {
+    float: none;
+    text-align: center;
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Temporary Variables">
+$responsive: false;
+@mixin respond-to($media) {
+   @if $responsive {
+     @if $media == handhelds {
+       @media screen and (min-device-width: 480px) {
+          @content;
+       }
+     }
+     @else if $media == tablets {
+       @media screen and (min-device-width: 768px) {
+          @content;
+       }
+     }
+   }
+}
+@mixin force-responsiveness {
+  $old-responsive: $responsive;
+  $responsive: true;
+  @content;
+  $responsive: $old-responsive;
+}
+#login {
+  float: right;
+  @include respond-to(handhelds) {
+    float: left;
+  }
+  @include force-responsiveness {
+    @include respond-to(tablets) {
+      float: none;
+      text-align: center;
+    }
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Repeated Content">
+@mixin repeated-within($classes) {
+  @each $class in $classes {
+    .#{$class} { @content; }
+  }
+}
+
+@include repeated-within(icon widget thing) {
+  color: red;
+  a { color: blue; }
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html unnecessary">
+            <h3>HTML</h3>
+<textarea class="source" title="">
+</textarea>
+        </section>
+        <section class="result unnecessary">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Variable Arguments (Under Development)</h2>
+        <div class="pretend-code">
+          <section class="sass">
+<button class='resizer'>⇿</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Multiple Box Shadows">
+// Receive arguments as a list
+@mixin box-shadow($shadows...) {
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+.shadowed-1, .shadowed-2 {
+  width: 50px;
+  height: 50px;
+  background: white;
+  margin: 50px auto;
+}
+.shadowed-1 {
+  @include box-shadow(
+    0 0 20px black,
+    20px 15px 30px yellow,
+    -20px 15px 30px lime,
+    -20px -15px 30px blue,
+    20px -15px 30px red
+  );
+}
+// Pass a list as arguments
+.shadowed-2 {
+  $rainbow-shadows: 0 0 20px black,
+                    20px 15px 30px purple,
+                    -20px 15px 30px teal,
+                    -20px -15px 30px orange,
+                    20px -15px 30px brown;
+  @include box-shadow($rainbow-shadows...);
+  margin-top: 150px;
+}
+</textarea>
+          </section>
+          <section class="css">
+<button class='resizer'>⇿</button>
+            <h3>CSS</h3>
+            <div class="output">shadowed-1, .shadowed-2 {
+  width: 50px;
+  height: 50px;
+  background: white;
+  margin: 50px auto;
+}
+
+.shadowed-1 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+}
+.shadowed-2 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  margin-top: 150px;
+}
+</div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Multiple Classes">
+<div class="shadowed-1"></div>
+<div class="shadowed-2"></div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+            <style>
+.shadowed-1, .shadowed-2 {
+  width: 50px;
+  height: 50px;
+  background: white;
+  margin: 50px auto !important;
+}
+
+.shadowed-1 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+  box-shadow: 0 0 20px black, 20px 15px 30px yellow, -20px 15px 30px lime, -20px -15px 30px blue, 20px -15px 30px red;
+}
+.shadowed-2 {
+  -webkit-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  -moz-box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  box-shadow: 0 0 20px black, 20px 15px 30px purple, -20px 15px 30px teal, -20px -15px 30px orange, 20px -15px 30px brown;
+  margin-top: 150px;
+}
+
+            </style>
+<div class="shadowed-1"></div>
+<div class="shadowed-2"></div>
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Keyframe Animation</h2>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Animation">
+@import "compass/css3";
+
+@include keyframes(appear-and-roundify) {
+  0%   { opacity: 0; @include border-radius(2px);  @include box-shadow(3px 3px rgba(#000,0));}
+  100% { opacity: 1; @include border-radius(50px); @include box-shadow(3px 3px #000);}
+}
+
+.animated{
+  background-color: #ccc;
+  padding: 30px !important;
+  text-align: center;
+
+  > div {
+    @include animation(appear-and-roundify 2s linear alternate infinite);
+  }
+  > a {
+    @include animation(appear-and-roundify 2s linear alternate infinite 1s);
+  }
+
+  > * {
+    opacity: 0;
+    padding: 5px !important;
+    border: 2px solid black !important;
+    margin: 20px !important;
+    height: 30px;
+  }
+
+}
+</textarea>
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Animated">
+<h3>Hover Below</h3>
+<div class="animated">
+  <div>I'm Animated</div>
+  <a href="#">Me too!</a>
+</div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Sprites</h2>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Automatic Sprites">
+$icon-layout: smart;
+
+@import "icon/*.png";
+
+@include all-icon-sprites;
+
+#container {
+  text-align: center;
+  margin: 4em 0;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+  h1 { margin-bottom: 2em; }
+}
+
+#toolbar {
+  overflow: none;
+  display: inline-block;
+  margin: 0; padding: 0;
+  > command { float: left; width: 48px; height: 48px; }
+}
+</textarea>
+<textarea class="alternate-source" title="Sprite Selectors">
+$icon-layout: smart;
+
+@import "icon/*.png";
+
+#container {
+  text-align: center;
+  margin: 4em 0;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+  h1 { margin-bottom: 2em; }
+}
+
+#toolbar {
+  @each $icon in back, next, save, print, delete {
+    .#{$icon} { @include icon-sprite($icon); }
+  }
+  overflow: none;
+  display: inline-block;
+  margin: 0; padding: 0;
+  > command { float: left; width: 48px; height: 48px; }
+}
+</textarea>
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Icons">
+<div id='container'>
+  <menu id='toolbar'>
+    <command class='icon-back'></command>
+    <command class='icon-next'></command>
+    <command class='icon-save'></command>
+    <command class='icon-print'></command>
+    <command class='icon-delete'></command>
+  </menu>
+</div>
+</textarea>
+          <textarea class="alternate-source" title="No Prefix">
+<div id='container'>
+  <menu id='toolbar'>
+    <command class='back'></command>
+    <command class='next'></command>
+    <command class='save'></command>
+    <command class='print'></command>
+    <command class='delete'></command>
+  </menu>
+</div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h2>Questions?</h2>
+        <div class="live-code">
+          <section class="sass">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Animation">
+// Ask a question!
+</textarea>
+          </section>
+          <section class="css">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+          <section class="html">
+          <h3>HTML</h3>
+          <textarea class="source">
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
+      </section>
+      <section class="slide">
+        <h1>It takes a community!</h1>
+      </section>
+      <section class="slide">
+        <h1 style="margin-top:1em;">&lt;3 LinkedIn
+          <br>
+          <img src="/images/linkedin.png"> 
+        </h1>
+        <h2>We're Hiring Sass Developers!</h2>
+      </section>
+      <section class="slide">
+        <h1>United Mitochondrial Disease Foundation</h1>
+        <h2>Please Donate!</h2>
+        <div class="vcenter" style="margin-top: 6em;">
+          <a href="http://umdf.org/compass">http://umdf.org/compass</a>
+        </div>
+      </section>
+    </article>
+  </body>
+</html>

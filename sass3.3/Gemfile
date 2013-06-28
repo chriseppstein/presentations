@@ -1,0 +1,9 @@
+source :rubygems
+gem 'sass', :path => "~/Projects/sass"
+gem 'compass', :path => "~/Projects/compass"
+gem 'sinatra'
+gem 'heroku'
+gem 'guard'
+gem 'guard-compass'
+gem 'guard-livereload'
+gem 'pry'
