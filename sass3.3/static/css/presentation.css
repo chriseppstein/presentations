@@ -1,77 +1,50 @@
 @-moz-keyframes pulsing-border {
-  /* line 7, ../../sass/presentation.scss */
   0% {
     -moz-box-shadow: 0 0 0 green;
-    box-shadow: 0 0 0 green;
-  }
+    box-shadow: 0 0 0 green; }
 
-  /* line 10, ../../sass/presentation.scss */
   100% {
     -moz-box-shadow: 0 0 5px green;
-    box-shadow: 0 0 5px green;
-  }
-}
+    box-shadow: 0 0 5px green; } }
 
 @-webkit-keyframes pulsing-border {
-  /* line 7, ../../sass/presentation.scss */
   0% {
     -webkit-box-shadow: 0 0 0 green;
-    box-shadow: 0 0 0 green;
-  }
+    box-shadow: 0 0 0 green; }
 
-  /* line 10, ../../sass/presentation.scss */
   100% {
     -webkit-box-shadow: 0 0 5px green;
-    box-shadow: 0 0 5px green;
-  }
-}
+    box-shadow: 0 0 5px green; } }
 
 @-o-keyframes pulsing-border {
-  /* line 7, ../../sass/presentation.scss */
   0% {
-    box-shadow: 0 0 0 green;
-  }
+    box-shadow: 0 0 0 green; }
 
-  /* line 10, ../../sass/presentation.scss */
   100% {
-    box-shadow: 0 0 5px green;
-  }
-}
+    box-shadow: 0 0 5px green; } }
 
 @keyframes pulsing-border {
-  /* line 7, ../../sass/presentation.scss */
   0% {
-    box-shadow: 0 0 0 green;
-  }
+    box-shadow: 0 0 0 green; }
 
-  /* line 10, ../../sass/presentation.scss */
   100% {
-    box-shadow: 0 0 5px green;
-  }
-}
+    box-shadow: 0 0 5px green; } }
 
-/* line 15, ../../sass/presentation.scss */
 .deck-container {
   width: auto;
   max-width: 864px;
   margin: 16px auto 24px auto;
   min-height: 720px;
-  font-size: 16px;
-}
+  font-size: 16px; }
 
-/* line 22, ../../sass/presentation.scss */
 .no-boxshadow .deck-container {
-  border: 1px solid #e4e4e4;
-}
+  border: 1px solid #e4e4e4; }
 
-/* line 25, ../../sass/presentation.scss */
 .boxshadow .deck-container {
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
 
-/* line 31, ../../sass/presentation.scss */
 .notes {
   position: absolute;
   top: 0px;
@@ -93,25 +66,17 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 2px solid white;
-  background: url('/images/light_noise_diagonal.png?1372393469');
-}
-/* line 40, ../../sass/presentation.scss */
-.notes *:not(a[data-note-control]) {
-  min-width: 295px;
-}
-/* line 41, ../../sass/presentation.scss */
-.notes.visible {
-  left: 75%;
-  -webkit-box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
-  -moz-box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
-  box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
-}
-/* line 50, ../../sass/presentation.scss */
-.notes p {
-  color: black !important;
-}
+  background: url('/images/light_noise_diagonal.png?1372393469'); }
+  .notes *:not(a[data-note-control]) {
+    min-width: 295px; }
+  .notes.visible {
+    left: 75%;
+    -webkit-box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
+    -moz-box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3);
+    box-shadow: -2px 0px 1px rgba(119, 119, 119, 0.3); }
+  .notes p {
+    color: black !important; }
 
-/* line 55, ../../sass/presentation.scss */
 a[data-note-control] {
   cursor: pointer;
   position: absolute;
@@ -135,26 +100,16 @@ a[data-note-control] {
   -webkit-transition-property: top, bottom, left, right, z-index;
   -moz-transition-property: top, bottom, left, right, z-index;
   -o-transition-property: top, bottom, left, right, z-index;
-  transition-property: top, bottom, left, right, z-index;
-}
-/* line 71, ../../sass/presentation.scss */
-a[data-note-control] [data-hide] {
-  display: none;
-}
-/* line 74, ../../sass/presentation.scss */
-a[data-note-control] [data-show] {
-  display: inline;
-}
-/* line 79, ../../sass/presentation.scss */
-.visible a[data-note-control] [data-hide] {
-  display: inline;
-}
-/* line 82, ../../sass/presentation.scss */
-.visible a[data-note-control] [data-show] {
-  display: none;
-}
+  transition-property: top, bottom, left, right, z-index; }
+  a[data-note-control] [data-hide] {
+    display: none; }
+  a[data-note-control] [data-show] {
+    display: inline; }
+  .visible a[data-note-control] [data-hide] {
+    display: inline; }
+  .visible a[data-note-control] [data-show] {
+    display: none; }
 
-/* line 89, ../../sass/presentation.scss */
 .live-code section, .pretend-code section {
   position: absolute;
   padding: 3px;
@@ -165,61 +120,40 @@ a[data-note-control] [data-show] {
   -webkit-transition-property: top, bottom, left, right, z-index, font-size;
   -moz-transition-property: top, bottom, left, right, z-index, font-size;
   -o-transition-property: top, bottom, left, right, z-index, font-size;
-  transition-property: top, bottom, left, right, z-index, font-size;
-}
-/* line 97, ../../sass/presentation.scss */
+  transition-property: top, bottom, left, right, z-index, font-size; }
 .live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
-  background: #2F2F2F;
-}
-@media print {
-  /* line 97, ../../sass/presentation.scss */
-  .live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
-    position: static !important;
-  }
-}
-/* line 104, ../../sass/presentation.scss */
+  background: #2F2F2F; }
+  @media print {
+    .live-code section.html, .pretend-code section.html, .live-code section.result, .pretend-code section.result, .live-code section.sass, .pretend-code section.sass, .live-code section.css, .pretend-code section.css {
+      position: static !important; } }
 .live-code section.html, .pretend-code section.html {
   bottom: 35px;
   top: 403.2px;
   left: 10px;
-  right: 483.84px;
-}
-/* line 110, ../../sass/presentation.scss */
+  right: 483.84px; }
 .live-code section.result, .pretend-code section.result {
   bottom: 35px;
   top: 403.2px;
   right: 10px;
-  left: 483.84px;
-}
-/* line 116, ../../sass/presentation.scss */
+  left: 483.84px; }
 .live-code section.sass, .pretend-code section.sass {
   top: 70px;
   bottom: 403.2px;
   left: 10px;
-  right: 483.84px;
-}
-/* line 121, ../../sass/presentation.scss */
-.live-code section.sass.only, .pretend-code section.sass.only {
-  right: 10px;
-}
-/* line 125, ../../sass/presentation.scss */
+  right: 483.84px; }
+  .live-code section.sass.only, .pretend-code section.sass.only {
+    right: 10px; }
 .live-code section.css, .pretend-code section.css {
   top: 70px;
   bottom: 403.2px;
   right: 10px;
-  left: 483.84px;
-}
-/* line 130, ../../sass/presentation.scss */
-.live-code section.css.only, .pretend-code section.css.only {
-  top: 403.2px;
-  bottom: 35px;
-  left: 10px;
-}
-/* line 136, ../../sass/presentation.scss */
+  left: 483.84px; }
+  .live-code section.css.only, .pretend-code section.css.only {
+    top: 403.2px;
+    bottom: 35px;
+    left: 10px; }
 .live-code .unnecessary, .pretend-code .unnecessary {
-  display: none;
-}
-/* line 139, ../../sass/presentation.scss */
+  display: none; }
 .live-code section.fullsize, .pretend-code section.fullsize {
   top: 70px !important;
   bottom: 0px !important;
@@ -229,63 +163,40 @@ a[data-note-control] [data-show] {
   font-size: 22px;
   -webkit-box-shadow: 3px 3px #cccccc;
   -moz-box-shadow: 3px 3px #cccccc;
-  box-shadow: 3px 3px #cccccc;
-}
-/* line 148, ../../sass/presentation.scss */
+  box-shadow: 3px 3px #cccccc; }
 .live-code .source-changer, .pretend-code .source-changer {
   float: right;
-  margin: 3px -2px 3px 4px;
-}
-@media print {
-  /* line 148, ../../sass/presentation.scss */
-  .live-code .source-changer, .pretend-code .source-changer {
-    display: none;
-  }
-}
-/* line 155, ../../sass/presentation.scss */
+  margin: 3px -2px 3px 4px; }
+  @media print {
+    .live-code .source-changer, .pretend-code .source-changer {
+      display: none; } }
 .live-code label.sourcemap, .pretend-code label.sourcemap {
   margin-right: 15px;
   margin-top: 5px;
-  line-height: 13px;
-}
-/* line 159, ../../sass/presentation.scss */
-.live-code label.sourcemap input, .pretend-code label.sourcemap input {
-  margin-right: 6px;
-}
-/* line 163, ../../sass/presentation.scss */
+  line-height: 13px; }
+  .live-code label.sourcemap input, .pretend-code label.sourcemap input {
+    margin-right: 6px; }
 .live-code .alternate-source, .pretend-code .alternate-source {
-  display: none;
-}
-/* line 168, ../../sass/presentation.scss */
+  display: none; }
 .live-code .source, .pretend-code .source {
   display: block;
-  font-family: "Courier New";
-}
-/* line 172, ../../sass/presentation.scss */
+  font-family: "Courier New"; }
 .live-code textarea.source, .pretend-code textarea.source {
   -webkit-animation: pulsing-border 2s linear alternate infinite;
   -moz-animation: pulsing-border 2s linear alternate infinite;
   -o-animation: pulsing-border 2s linear alternate infinite;
-  animation: pulsing-border 2s linear alternate infinite;
-}
-/* line 174, ../../sass/presentation.scss */
-.live-code textarea.source:focus, .pretend-code textarea.source:focus {
-  -webkit-animation: none;
-  -moz-animation: none;
-  -o-animation: none;
-  animation: none;
-}
-/* line 178, ../../sass/presentation.scss */
+  animation: pulsing-border 2s linear alternate infinite; }
+  .live-code textarea.source:focus, .pretend-code textarea.source:focus {
+    -webkit-animation: none;
+    -moz-animation: none;
+    -o-animation: none;
+    animation: none; }
 .live-code .output, .pretend-code .output {
   padding: 5px;
-  background-color: white;
-}
-/* line 182, ../../sass/presentation.scss */
+  background-color: white; }
 .live-code .filesize, .pretend-code .filesize {
   text-align: right;
-  color: #ccc;
-}
-/* line 186, ../../sass/presentation.scss */
+  color: #ccc; }
 .live-code .resizer, .pretend-code .resizer {
   float: right;
   margin: 0 0 0 4px;
@@ -299,81 +210,52 @@ a[data-note-control] [data-show] {
   text-align: center;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-@media print {
-  /* line 186, ../../sass/presentation.scss */
-  .live-code .resizer, .pretend-code .resizer {
-    display: none;
-  }
-}
-/* line 202, ../../sass/presentation.scss */
+  box-sizing: border-box; }
+  @media print {
+    .live-code .resizer, .pretend-code .resizer {
+      display: none; } }
 .live-code h3, .pretend-code h3 {
   height: auto;
   font-size: 28px;
-  text-shadow: 2px 2px 2px #cccccc;
-}
-/* line 207, ../../sass/presentation.scss */
+  text-shadow: 2px 2px 2px #cccccc; }
 .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
   width: 99.5%;
   height: 85%;
-  border: 1px solid #ccc;
-}
-@media print {
-  /* line 207, ../../sass/presentation.scss */
-  .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
-    width: auto;
-    height: auto;
-  }
-}
-/* line 216, ../../sass/presentation.scss */
+  border: 1px solid #ccc; }
+  @media print {
+    .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
+      width: auto;
+      height: auto; } }
 .live-code textarea, .pretend-code textarea {
-  height: 87%;
-}
-/* line 219, ../../sass/presentation.scss */
+  height: 87%; }
 .live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format, .live-code .sourcemap, .pretend-code .sourcemap {
   margin-top: 3px;
-  float: right;
-}
-@media print {
-  /* line 219, ../../sass/presentation.scss */
-  .live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format, .live-code .sourcemap, .pretend-code .sourcemap {
-    display: none;
-  }
-}
-/* line 226, ../../sass/presentation.scss */
+  float: right; }
+  @media print {
+    .live-code button.compile, .pretend-code button.compile, .live-code select.format, .pretend-code select.format, .live-code .sourcemap, .pretend-code .sourcemap {
+      display: none; } }
 .live-code button.compile, .pretend-code button.compile {
-  display: none;
-}
-/* line 231, ../../sass/presentation.scss */
+  display: none; }
 .live-code .css .output, .pretend-code .css .output {
   white-space: pre;
   font-family: "Courier New";
-  overflow: auto;
-}
-/* line 236, ../../sass/presentation.scss */
+  overflow: auto; }
 .live-code .css .error, .pretend-code .css .error {
   color: #c00;
   overflow: auto;
-  white-space: normal;
-}
+  white-space: normal; }
 
-/* line 247, ../../sass/presentation.scss */
 .pretend-code .source {
   -webkit-animation: none;
   -moz-animation: none;
   -o-animation: none;
-  animation: none;
-}
+  animation: none; }
 
 @media print {
-  /* line 253, ../../sass/presentation.scss */
   header {
-    display: none !important;
-  }
+    display: none !important; }
 
-  /* line 257, ../../sass/presentation.scss */
   .introduction .deck-container {
-    font-size: 1.25em;
-  }
-}
+    font-size: 1.25em; } }
+
+/*# sourceMappingURL=presentation.css.map */

@@ -23,6 +23,7 @@ class Presentation < Sinatra::Application
       output_sourcemap = false
       style = params[:style]
       style ||= :expanded
+      style = style.to_sym
       if style == :sourcemap
         output_sourcemap = true
         style = :expanded
@@ -31,7 +32,6 @@ class Presentation < Sinatra::Application
       sass_file = "#{outputdir}/#{name}.scss"
       css_file  = "#{outputdir}/#{name}.css"
       map_file  = "#{outputdir}/#{name}-map.json"
-      style = style.to_sym
       options = options.merge(:syntax => :scss,
                               :style => style,
                               :line_comments => false,

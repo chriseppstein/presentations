@@ -57,82 +57,71 @@
         <h2>This is an interactive slide deck.</h2>
       </section>
       <section class="slide">
-        <h2>Interpolation</h2>
+        <h2>What's in Sass 3.3?</h2>
+        <div class="vcenter">
+          <h3 class="slide">Source Maps</h3>
+          <h3 class="slide">String Functions</h3>
+          <h3 class="slide">Map Data Structure</h3>
+          <h3 class="slide">&amp; in SassScript</h3>
+          <h3 class="slide">SassScript Goes Meta</h3>
+        </div>
+      </section>
+      <section class="slide">
+        <h2>Source Maps</h2>
         <section class="notes">
-          <p>Interpolation allows scripting in many non-value contexts.</p>
+          <p>Paul Irish's <a href="https://developers.google.com/events/io/sessions/325206725">Demo</a></p>
+          <p><a href="https://www.youtube.com/watch?v=kVSo4buDAEE">Walk through</a> by Addy Osmani</p>
           <ul>
-            <li>Selectors
-            <li>CSS directives
-            <li>@extend arguments
-            <li>Property Names
+            <li>Install Chrome Canary (maybe?)
+            <li>Enable Sourcemaps
+            <li>Enable Workspaces
+            <li>Sass command-line option: <code>--sourcemap</code>
+            <li>Compass support in 0.13
+            <li>Watcher: <code>BUNDLE_GEMFILE=../../Gemfile bundle exec scss --watch .:. --sourcemap --compass</code>
           </ul>
-          <p>Interpolation can't be used to change the parse structure of a sass file.</p>
-          <ul>
-            <li>Variables
-            <li>Mixins
-            <li>Braces/Indentation
-            <li>Imports
-          </ul>
-          <p>In Sass script, interpolation returns a STRING.</p>
         </section>
         <div class="live-code">
-          <section class="sass only">
-            <button class="compile">Update</button>
+          <section class="sass">
             <h3>Sass</h3>
-<textarea class="source" title="In Selectors & Strings">
-$button-type: glossy;
-.button-#{$button-type} {
-  background-image: image-url("buttons/#{$button-type}.png");
-}
-</textarea>
-<textarea class="alternate-source" title="CSS Directives">
-$desktops: "screen and (min-device-width: 800px)";
-@media #{$desktops} {
-  .column1 {width: 500px;}
-  .column2 {width: 300px;}
-}
-</textarea>
-<textarea class="alternate-source" title="@extend Arguments">
-$link-type: button;
-.button { border: 3px outset #777; }
-.link   { text-decoration: underline }
-a       { @extend .#{$link-type};}
-</textarea>
-<textarea class="alternate-source" title="Property Names">
-$spacing-property: margin;
-.box {
-  #{$spacing-property}: 4px;
-  #{$spacing-property}-bottom: 8px;
-}
-</textarea>
-<textarea class="alternate-source" title="Nope: Variables">
-$nav-color: red;
-$box-type: nav;
-.box {
-  color: $#{$box-type}-color;
-}
-</textarea>
-<textarea class="alternate-source" title="Nope: Mixins">
-$box-type: nav;
-.box {
-  @include #{$box-type}(200px);
-}
-</textarea>
-<textarea class="alternate-source" title="Nope: Imports">
-$theme: blue;
-@import "#{$theme}-theme";
-</textarea>
-<textarea class="alternate-source" title="Nope: Braces">
-$properties: "{ color: red; };
-.box #{$properties}
+<textarea class="source" title="Source Maps">
+  @import "compass/utilities/color/contrast";
+  @mixin readable($color) {
+    background-color: $color;
+    color: contrast-color($color);
+  }
+  .readable {
+    @include readable(#333);
+  }
 </textarea>
           </section>
-          <section class="css only">
+          <section class="css">
             <select class="format"></select>
             <h3>CSS</h3>
             <div class="output">
             </div>
           </section>
+          <section class="html">
+            <h3>HTML</h3>
+          <textarea class="source" title="Markup">
+<div class="readable">
+   <h6>This needs to be readable</h6>
+   <p>
+   Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboriu
+   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+   culpa qui officia deserunt mollit anim id est laborum.
+   </p>
+</div>
+</textarea>
+        </section>
+        <section class="result">
+          <h3>Result</h3>
+          <div class="output">
+          </div>
+        </section>
       </section>
       <section class="slide">
         <h2>Comments</h2>
@@ -157,6 +146,7 @@ $copyright-year: 2012;
 </textarea>
           </section>
           <section class="css only">
+            <input 
             <select class="format"></select>
             <h3>CSS</h3>
             <div class="output">
