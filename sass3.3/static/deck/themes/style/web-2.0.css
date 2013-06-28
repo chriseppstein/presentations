@@ -42,8 +42,8 @@
 }
 .cssreflections .deck-container .slide h2 {
   line-height: 1;
-  -webkit-box-reflect: below -0.556em -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.3, transparent), color-stop(0.7, rgba(255, 255, 255, 0.1)), to(transparent));
-  -moz-box-reflect: below -0.556em -moz-linear-gradient(top, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 100%);
+  -webkit-box-reflect: below -0.5555em -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.3, transparent), color-stop(0.7, rgba(255, 255, 255, 0.1)), to(transparent));
+  -moz-box-reflect: below -0.5555em -moz-linear-gradient(top, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 100%);
 }
 .deck-container .slide h3 {
   color: #000;
@@ -134,8 +134,8 @@
   bottom: 10px;
   left: 0;
   right: 50%;
-  -moz-border-radius: 10px/100px;
-  border-radius: 10px/100px;
+  -moz-border-radius: 10px / 100px;
+  border-radius: 10px / 100px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -212,3 +212,5 @@
   -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
+
+/*# sourceMappingURL=web-2.0.css.map */

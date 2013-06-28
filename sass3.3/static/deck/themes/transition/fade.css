@@ -41,3 +41,5 @@
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current .deck-next, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current .deck-after {
   visibility: hidden;
 }
+
+/*# sourceMappingURL=fade.css.map */
