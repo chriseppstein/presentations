@@ -35,7 +35,7 @@
   max-width: 864px;
   margin: 16px auto 24px auto;
   min-height: 720px;
-  font-size: 16px; }
+  font-size: 18px; }
 
 .no-boxshadow .deck-container {
   border: 1px solid #e4e4e4; }
@@ -154,16 +154,18 @@ a[data-note-control] {
     left: 10px; }
 .live-code .unnecessary, .pretend-code .unnecessary {
   display: none; }
-.live-code section.fullsize, .pretend-code section.fullsize {
+.live-code section.fullsize, .pretend-code section.fullsize, .live-code section.fullsize .source, .pretend-code section.fullsize .source {
   top: 70px !important;
   bottom: 0px !important;
   right: 0px !important;
   left: 10px !important;
   z-index: 10;
-  font-size: 22px;
   -webkit-box-shadow: 3px 3px #cccccc;
   -moz-box-shadow: 3px 3px #cccccc;
   box-shadow: 3px 3px #cccccc; }
+.live-code section.fullsize:not(.result), .pretend-code section.fullsize:not(.result), .live-code section.fullsize:not(.result) .source, .pretend-code section.fullsize:not(.result) .source {
+  font-size: 24px;
+  font-weight: bold; }
 .live-code .source-changer, .pretend-code .source-changer {
   float: right;
   margin: 3px -2px 3px 4px; }
@@ -219,8 +221,9 @@ a[data-note-control] {
   font-size: 28px;
   text-shadow: 2px 2px 2px #cccccc; }
 .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
-  width: 99.5%;
+  width: 98.5%;
   height: 85%;
+  overflow: scroll;
   border: 1px solid #ccc; }
   @media print {
     .live-code textarea, .pretend-code textarea, .live-code .output, .pretend-code .output {
@@ -257,5 +260,23 @@ a[data-note-control] {
 
   .introduction .deck-container {
     font-size: 1.25em; } }
+.slide .side-img {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 20%;
+  border-radius: 20px;
+  border: 3px solid white;
+  -webkit-transform: rotate3d(0, 0, 1, -10deg);
+  -moz-transform: rotate3d(0, 0, 1, -10deg);
+  -ms-transform: rotate3d(0, 0, 1, -10deg);
+  -o-transform: rotate3d(0, 0, 1, -10deg);
+  transform: rotate3d(0, 0, 1, -10deg); }
+.slide:nth-child(even) .side-img {
+  -webkit-transform: rotate3d(0, 0, 1, 10deg);
+  -moz-transform: rotate3d(0, 0, 1, 10deg);
+  -ms-transform: rotate3d(0, 0, 1, 10deg);
+  -o-transform: rotate3d(0, 0, 1, 10deg);
+  transform: rotate3d(0, 0, 1, 10deg); }
 
 /*# sourceMappingURL=presentation.css.map */

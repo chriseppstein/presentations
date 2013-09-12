@@ -106,6 +106,14 @@ html {
 		code {
 			color:#789;
 		}
+    h3 code {
+      font-size: inherit;
+      font-weight: normal;
+      color: inherit;
+      &.smaller {
+        font-size: 26px;
+      }
+    }
 
     p, label {
       color: darken(#fff, 15%)

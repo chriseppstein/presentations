@@ -17,7 +17,7 @@ $width: 864px;
   max-width: 864px;
   margin: 16px auto 24px auto;
   min-height: $height;
-  font-size: 16px;
+  font-size: 18px;
 }
 .no-boxshadow .deck-container {
   border: 1px solid #e4e4e4;
@@ -137,13 +137,20 @@ a[data-note-control] {
     display: none;
   }
   section.fullsize {
-    top: 70px !important;
-    bottom: 0px !important;
-    right: 0px !important;
-    left: 10px !important;
-    z-index: 10;
-    font-size: 22px;
-    @include box-shadow(3px 3px #ccc);
+    &, & .source {
+      top: 70px !important;
+      bottom: 0px !important;
+      right: 0px !important;
+      left: 10px !important;
+      z-index: 10;
+      @include box-shadow(3px 3px #ccc);
+    }
+  }
+  section.fullsize:not(.result) {
+    &, & .source {
+      font-size: 24px;
+      font-weight: bold;
+    }
   }
   .source-changer {
     float: right;
@@ -205,8 +212,9 @@ a[data-note-control] {
     @include text-shadow(2px 2px 2px #ccc);
   }
   textarea, .output {
-    width: 99.5%;
+    width: 98.5%;
     height: 85%;
+    overflow: scroll;
     border: 1px solid #ccc;
     @media print {
       width: auto;
@@ -259,3 +267,17 @@ a[data-note-control] {
   }
 }
 
+.side-img {
+  .slide & {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 20%;
+    border-radius: 20px;
+    border: 3px solid white;
+    @include rotate3d(0,0, $rotate: -10deg);
+  }
+  .slide:nth-child(even) & {
+    @include rotate3d(0,0, $rotate: 10deg);
+  }
+}
