@@ -78,6 +78,18 @@
         </div>
       </section>
       <section class="slide">
+        <h2>Source Maps</h2>
+        <h3>
+          <strong>Problem</strong>: Generated JS and CSS are hard to debug.
+        </h3>
+        <hr>
+        <p class="slide" style="font-size: 26px">
+          <strong>Solution</strong>: Sourcemaps tell a browser how to find the exact point
+          in the real source of a generated Javascript or CSS file for use
+          by developer tools.
+        </p>
+      </section>
+      <section class="slide">
         <h2>Source Maps: Setup</h2>
         <h3>
           1. Install Chrome Canary
@@ -212,15 +224,58 @@ $bg-color: darken(green, 10%);
             <h3>Sass</h3>
 <textarea class="source" title="String Functions">
 $lorem: "Lorem Ipsum Dolor Sit Amit.";
-$ident: some-identifier;
 .lorem-details {
+    quoted: is-quoted($lorem);
     lorem-length: str-length($lorem);
-    ident-length: str-length($ident);
     dolor-location: str-index($lorem, "Dolor");
     inserted: str-insert($lorem, "CHRIS ", str-index($lorem, "Dolor"));
     first-word: str-slice($lorem, 1, str-index($lorem, " ") - 1);
-    upcase: to-upper-case($ident);
+    upcase: to-upper-case($lorem);
     downcase: to-lower-case($lorem);
+}
+</textarea>
+<textarea class="alternate-source" title="Using Identifiers">
+$ident: some-identifier;
+.ident-details {
+    quoted: is-quoted($ident);
+    ident-length: str-length($ident);
+    ident-location: str-index($ident, "ident");
+    inserted: str-insert($ident, "-new", str-index($ident, "-"));
+    first-word: str-slice($ident, 1, str-index($ident, "-") - 1);
+    upcase: to-upper-case($ident);
+}
+</textarea>
+<textarea class="alternate-source" title="Using the Building Blocks">
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) +
+          str-slice($string, 2);
+}
+@function camelize($string, $capitalize-first: false) {
+  $new-string: if(is-quoted($string), "", unquote(""));
+  $position: 1;
+  $found-position: str-index($string, "-");
+  $first-segment: true;
+  @while $found-position {
+    $segment: str-slice($string, $position, $found-position - 1);
+    $new-string: $new-string +
+                 if($first-segment
+                      and $capitalize-first
+                      or not $first-segment,
+                    capitalize($segment),
+                    $segment);
+    $first-segment: false;
+    $position: $found-position + 1;
+    $found-position: str-index($string, "-", $position);
+  }
+  @return $new-string +
+          if($first-segment and $capitalize-first or not $first-segment,
+             capitalize(str-slice($string, $position)),
+             str-slice($string, $position));
+}
+
+.demo {
+  capitalized: capitalize("something");
+  camelized: camelize(something-that-was-dashed);
 }
 </textarea>
           </section>
