@@ -357,27 +357,37 @@ $breakpoints: (papa-bear: 1600px, mama-bear: 1250px, baby-bear: 650px);
             <button class="compile">Update</button>
             <h3>Sass</h3>
 <textarea class="source" title="Call Function">
-@function embiggen($amount) {
-  @return $amount + $amount / 2;
-}
-@function debiggen($amount) {
-  @return $amount - $amount / 2;
-}
-@function somebiggen($amount) {
-  @return call(if($amount % 2 == 0, embiggen, debiggen), $amount);
+@function make-bigger($number) {
+  @return $number * 1.5;
 }
 .call-example {
   background: call(lighten, red, 15%);
-  font-size: call(embiggen, 20px);
-  something: call(nothing, an-argument);
-  margin: somebiggen(31px);
+  font-size: call(make-bigger, 20px);
+  something: call(not-defined, an-argument);
 }
 </textarea>
-<textarea class="alternate-source" title="Dynamic Includes">
-// This syntax is not settled nor implemented.
-.dynamic-include {
-  @include mixin $some-mixin with (arg1, arg2...);
+<textarea class="alternate-source" title="Real-world call example">
+@mixin setup-theme($theme) {
+  body.theme-#{map-get($theme, name)} {
+    @if map-has-key($theme, background-color) {
+      background-color: map-get($theme, background-color);
+    }
+    @else if map-has-key($theme, background-fn) {
+      $bg-fn-name: map-get($theme, background-fn);
+      $base-color: map-get($theme, base-color);
+      background-color: call($bg-fn-name, $base-color);
+    }
+    @else {
+      @warn "Theme has no background!";
+    }
+  }
 }
+
+$my-theme: (name: fancy, base-color: red, background-fn: my-theme-bg);
+@function my-theme-bg($base-color) {
+  @return lighten($base-color, 15%);
+}
+@include setup-theme($my-theme);
 </textarea>
 <textarea class="alternate-source" title="Existance Checks">
 $some-global: null;
@@ -411,8 +421,120 @@ $some-global: null;
       </section>
       <section class="slide">
         <h2>&amp; in SassScript</h2>
-        <h3 class="slide"><a href="https://gist.github.com/chriseppstein/5649985" target="_blank">Module Support</a></h3>
-        <h3 class="slide"><a href="https://gist.github.com/chriseppstein/5889314" target="_blank">Manipulate Selectors</a></h3>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Modules!">
+mymodule {
+  @at-root {
+    .#{&}-header { width: 100%;      }
+    .#{&}-footer { position: fixed;  }
+    .#{&}-body   {
+      a          { color: blue;      } 
+      span       { something: else;  } 
+      p          { font-size: 1.2em; } 
+    }
+  }
+}
+</textarea>
+<textarea class="alternate-source" title="Inject parent">
+@function list-slice($list, $start, $end: length($list)) {
+  $new-list: ();
+  @for $i from $start through $end {
+     $new-list: append($new-list, nth($list, $i), list-separator($list));
+  }
+  @return $new-list;
+}
+
+@function insert-before-last($list, $to-inject) {
+  @return join(
+            join(
+              list-slice($list, 1, length($list) - 1),
+              $to-inject),
+            nth($list, -1));
+}
+ 
+@mixin inject-parent($selector) {
+  $parent-selector: append($selector, unquote(">"), space);
+  $injected: ();
+  @each $s in & {
+    $injected: append($injected, insert-before-last($s, $parent-selector));
+  }
+  @at-root #{$injected} {
+    @content;
+  }
+}
+
+#sidebar section {
+  main & { font-size: 24px; }
+  & main { font-size: 24px; }
+  // @include inject-parent(main) {
+  //   font-size: 24px;
+  // }
+}
+</textarea>
+<textarea class="alternate-source" title="Selector Manipulation">
+@function index-of-last-class($selector) {
+  $index: null;
+  $counter: 1;
+  @each $component in $selector {
+    @if str-index($component, ".") == 1 {
+      $index: $counter;
+    }
+    $counter: $counter + 1;
+  }
+  @return $index;
+}
+ 
+@function list-slice($list, $start, $end: length($list)) {
+  $new-list: ();
+  @for $i from $start through $end {
+     $new-list: append($new-list, nth($list, $i), list-separator($list));
+  }
+  @return $new-list;
+}
+ 
+@mixin increased-specificity($selector) {
+  @if length($selector) > 1 {
+    @warn "Does not work on compound selectors at this time. Keeping the first.";
+  }
+  $selector: nth($selector, 1);
+  $class-index: index-of-last-class($selector);
+  @if $class-index {
+    $before: list-slice($selector, 1, $class-index);
+    $at: nth($selector,$class-index);
+    $after: list-slice($selector, $class-index + 1, length($selector));
+    $after: if(length($after) > 0, $after, null);
+    @at-root #{$before}#{$at} #{$after} {
+      @content;
+    }
+  }
+  @else {
+    @warn "Cannot increase the specificity of #{$selector}. It does not include a class name.";
+    @content;
+  }
+}
+
+.increase .me .please {
+  @include increased-specificity(&) {
+    content: wow;
+  }
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+        </div>
+      </section>
+      <section class="slide">
+        <h2>&amp; in SassScript</h2>
+        <img src="/images/at-root.jpeg" style="width: 50%;">
+        <h3>Will allow unscoping from @media and other directives.</h3>
       </section>
       <section class="slide">
         <h2>Variable Scoping</h2>
