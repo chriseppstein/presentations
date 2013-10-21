@@ -1,0 +1,2 @@
+run: bundle exec rackup config.ru
+watch: bundle exec sass --compass --sourcemap --watch static/output:static/output

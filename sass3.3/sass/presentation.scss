@@ -1,7 +1,7 @@
 @import "compass/css3";
 @import "compass/css3/user-interface";
-$height: 720px;
-$width: 864px;
+$height: 100vh;
+$width: 100vw;
 
 @include keyframes(pulsing-border) {
   0% {
@@ -14,7 +14,7 @@ $width: 864px;
 
 .deck-container {
   width: auto;
-  max-width: 864px;
+  max-width: $width;
   margin: 16px auto 24px auto;
   min-height: $height;
   font-size: 18px;
@@ -92,7 +92,8 @@ a[data-note-control] {
     @include transition-duration(1s);
     @include transition-property((top, bottom, left, right, z-index, font-size));
   }
-  $section-ratio: 0.56;
+  $horizontal-section-ratio: 0.51;
+  $vertical-section-ratio: 0.53;
   section {
     &.html, &.result, &.sass, &.css {
       background: #2F2F2F;
@@ -101,36 +102,40 @@ a[data-note-control] {
       }
     }
   }
+  $left-margin: 1vw;
+  $right-margin: 1vw;
+  $top-margin: 10vh;
+  $bottom-margin: 1vh;
   section.html {
-    bottom: 35px;
-    top: $section-ratio * $height;
-    left: 10px;
-    right: $section-ratio * $width;
+    bottom: $bottom-margin;
+    top: $vertical-section-ratio * $height;
+    left: $left-margin;
+    right: $horizontal-section-ratio * $width;
   }
   section.result {
-    bottom: 35px;
-    top: $section-ratio * $height;
-    right: 10px;
-    left: $section-ratio * $width;
+    bottom: $bottom-margin;
+    top: $vertical-section-ratio * $height;
+    right: $right-margin;
+    left: $horizontal-section-ratio * $width;
   }
   section.sass {
-    top: 70px;
-    bottom: $section-ratio * $height;
-    left: 10px;
-    right: $section-ratio * $width;
+    top: $top-margin;
+    bottom: $vertical-section-ratio * $height;
+    left: $left-margin;
+    right: $horizontal-section-ratio * $width;
     &.only {
-      right: 10px;
+      right: $right-margin;
     }
   }
   section.css {
-    top: 70px;
-    bottom: $section-ratio * $height;
-    right: 10px;
-    left: $section-ratio * $width;
+    top: $top-margin;
+    bottom: $vertical-section-ratio * $height;
+    right: $right-margin;
+    left: $horizontal-section-ratio * $width;
     &.only {
-      top: $section-ratio * $height;
-      bottom: 35px;
-      left: 10px;
+      top: $vertical-section-ratio * $height;
+      bottom: $bottom-margin;
+      left: $left-margin;
     }
   }
   .unnecessary {
@@ -138,10 +143,10 @@ a[data-note-control] {
   }
   section.fullsize {
     &, & .source {
-      top: 70px !important;
-      bottom: 0px !important;
-      right: 0px !important;
-      left: 10px !important;
+      top: $top-margin !important;
+      bottom: $bottom-margin !important;
+      right: $right-margin !important;
+      left: $left-margin !important;
       z-index: 10;
       @include box-shadow(3px 3px #ccc);
     }
