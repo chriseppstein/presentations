@@ -1,6 +1,6 @@
 source "https://rubygems.org"
-gem 'sass', :path => "~/Projects/sass"
-gem 'compass', :path => "~/Projects/compass"
+gem 'sass', '~> 3.3.2'
+gem 'compass', '~> 1.0.0.alpha.18'
 gem 'sinatra'
 gem 'heroku'
 gem 'guard'

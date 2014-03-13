@@ -31,17 +31,20 @@ class Presentation < Sinatra::Application
       outputdir = File.dirname(__FILE__) + "/static/output"
       sass_file = "#{outputdir}/#{name}.scss"
       css_file  = "#{outputdir}/#{name}.css"
-      map_file  = "#{outputdir}/#{name}-map.json"
+      map_file  = "#{outputdir}/#{name}.css.map"
       options = options.merge(:syntax => :scss,
                               :style => style,
                               :line_comments => false,
+                              :importer => Sass::Importers::Filesystem.new(File.dirname(sass_file)),
                               :filename => sass_file,
                               :css_path => css_file,
-                              :sourcemap_path => map_file)
+                              :sourcemap_path => map_file,
+                              :sourcemap_filename => map_file,
+                              :sourcemap_uri => "#{name}.css.map")
       engine = Sass::Engine.new(params[:sass], options)
       Timeout.timeout(8) do
         css, map = if write_sourcemap || output_sourcemap
-                     engine.render_with_sourcemap("#{name}-map.json")
+                     engine.render_with_sourcemap("#{name}.csss.map")
                    else
                      [engine.render, nil]
                    end

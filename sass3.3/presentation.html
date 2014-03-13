@@ -73,7 +73,7 @@
           <h3 class="slide">String Functions</h3>
           <h3 class="slide">Map Data Structure</h3>
           <h3 class="slide">SassScript Goes Meta</h3>
-          <h3 class="slide">&amp; in SassScript</h3>
+          <h3 class="slide">Expanded use of &amp; in Selectors</h3>
           <h3 class="slide">Variable Scoping</h3>
         </div>
       </section>
@@ -88,24 +88,6 @@
           in the real source of a generated Javascript or CSS file for use
           by developer tools.
         </p>
-      </section>
-      <section class="slide">
-        <h2>Source Maps: Setup</h2>
-        <h3>
-          1. Install Chrome Canary
-        </h3>
-        <h3>
-          2. Go to: <code class="smaller">chrome://flags/#enable-devtools-experiments</code>
-          <img src="images/sourcemaps-howto/enable-devtools-experiments.png">
-        </h3>
-      </section>
-      <section class="slide">
-        <h2>Source Maps: Setup</h2>
-        <h3>
-          Enable source maps in devtools:
-          <img src="images/sourcemaps-howto/dev_tools_settings_1.png">
-          <img src="images/sourcemaps-howto/dev_tools_settings_2.png">
-        </h3>
       </section>
       <section class="slide">
         <h2>Source Maps: Setup</h2>
@@ -313,14 +295,17 @@ $better-theme: map-merge($theme, (font: Zapfino, border-style: dashed));
 <textarea class="alternate-source" title="Maps, Media, &amp; Extend (Oh My!)">
 $breakpoints-initialized: (papa-bear: false, mama-bear: false, baby-bear: false);
 $breakpoints: (papa-bear: 1600px, mama-bear: 1250px, baby-bear: 650px);
+
 @mixin initialize-breakpoint($point) {
   @if not map-get($breakpoints-initialized, $point) {
-    $breakpoints-initialized: map-set($breakpoints-initialized, $point, true);
-    %#{$point}-thing {
-      background: red;
-    }
-    %another-#{$point}-thing {
-      float: left;
+    $breakpoints-initialized: map-merge($breakpoints-initialized, ($point: true)) !global;
+    @at-root {
+      %#{$point}-column {
+        float: left;
+      }
+      %#{$point}-first {
+        clear: left;
+      }
     }
   }
 }
@@ -336,8 +321,15 @@ $breakpoints: (papa-bear: 1600px, mama-bear: 1250px, baby-bear: 650px);
 
 .whatever {
   @include breakpoint(papa-bear) {
-    @extend %papa-bear-thing;
-    @extend %another-papa-bear-thing;
+    @extend %papa-bear-column;
+    border-width: 5px;
+  }
+}
+.something-else {
+  @include breakpoint(papa-bear) {
+    @extend %papa-bear-column;
+    @extend %papa-bear-first;
+    border-width: 10px;
   }
 }
 </textarea>
@@ -420,21 +412,19 @@ $some-global: null;
         </div>
       </section>
       <section class="slide">
-        <h2>&amp; in SassScript</h2>
+        <h2>Expanded Use of &amp; in Selectors</h2>
         <div class="live-code">
           <section class="sass only">
             <button class="compile">Update</button>
             <h3>Sass</h3>
 <textarea class="source" title="Modules!">
-mymodule {
-  @at-root {
-    .#{&}-header { width: 100%;      }
-    .#{&}-footer { position: fixed;  }
-    .#{&}-body   {
-      a          { color: blue;      } 
-      span       { something: else;  } 
-      p          { font-size: 1.2em; } 
-    }
+.mymodule {
+  &-header { width: 100%;      }
+  &-footer { position: fixed;  }
+  &-body   {
+    a          { color: blue;      } 
+    span       { something: else;  } 
+    p          { font-size: 1.2em; } 
   }
 }
 </textarea>
@@ -532,7 +522,7 @@ mymodule {
         </div>
       </section>
       <section class="slide">
-        <h2>&amp; in SassScript</h2>
+        <h2>@at-root Directive</h2>
         <img src="/images/at-root.jpeg" style="width: 50%;">
         <h3>Will allow unscoping from @media and other directives.</h3>
       </section>
@@ -541,6 +531,94 @@ mymodule {
         <h3 class="slide">Local Variables will override globals.</h3>
         <h3 class="slide">Use <code>!global</code> to assign to a global from a local scope.</h3>
         <h3 class="slide">Setting a global from a local scope without <code>!global</code> is deprecated in 3.3</h3>
+      </section>
+      <section class="slide">
+        <h2>Compass Prefixing</h2>
+        <section class="notes">
+          <p>
+            Compass prefixing is based on caniuse.com data.
+          </p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Basic Example">
+$graceful-usage-threshold: 0.1%;
+$debug-browser-support: false;
+@import "compass/css3";
+@include keyframes(cool) {
+  .debug {
+    browsers: inspect($current-browser-versions);
+    prefix: $current-prefix;
+  }
+  0% {
+    @include border-radius(10px);
+    @include flex(1);
+  }
+  100% {
+    @include border-radius(0px);
+    @include flex(2);
+  }
+}
+
+.foo {
+  @include animation-name(cool);
+}
+</textarea>
+<textarea class="alternate-source" title="Legacy Browsers">
+$critical-usage-threshold: 0.01%;
+$debug-browser-support: false;
+@import "compass/css3";
+@mixin ie7 {
+  @include for-legacy-browser(ie, "7", "7") {
+    *:first-child+html & {
+      @content;
+    }
+  }
+}
+
+@mixin text-color {
+  color: red;
+  @include ie7 {
+    color: blue;
+  }
+}
+.simple {
+  @include text-color;
+}
+
+@include keyframes(yay) {
+  0% {
+    @include text-color;
+  }
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+        </div>
+      </section>
+      <section class="slide">
+        <h1>It takes a community!</h1>
+      </section>
+      <section class="slide">
+        <h1 style="margin-top:1em;">&lt;3 LinkedIn
+          <br>
+          <img src="/images/linkedin.png"> 
+        </h1>
+        <h2>We're Hiring Sass Developers!</h2>
+      </section>
+      <section class="slide">
+        <h1>United Mitochondrial Disease Foundation</h1>
+        <h2>Please Donate!</h2>
+        <div class="vcenter" style="margin-top: 6em;">
+          <a href="http://umdf.org/compass">http://umdf.org/compass</a>
+        </div>
       </section>
       <section class="slide">
         <h2>Questions?</h2>
@@ -568,23 +646,6 @@ mymodule {
           <div class="output">
           </div>
         </section>
-      </section>
-      <section class="slide">
-        <h1>It takes a community!</h1>
-      </section>
-      <section class="slide">
-        <h1 style="margin-top:1em;">&lt;3 LinkedIn
-          <br>
-          <img src="/images/linkedin.png"> 
-        </h1>
-        <h2>We're Hiring Sass Developers!</h2>
-      </section>
-      <section class="slide">
-        <h1>United Mitochondrial Disease Foundation</h1>
-        <h2>Please Donate!</h2>
-        <div class="vcenter" style="margin-top: 6em;">
-          <a href="http://umdf.org/compass">http://umdf.org/compass</a>
-        </div>
       </section>
     </article>
   </body>

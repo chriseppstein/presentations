@@ -1,6 +1,6 @@
 @import "compass/css3";
 @import "compass/css3/user-interface";
-$height: 100vh;
+$height: 95vh;
 $width: 100vw;
 
 @include keyframes(pulsing-border) {
@@ -104,8 +104,8 @@ a[data-note-control] {
   }
   $left-margin: 1vw;
   $right-margin: 1vw;
-  $top-margin: 10vh;
-  $bottom-margin: 1vh;
+  $top-margin: 15vh;
+  $bottom-margin: 5vh;
   section.html {
     bottom: $bottom-margin;
     top: $vertical-section-ratio * $height;
