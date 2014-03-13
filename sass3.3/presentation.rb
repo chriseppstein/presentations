@@ -44,7 +44,7 @@ class Presentation < Sinatra::Application
       engine = Sass::Engine.new(params[:sass], options)
       Timeout.timeout(8) do
         css, map = if write_sourcemap || output_sourcemap
-                     engine.render_with_sourcemap("#{name}.csss.map")
+                     engine.render_with_sourcemap("#{name}.css.map")
                    else
                      [engine.render, nil]
                    end

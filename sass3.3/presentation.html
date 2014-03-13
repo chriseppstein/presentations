@@ -429,7 +429,7 @@ $some-global: null;
   }
 }
 </textarea>
-<textarea class="alternate-source" title="Inject parent">
+<!--textarea class="alternate-source" title="Inject parent">
 @function list-slice($list, $start, $end: length($list)) {
   $new-list: ();
   @for $i from $start through $end {
@@ -512,7 +512,7 @@ $some-global: null;
     content: wow;
   }
 }
-</textarea>
+</textarea-->
           </section>
           <section class="css only">
             <select class="format"></select>
@@ -529,9 +529,46 @@ $some-global: null;
       </section>
       <section class="slide">
         <h2>Variable Scoping</h2>
-        <h3 class="slide">Local Variables will override globals.</h3>
-        <h3 class="slide">Use <code>!global</code> to assign to a global from a local scope.</h3>
-        <h3 class="slide">Setting a global from a local scope without <code>!global</code> is deprecated in 3.3</h3>
+        <section class="notes">
+          <p>Local Variables will override globals.</p>
+          <p>Use <code>!global</code> to assign to a global from a local scope.</p>
+          <p>Setting a global from a local scope without <code>!global</code> is deprecated in 3.3</p>
+        </section>
+        <div class="live-code">
+          <section class="sass only">
+            <button class="compile">Update</button>
+            <h3>Sass</h3>
+<textarea class="source" title="Setting Globals">
+$debug: false;
+
+@mixin does-something-complicated {
+  $debug: false; // turn this one to debug this mixin
+  // ... complicatedness ...
+  @if $debug {
+    background-color: red;
+  }
+}
+
+.some-class {
+  @include does-something-complicated;
+  @if $debug {
+    content: "WTF";
+  } @else {
+    content: "YAY!";
+  }
+}
+</textarea>
+          </section>
+          <section class="css only">
+            <select class="format"></select>
+            <h3>CSS</h3>
+            <div class="output">
+            </div>
+          </section>
+        </div>
+      </section>
+      <section class="slide">
+        <h2>Variable Scoping</h2>
       </section>
       <section class="slide">
         <h2>Compass Prefixing</h2>
