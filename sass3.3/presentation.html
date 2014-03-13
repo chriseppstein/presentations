@@ -233,7 +233,7 @@ $ident: some-identifier;
           str-slice($string, 2);
 }
 @function camelize($string, $capitalize-first: false) {
-  $new-string: if(is-quoted($string), "", unquote(""));
+  $new-string: str-slice($string, 0, 0);
   $position: 1;
   $found-position: str-index($string, "-");
   $first-segment: true;
@@ -247,7 +247,8 @@ $ident: some-identifier;
                     $segment);
     $first-segment: false;
     $position: $found-position + 1;
-    $found-position: str-index($string, "-", $position);
+    $new-found-position: str-index(str-slice($string, $position), "-");
+    $found-position: if($new-found-position, $found-position + $new-found-position, null);
   }
   @return $new-string +
           if($first-segment and $capitalize-first or not $first-segment,
